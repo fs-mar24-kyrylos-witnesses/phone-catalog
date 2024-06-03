@@ -1,7 +1,9 @@
 import './App.scss';
 
-function App() {
-  return <div className="title">Hello, React!</div>;
-}
+export const App = () => (
+  <div className="App">
+    <h1>Product Catalog</h1>
+  </div>
+);
 
 export default App;
