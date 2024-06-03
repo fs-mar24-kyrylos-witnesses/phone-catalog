@@ -1,0 +1,13 @@
+@import './usable-fonts.scss';
+
+.nav-link {
+  font-family: 'Mont-Bold', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  color: $graySecondary;
+  line-height: 0.04em;
+  line-height: 11px;
+  &:hover {
+    color: $grayPrimary;
+  }
+}
