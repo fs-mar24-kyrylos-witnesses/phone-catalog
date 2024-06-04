@@ -10,8 +10,6 @@ export const App = () => {
     fetchAllProducts();
   }, [fetchAllProducts]);
 
-  // comment for test
-
   return (
     <div className="App">
       <h1>Product Catalog</h1>
