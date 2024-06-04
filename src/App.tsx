@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import './App.scss';
-
 import { useProductStore } from './store/productStore';
 
 export const App = () => {
