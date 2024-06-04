@@ -2,7 +2,7 @@ import { Product } from '../types/Product';
 import { Category } from '../types/Category';
 import { ProductInfo } from '../types/ProductInfo';
 
-const BASE_URL = 'phone-catalog/api/';
+const BASE_URL = 'api/';
 const CATALOG_URL = BASE_URL + 'products.json';
 
 const PRODUCT_URLS = {
