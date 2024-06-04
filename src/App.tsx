@@ -4,7 +4,7 @@ import './App.scss';
 import { useProductStore } from './store/productStore';
 
 export const App = () => {
-  const { fetchAllProducts } = useProductStore();
+  const fetchAllProducts = useProductStore(state => state.fetchAllProducts);
 
   useEffect(() => {
     fetchAllProducts();
