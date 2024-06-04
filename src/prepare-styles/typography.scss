@@ -1,13 +1,48 @@
 @import './usable-fonts.scss';
+@import './mixins.scss';
 
+// class for nav link on header
 .nav-link {
   font-family: 'Mont-Bold', sans-serif;
   font-weight: 800;
   font-size: 12px;
   color: $graySecondary;
-  line-height: 0.04em;
+  letter-spacing: 0.04em;
   line-height: 11px;
+  height: 11px;
+  width: 52px;
+
   &:hover {
     color: $grayPrimary;
+  }
+}
+
+// class for main title link on main
+.main-title{
+  font-family: 'Mont-Bold', sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  color: $grayPrimary;
+  letter-spacing: -0.01em;
+  line-height: 41px;
+
+  @include on-tablet{
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+// class for section title link on main
+.section-title{
+  font-family: 'Mont-Bold', sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  color: $grayPrimary;
+  letter-spacing: -0.01em;
+  line-height: 30.8px;
+
+  @include on-tablet{
+    font-size: 32px;
+    line-height: 41px;
   }
 }
