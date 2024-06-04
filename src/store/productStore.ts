@@ -1,18 +1,18 @@
 import { create as createZustand } from 'zustand';
 
 import { ProductInfo } from '../types/ProductInfo';
-import { Products } from '../types/Products';
+import { Product } from '../types/Product';
 
 import { fetchProductByIdFromApi, fetchAllProductsFromApi } from '../api/api';
 import { Category } from '../types/Category';
 
 type ProductStore = {
-  catalogProducts: Products[];
+  catalogProducts: Product[];
   selectedProduct: ProductInfo | null;
   error: string;
   loading: boolean;
 
-  setCatalogProducts: (products: Products[]) => void;
+  setCatalogProducts: (products: Product[]) => void;
   setSelectedProduct: (selectedProduct: ProductInfo) => void;
   fetchAllProducts: () => Promise<void>;
   fetchProductById: (id: string, mode: Category) => Promise<void>;
@@ -48,7 +48,7 @@ export const useProductStore = createZustand<ProductStore>(set => ({
     }
   },
 
-  setCatalogProducts: (products: Products[]) => {
+  setCatalogProducts: (products: Product[]) => {
     set({ catalogProducts: products });
   },
 
