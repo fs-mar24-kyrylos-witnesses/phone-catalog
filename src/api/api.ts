@@ -1,4 +1,4 @@
-import { Products } from '../types/Products';
+import { Product } from '../types/Product';
 import { Category } from '../types/Category';
 import { ProductInfo } from '../types/ProductInfo';
 
@@ -13,7 +13,7 @@ const PRODUCT_URLS = {
 
 export const fetchAllProductsFromApi = async () => {
   const response = await fetch(CATALOG_URL);
-  const products = (await response.json()) as Products[];
+  const products = (await response.json()) as Product[];
   return products;
 };
 
