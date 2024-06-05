@@ -5,6 +5,8 @@ import { categories } from '../../helper/filterByCategory/filterByCategory';
 import { CategoryPage } from '../../pages/CategoryPage/CategoryPage';
 import { AboutItemPage } from '../../pages/AboutItemPage/AboutItemPage';
 import { HomePage } from '../../pages/HomePage/HomePage';
+import { FavouritesPages } from '../../pages/FavouritesPages/FavouritesPages';
+import { CartPages } from '../../pages/CartPages/CartPages';
 
 export const Root = () => (
   <Router>
@@ -20,6 +22,8 @@ export const Root = () => (
             />
           </Route>
         ))}
+        <Route path="favourites" element={<FavouritesPages />} />
+        <Route path="cart" element={<CartPages />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
