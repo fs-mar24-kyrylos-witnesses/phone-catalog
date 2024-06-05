@@ -1,0 +1,200 @@
+@import '../../prepare-styles/mixins.scss';
+
+@font-face {
+  font-family: Mont-bold;
+  src: url(../../../public/fonts/Mont-Bold.otf);
+}
+
+.header {
+  height: 48px;
+  padding-left: 16px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e6e9;
+
+  @include on-desktop {
+    height: 64px;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+
+    @include on-tablet {
+      gap: 32px;
+    }
+
+    @include on-desktop {
+      gap: 48px;
+    }
+  }
+
+  &__logo {
+    width: 64px;
+    height: 22px;
+    background-image: url('../../assets/header/Logo-mob.svg');
+
+    @include on-desktop {
+      width: 80px;
+      height: 28px;
+      background-image: url('../../assets/header/Logo-desc.svg');
+    }
+  }
+
+  &__nav {
+    display: none;
+    height: 100%;
+
+    @include on-tablet {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    @include on-desktop {
+      display: flex;
+      gap: 64px;
+    }
+
+    &-link {
+      height: 100%;
+      position: relative;
+
+      display: flex;
+      align-items: center;
+
+      text-decoration: none;
+      color: #89939a;
+
+      font-weight: bold;
+      font-family: Mont-bold;
+      font-size: 12px;
+      line-height: 11px;
+      text-transform: uppercase;
+
+      transition: color 0.3s;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0px;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background-color: #000;
+        transform: scaleX(0);
+        transition: transform 0.3s;
+        transform-origin: bottom right;
+      }
+
+      &:hover {
+        color: #000;
+
+        &::after {
+          transform: scaleX(1);
+          transform-origin: bottom left;
+        }
+      }
+    }
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+
+    &__container {
+      width: 48px;
+      height: 48px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      border-left: 1px solid #e2e6e9;
+
+      @include on-desktop {
+        width: 64px;
+        height: 64px;
+      }
+
+      &-like {
+        display: none;
+
+        @include on-tablet {
+          display: flex;
+        }
+      }
+
+      &-cart {
+        display: none;
+
+        @include on-tablet {
+          display: flex;
+        }
+      }
+
+      &-menu {
+        @include on-tablet {
+          display: none;
+        }
+      }
+    }
+
+    &__icon {
+      &-like {
+        display: none;
+
+        @include on-tablet {
+          display: block;
+          width: 16px;
+          height: 16px;
+          background-image: url('../../assets/header/Like.svg');
+        }
+
+        @include on-desktop {
+          display: block;
+          width: 16px;
+          height: 16px;
+          background-image: url('../../assets/header/Like.svg');
+        }
+      }
+
+      &-cart {
+        display: none;
+
+        @include on-tablet {
+          display: block;
+          width: 16px;
+          height: 16px;
+          background-image: url('../../assets/header/ShoppingCart.svg');
+        }
+
+        @include on-desktop {
+          display: block;
+          width: 16px;
+          height: 16px;
+          background-image: url('../../assets/header/ShoppingCart.svg');
+        }
+      }
+
+      &-menu {
+        display: block;
+        width: 16px;
+        height: 16px;
+        background-image: url('../../assets/header/Menu.svg');
+
+        @include on-tablet {
+          display: none;
+        }
+
+        @include on-desktop {
+          display: none;
+        }
+      }
+    }
+  }
+}
