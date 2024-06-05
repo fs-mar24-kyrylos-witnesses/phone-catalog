@@ -2,11 +2,6 @@
 @import '../../prepare-styles/colors.scss';
 @import '../../prepare-styles/usable-fonts.scss';
 
-@font-face {
-  font-family: Mont-bold;
-  src: url(../../../public/fonts/Mont-Bold.otf);
-}
-
 .header {
   height: 48px;
   padding-left: 16px;
@@ -73,7 +68,7 @@
       color: $graySecondary;
       letter-spacing: 0.04em;
 
-      font-family: 'Mont-Bold', serif;
+      font-family: 'Mont-Bold', sans-serif;
       font-weight: 800;
       font-size: 12px;
       line-height: 11px;
@@ -88,7 +83,7 @@
         left: 0;
         right: 0;
         height: 3px;
-        background-color: #000;
+        background-color: $grayPrimary;
         transform: scaleX(0);
         transition: transform 0.3s;
         transform-origin: bottom right;

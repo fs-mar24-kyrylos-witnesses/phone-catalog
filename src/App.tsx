@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import './App.scss';
 import { useProductStore } from './store/productStore';
 import { Header } from './comonents/Header/Header';
+import { Outlet } from 'react-router-dom';
 
 export const App = () => {
   const fetchAllProducts = useProductStore(state => state.fetchAllProducts);
@@ -14,9 +15,9 @@ export const App = () => {
     <>
       <div className="App">
         <Header />
-        <h1>Product Catalog</h1>
+        <Outlet />
+        {/* future footer */}
       </div>
-      <div></div>
     </>
   );
 };

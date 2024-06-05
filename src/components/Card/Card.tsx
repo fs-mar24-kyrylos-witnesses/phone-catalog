@@ -1,6 +1,6 @@
 import React from 'react';
 import './Card.scss';
-import { Product } from '../../types/Product';
+import { Product } from '../../../types/Product';
 import heart from '../../assets/icons/heart.svg';
 
 type Props = {
