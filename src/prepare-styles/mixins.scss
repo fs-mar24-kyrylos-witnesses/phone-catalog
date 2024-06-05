@@ -1,17 +1,13 @@
-@mixin on-phone {
-  @media (max-width: 639px) {
-    @content;
-  }
-}
+@import 'variables';
 
 @mixin on-tablet {
-  @media (min-width: 640px) {
+  @media (min-width: $tablet-min-width) {
     @content;
   }
 }
 
 @mixin on-desktop {
-  @media (min-width: 1200px) {
+  @media (min-width: $desktop-min-width) {
     @content;
   }
 }
