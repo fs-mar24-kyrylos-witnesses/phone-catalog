@@ -6,9 +6,9 @@ const BASE_URL = 'api/';
 const CATALOG_URL = BASE_URL + 'products.json';
 
 const PRODUCT_URLS = {
-  phone: BASE_URL + 'phones.json',
-  tablet: BASE_URL + 'tablets.json',
-  accessory: BASE_URL + 'accessories.json',
+  phones: BASE_URL + 'phones.json',
+  tablets: BASE_URL + 'tablets.json',
+  accessories: BASE_URL + 'accessories.json',
 };
 
 export const fetchAllProductsFromApi = async () => {
