@@ -1,3 +1,3 @@
-export const HomePage: React.FC<Props> = () => {
+export const HomePage = () => {
   // our First Home Page
 };
