@@ -1,17 +1,27 @@
-@mixin on-phone{
-  @media(max-width: 639px){
+@import 'variables';
+
+@mixin on-tablet {
+  @media (max-width: ($desktop-min-width - 1)) {
     @content;
   }
 }
 
-@mixin on-tablet{
-  @media(min-width: 640px) and (max-width: 1199px){
+@mixin on-phone {
+  @media (max-width: ($tablet-min-width - 1)) {
     @content;
   }
 }
 
-@mixin on-desktop{
-  @media(min-width: 1200px){
-    @content;
+@mixin content-padding-inline() {
+  margin-inline: auto;
+  max-width: $desktop-min-width;
+
+  @include on-tablet {
+    padding-inline: 32px;
+  }
+
+  @include on-phone {
+    padding-inline: 16px;
+    min-width: $phone-min-width;
   }
 }
