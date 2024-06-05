@@ -5,8 +5,8 @@ import { categories } from '../../helper/filterByCategory/filterByCategory';
 import { CategoryPage } from '../../pages/CategoryPage/CategoryPage';
 import { AboutItemPage } from '../../pages/AboutItemPage/AboutItemPage';
 import { HomePage } from '../../pages/HomePage/HomePage';
-import { FavouritesPages } from '../../pages/FavouritesPages/FavouritesPages';
-import { CartPages } from '../../pages/CartPages/CartPages';
+import { FavouritesPage } from '../../pages/FavouritesPage/FavouritesPage';
+import { CartPage } from '../../pages/CartPage/CartPage';
 
 export const Root = () => (
   <Router>
@@ -22,8 +22,8 @@ export const Root = () => (
             />
           </Route>
         ))}
-        <Route path="favourites" element={<FavouritesPages />} />
-        <Route path="cart" element={<CartPages />} />
+        <Route path="favourites" element={<FavouritesPage />} />
+        <Route path="cart" element={<CartPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
