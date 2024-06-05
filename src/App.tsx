@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import './App.scss';
 import { useProductStore } from './store/productStore';
 import { Header } from './comonents/Header/Header';
+import { Footer } from './components/Footer';
 import { Outlet } from 'react-router-dom';
 
 export const App = () => {
@@ -13,11 +14,9 @@ export const App = () => {
 
   return (
     <>
-      <div className="App">
-        <Header />
-        <Outlet />
-        {/* future footer */}
-      </div>
+      <Header />
+      <Outlet />
+      <Footer />
     </>
   );
 };
