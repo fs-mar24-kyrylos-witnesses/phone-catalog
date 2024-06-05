@@ -1,11 +1,10 @@
 import { useEffect } from 'react';
 import './App.scss';
-
 import { useProductStore } from './store/productStore';
 import { Header } from './comonents/Header/Header';
 
 export const App = () => {
-  const { fetchAllProducts } = useProductStore();
+  const fetchAllProducts = useProductStore(state => state.fetchAllProducts);
 
   useEffect(() => {
     fetchAllProducts();
