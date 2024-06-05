@@ -1,27 +1,28 @@
 @import 'variables';
 
-@mixin on-tablet {
-  @media (max-width: ($desktop-min-width - 1)) {
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
     @content;
   }
 }
 
-@mixin on-phone {
-  @media (max-width: ($tablet-min-width - 1)) {
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
     @content;
   }
 }
 
 @mixin content-padding-inline() {
   margin-inline: auto;
-  max-width: $desktop-min-width;
+  padding-inline: 16px;
+  min-width: $phone-min-width;
 
   @include on-tablet {
     padding-inline: 32px;
   }
 
-  @include on-phone {
-    padding-inline: 16px;
-    min-width: $phone-min-width;
+  @include on-desktop {
+    padding-inline: 32px;
+    max-width: $desktop-min-width;
   }
 }
