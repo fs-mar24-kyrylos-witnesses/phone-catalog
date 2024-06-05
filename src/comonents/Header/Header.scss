@@ -1,4 +1,6 @@
-@import '../../prepare-styles/mixins.scss';
+@import '../../prepare-styles/mixins.scss'; 
+@import '../../prepare-styles/colors.scss';
+@import '../../prepare-styles/usable-fonts.scss';
 
 @font-face {
   font-family: Mont-bold;
@@ -68,10 +70,11 @@
       align-items: center;
 
       text-decoration: none;
-      color: #89939a;
+      color: $graySecondary;
+      letter-spacing: 0.04em;
 
-      font-weight: bold;
-      font-family: Mont-bold;
+      font-family: 'Mont-Bold', serif;
+      font-weight: 800;
       font-size: 12px;
       line-height: 11px;
       text-transform: uppercase;
@@ -92,7 +95,7 @@
       }
 
       &:hover {
-        color: #000;
+        color: $grayPrimary;
 
         &::after {
           transform: scaleX(1);
