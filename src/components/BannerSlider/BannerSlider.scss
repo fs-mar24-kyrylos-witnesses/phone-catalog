@@ -1,0 +1,139 @@
+@import '../../prepare-styles/colors.scss';
+@import '../../prepare-styles/mixins.scss';
+
+.container {
+  @include grid-align;
+}
+
+.carousel {
+  width: 100%;
+  min-width: 320px;
+  height: 352px;
+  display: flex;
+
+  grid-column: span 4;
+
+  @include on-tablet {
+    height: 221px;
+
+    grid-column: span 12;
+  }
+
+  @include on-desktop {
+    height: 432px;
+    grid-column: span 24;
+  }
+
+  &__image-wrapper {
+    position: relative;
+    width: 100%;
+
+    height: 320px;
+
+    background-color: $grayPrimary;
+
+    @include on-tablet {
+      height: 189px;
+    }
+
+    @include on-desktop {
+      height: 400px;
+      max-width: 1040px;
+    }
+  }
+
+  &__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    @include on-tablet {
+      position: relative;
+      object-fit: contain;
+    }
+
+    @include on-desktop {
+      object-fit: cover;
+    }
+  }
+
+  &__button-next,
+  &__button-prev {
+    height: 189px;
+    box-sizing: border-box;
+    border: 1px solid $grayIconsPlaceholders;
+    outline: none;
+    min-width: 32px;
+
+    display: none;
+
+    background-color: $white;
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    transition: border 0.3s ease;
+
+    @include on-tablet {
+      display: block;
+    }
+
+    @include on-desktop {
+      height: 400px;
+    }
+
+    &:hover {
+      border: 1px solid $grayPrimary;
+    }
+
+    &:active {
+      background-color: darken($white, 2%);
+    }
+  }
+
+  &__button-next {
+    background-image: url('../../assets/icons/arrow-right.svg');
+    margin-left: 19px;
+
+    @include on-desktop {
+      margin-left: 16px;
+    }
+  }
+
+  &__button-prev {
+    background-image: url('../../assets/icons/arrow-left.svg');
+    margin-right: 19px;
+
+    @include on-desktop {
+      margin-right: 16px;
+    }
+  }
+}
+
+.swiper-pagination {
+  background-color: $white;
+
+  &-bullet {
+    background-color: $grayPrimary;
+    width: 14px;
+    height: 4px;
+    border-radius: 0;
+  }
+}
+
+.swiper-pagination-bullets.swiper-pagination-horizontal {
+  top: 300px !important;
+  height: 24px;
+
+  @include on-tablet {
+    top: 198px !important;
+  }
+
+  @include on-desktop {
+    top: 409px !important;
+  }
+}
