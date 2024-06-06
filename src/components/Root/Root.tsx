@@ -12,7 +12,7 @@ export const Root = () => (
   <Router>
     <Routes>
       <Route path="/" element={<App />}>
-        <Route index element={<HomePage />} />
+        <Route path="home" element={<HomePage />} />
         {categories.map(category => (
           <Route key={category.path} path={category.path}>
             <Route index element={<CategoryPage category={category} />} />

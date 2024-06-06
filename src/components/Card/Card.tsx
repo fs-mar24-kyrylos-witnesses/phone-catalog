@@ -5,6 +5,7 @@ import heart from '../../assets/icons/heart.svg';
 
 type Props = {
   product: Product;
+  category?: string;
 };
 
 export const Card: React.FC<Props> = ({ product }) => {
@@ -21,8 +22,10 @@ export const Card: React.FC<Props> = ({ product }) => {
       <div className="card_container-info">
         <p className="card_container-title">{product.name}</p>
         <div className="card_container-info-prices">
-          <p className="card_container-prices-salePrice">${product.price}</p>
-          <p className="card_container-prices-fullPrice">
+          <p className="card_container-info-prices-salePrice">
+            ${product.price}
+          </p>
+          <p className="card_container-info-prices-fullPrice">
             ${product.fullPrice}
           </p>
         </div>

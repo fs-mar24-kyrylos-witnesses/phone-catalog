@@ -1,0 +1,54 @@
+@import '../../prepare-styles/colors.scss';
+@import '../../prepare-styles/mixins.scss';
+@import '../../prepare-styles/reset.scss';
+@import '../../prepare-styles/usable-fonts.scss';
+
+.main-main{
+  max-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 24px 16px 64px;
+
+  @include on-desktop{
+    margin: 24px 16px 80px;
+  }
+}
+
+.main-container{
+  max-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.category_header{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-self: start;
+}
+
+.category_product-container {
+  // max-width: 1200px;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+
+  @include on-tablet{
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include on-bigTablet{
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include on-desktop{
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  gap: 40px 16px;
+  margin: 24px 0px;
+}
