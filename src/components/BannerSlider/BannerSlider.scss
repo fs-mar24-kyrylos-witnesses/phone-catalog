@@ -14,12 +14,13 @@
   grid-column: span 4;
 
   @include on-tablet {
-    height: 432px;
+    height: 382px;
     grid-column: span 12;
   }
 
   @include on-desktop {
     grid-column: span 24;
+    height: 432px;
   }
 
   &__image-wrapper {
