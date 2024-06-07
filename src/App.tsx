@@ -4,6 +4,7 @@ import { useProductStore } from './store/productStore';
 import { Header } from './components/Header/Header';
 import { Footer } from './components/Footer';
 import { Outlet } from 'react-router-dom';
+import { BannerSlider } from './components/BannerSlider';
 
 export const App = () => {
   const fetchAllProducts = useProductStore(state => state.fetchAllProducts);
@@ -15,7 +16,10 @@ export const App = () => {
   return (
     <>
       <Header />
+
       <Outlet />
+
+      <BannerSlider />
       <Footer />
     </>
   );
