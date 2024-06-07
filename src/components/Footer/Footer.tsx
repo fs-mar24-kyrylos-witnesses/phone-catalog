@@ -1,7 +1,7 @@
 import React from 'react';
 import './Footer.scss';
 import logo from '../../assets/icons/Logo.svg';
-import arrowUp from '../../assets/icons/Chevron (Arrow Up).svg';
+import arrowUp from '../../assets/icons/arrow-up.svg';
 
 export const Footer: React.FC = () => {
   return (

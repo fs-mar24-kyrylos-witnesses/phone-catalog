@@ -2,7 +2,7 @@
 //   All = 'All',
 //   Alphabet = 'Alphabet',
 //   Newest = 'Newest',
-//   Chepest = 'Chepest',
+//   Cheapest = 'Cheapest',
 // }
 
 export const SortBy = ['All', 'Alphabet', 'Newest', 'Cheapest'];

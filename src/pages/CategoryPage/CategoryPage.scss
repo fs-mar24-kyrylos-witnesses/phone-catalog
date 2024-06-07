@@ -20,7 +20,7 @@
 .main-container{
   margin: 0;
   padding: 0;
-  // margin-right: 16px;
+  margin-right: -16px;
   width: fit-content;
   display: flex;
   flex-direction: column;
@@ -98,7 +98,7 @@
 
 .category_header-sort-select {
   border: 1px solid $grayIconsPlaceholders;
-  width: 136px;
+  width: 120px;
   padding: 10px 12px;
   font-size: 14px;
   line-height: 21px;
@@ -117,12 +117,7 @@
   font-family: 'Mont-SemiBold', sans-serif;
   color: $grayPrimary;
   cursor: pointer;
-
-  color: $graySecondary;
-  &:hover{
-    color: $grayPrimary;
-    background-color: transparent;
-  }
+  color: $grayPrimary;
 }
 
 .category_product-container {
