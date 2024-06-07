@@ -7,13 +7,13 @@
 
 .card-item__container {
   font-family: 'Mont-SemiBold', sans-serif;
-  border: 1px solid #e2e6e9;
+  border: 1px solid $grayElements;
   height: 160px;
   margin-bottom: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #fff;
+  background-color: $white;
 
   @include on-tablet {
     margin-bottom: 24px;
@@ -68,7 +68,7 @@
   font-size: 14px;
   line-height: 21px;
   font-weight: 600;
-  color: #313237;
+  color: $grayPrimary;
   flex-grow: 1;
   min-width: 0;
   margin: 1.5%;
@@ -92,28 +92,26 @@
   align-items: center;
   width: 32px;
   height: 32px;
-  background-color: #fff;
-   border: 1px solid #b4bdc3;
+  background-color: $white;
+   border: 1px solid $icon-color;
 
-  @include hover(border, 1px solid #313237);
+  @include hover(border, 1px solid $grayPrimary);
 
   &:hover {
     cursor: pointer;
-    // background-color: #fff;
   }
 }
 
 .icon--disabled {
-  // border: 1px solid #e2e6e9;
   cursor: default;
-  background-color: #fff;
+  background-color: $white;
 
   &:hover {
-    border: 1px solid #e2e6e9; 
+    border: 1px solid $grayElements; 
   }
 
   svg {
-    color: #e2e6e9;
+    color: $grayElements;
   }
 }
 
@@ -123,11 +121,11 @@
 }
 
 .cart-item__price {
-  font-family: 'Mont-Bold';
+  font-family: 'Mont-Bold', sans-serif;
   font-size: 22px;
   line-height: 30.8px;
   font-weight: 800;
-  color: #313237;
+  color: $grayPrimary;
   margin: 1.5%;
   margin-left: auto;
   justify-self: end;

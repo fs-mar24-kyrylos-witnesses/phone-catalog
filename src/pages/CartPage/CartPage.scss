@@ -1,0 +1,168 @@
+@import '../../prepare-styles/mixins.scss';
+@import '../../prepare-styles/variables.scss';
+@import '../../prepare-styles/colors.scss';
+@import '../../prepare-styles/usable-fonts.scss';
+
+
+* {
+  box-sizing: border-box;
+  
+}
+
+.cart {
+  margin-top: 24px;
+  font-family: 'Mont-SemiBold', sans-serif;
+  padding: 24px;
+  min-height: 70vh;
+
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 56px;
+  }
+
+  &__title {
+    margin-bottom: 32px;
+    font-weight: 800;
+    line-height: 117%;
+    letter-spacing: -0.01em;
+    margin-top: 16px;
+  }
+
+  &__content-wrapper {
+    @include on-desktop {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-top: 32px;
+    }
+  }
+
+  &-item__count {
+    color: $grayPrimary;
+  }
+
+  &__summary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px;
+    margin-block: 32px 56px;
+    border: 1px solid $grayElements;
+    position: relative;
+    color: $grayPrimary;
+
+    @include on-desktop {
+      width: 40%;
+      margin: 0;
+    }
+  }
+
+  &__total-price {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 128%;
+    letter-spacing: -0.01em;
+
+    &--label {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 150%;
+      color: $graySecondary;
+      margin-bottom: 32px;
+
+      &:after {
+        content: '';
+        display: block;
+        width: calc(100% - 48px);
+        height: 1px;
+        background-color: $grayElements;
+        position: absolute;
+        bottom: 86px;
+        left: 24px;
+        right: 24px;
+      }
+    }
+  }
+
+  &__submit-btn {
+    background-color: $button-color;
+    border: none;
+    width: 100%;
+    height: 48px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 150%;
+    color: $card-add-color;
+    cursor: pointer;
+    transition: all 0,3s;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 $hover-shadow;
+      background-color: $grayPrimary;
+    }
+  }
+
+  &__empty {
+    text-align: center;
+    margin-top: 0;
+
+    &--img {
+      width: 250px;
+      margin-bottom: 20px;
+    }
+  }
+
+  &__text {
+    color: $grayPrimary;
+  }
+}
+
+.modal {
+  &__btn-wrapper {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &__title {
+    margin: 0;
+    margin-bottom: 32px;
+  }
+
+  &__btn {
+    border: none;
+    height: 40px;
+    width: 68px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 150%;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 $hover-shadow;
+    }
+
+    &--no {
+      background-color: transparent;
+      border: 1px solid $grayElements;
+      color: $grayPrimary;
+    }
+
+    &--yes {
+      background-color: $grayPrimary;
+      color: $white;
+    }
+  }
+}
+
+body.modal-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
