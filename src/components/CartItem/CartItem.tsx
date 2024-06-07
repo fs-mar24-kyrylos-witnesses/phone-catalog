@@ -2,7 +2,7 @@ import React from 'react';
 
 import Minus from '../../assets/icons/item-minus.svg';
 import Plus from '../../assets/icons/item-plus.svg';
-import Union from '../../assets/icons/Close.svg';
+import Union from '../../assets/icons/close.svg';
 import Photo from '../../assets/icons/iphone-In-cart-Item.png';
 
 import './CartItem.scss';
