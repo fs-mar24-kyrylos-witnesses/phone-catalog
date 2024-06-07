@@ -50,3 +50,11 @@
     grid-template-columns: repeat(24, 32px);
   }
 }
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+
+  &:hover {
+    #{$property}: #{$toValue};
+  }
+}
