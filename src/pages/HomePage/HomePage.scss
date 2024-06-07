@@ -1,5 +1,5 @@
 @import '../../prepare-styles/mixins.scss';
-.container {
+.container__home-page {
   margin-top: 56px;
   @include grid-align;
 }
