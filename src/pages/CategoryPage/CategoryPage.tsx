@@ -3,7 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import '../../prepare-styles/colors.scss';
 import { CategoryArray } from '../../types/CategoryArray';
 import home from '../../assets/icons/Home.svg';
-import arrowRight from '../../assets/icons/Chevron (Arrow Right).svg';
+import arrowRight from '../../assets/icons/arrow-right.svg';
 import { SortBy } from '../../types/SortBy';
 import { PerPage } from '../../types/PerPage';
 import { getSearchWith } from '../../helper/getSearchWith/getSearchWith';
