@@ -1,4 +1,9 @@
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import {
+  HashRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from 'react-router-dom';
 import { App } from '../../App';
 import { NotFoundPage } from '../../pages/NotFoundPage';
 import { categories } from '../../helper/filterByCategory/filterByCategory';
@@ -12,7 +17,8 @@ export const Root = () => (
   <Router>
     <Routes>
       <Route path="/" element={<App />}>
-        <Route path="home" element={<HomePage />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="home" element={<Navigate to={'/'} />} />
         {categories.map(category => (
           <Route key={category.path} path={category.path}>
             <Route index element={<CategoryPage category={category} />} />

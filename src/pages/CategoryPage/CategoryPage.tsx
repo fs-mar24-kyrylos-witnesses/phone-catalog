@@ -68,17 +68,17 @@ export const CategoryPage: React.FC<Props> = ({ category }) => {
                 src={arrowRight}
                 alt="arrow"
               />
-              <Link to={category.path}>
-                <span className="category_header-map-categoryMap">
+              <Link to={`/${category.path}`}>
+                <span className="category_header-map-categoryName">
                   {category.name}
                 </span>
               </Link>
             </div>
-            <h1 className="category_header-mainTitle">{category.name}</h1>
+            <h1 className="main-title">{category.titleName}</h1>
             <p className="category_header-itemsCount">{`${actualProducts.length} models`}</p>
             <div className="category_header-sortAndPerpage">
-              <div className="category_header-sort">
-                <span>Sort by</span>
+              <div className="category_header-select">
+                <span className="category_header-select-title">Sort by</span>
                 <select
                   className="category_header-sort-select"
                   value={sort}
@@ -95,8 +95,10 @@ export const CategoryPage: React.FC<Props> = ({ category }) => {
                   ))}
                 </select>
               </div>
-              <div className="category_header-Perpage">
-                <span>Items on page</span>
+              <div className="category_header-select">
+                <span className="category_header-select-title">
+                  Items on page
+                </span>
                 <select
                   className="category_header-sort-select"
                   value={perPage}
