@@ -1,6 +1,6 @@
 import React from 'react';
 import './Footer.scss';
-import logo from '../../assets/icons/Logo.svg';
+import logo from '../../assets/icons/logo.svg';
 import arrowUp from '../../assets/icons/arrow-up.svg';
 
 export const Footer: React.FC = () => {

@@ -2,14 +2,15 @@ import './CategoryPage.scss';
 import { Link, useSearchParams } from 'react-router-dom';
 import '../../prepare-styles/colors.scss';
 import { CategoryArray } from '../../types/CategoryArray';
-import home from '../../assets/icons/Home.svg';
+import home from '../../assets/icons/home.svg';
 import arrowRight from '../../assets/icons/arrow-right.svg';
 import { SortBy } from '../../types/SortBy';
 import { PerPage } from '../../types/PerPage';
-import { getSearchWith } from '../../helper/getSearchWith/getSearchWith';
 import { useProductStore } from '../../store/productStore';
 import { Card } from '../../components/Card/Card';
 import { filter } from '../../helper/filter/filter';
+import { Pagination } from '../../components/Pagination/Pagination';
+import { getNumbers } from '../../helper/getNumbers/getNumbers';
 
 type Props = {
   category: CategoryArray;
@@ -22,33 +23,53 @@ export const CategoryPage: React.FC<Props> = ({ category }) => {
   const actualProducts = catalogProducts.filter(
     item => item.category === category.path,
   );
+  const filteredProducts = filter(actualProducts, searchParams);
 
-  const sort = searchParams.get('sort') || '';
-  const perPage = searchParams.get('perPage') || '';
-  // const page = searchParams.get('page') || '';
+  const page = searchParams.get('page') || '1';
+  const perPage = searchParams.get('perPage') || filteredProducts.length;
 
-  // const getActivePerPage = (filt: string) =>
-  //   perPage === filt ? { color: $grayPrimary } : { color: $graySecondary };
+  const total = filteredProducts.length;
 
-  const setSearchWith = (params: {
-    sort?: string | null;
-    perPage?: string | null;
-    page?: string | null;
-  }) => {
-    const search = getSearchWith(searchParams, params);
+  const pagesCount = Math.ceil(total / +perPage!);
+  const pages = getNumbers(1, pagesCount);
+  const firstItem = (+page! - 1) * +perPage!;
+  const lastItem = Math.min(+page! * +perPage!, total);
+  const visibleItems = filteredProducts.slice(firstItem, lastItem);
 
-    setSearchParams(search);
+  const handlePrevPage = () => {
+    if (+page! > 1) {
+      const newSearchParams = new URLSearchParams(searchParams.toString());
+      newSearchParams.set('page', (+page! - 1).toString());
+      setSearchParams(newSearchParams.toString());
+    }
   };
 
-  const handleSort = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSearchWith({ sort: event.target.value.toLowerCase() || null });
+  const handleNextPage = () => {
+    if (+page! !== pages.length) {
+      const newSearchParams = new URLSearchParams(searchParams.toString());
+      newSearchParams.set('page', (+page! + 1).toString());
+      setSearchParams(newSearchParams.toString());
+    }
   };
 
   const handlePerPage = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSearchWith({ perPage: event.target.value.toLowerCase() || null });
+    const newSearchParams = new URLSearchParams(searchParams.toString());
+    newSearchParams.set('perPage', event.target.value);
+    newSearchParams.set('page', '1');
+    setSearchParams(newSearchParams.toString());
   };
 
-  const filteredProducts = filter(actualProducts, searchParams);
+  const handlePageChange = (selectedPage: number) => {
+    const newSearchParams = new URLSearchParams(searchParams.toString());
+    newSearchParams.set('page', selectedPage.toString());
+    setSearchParams(newSearchParams.toString());
+  };
+
+  const handleSort = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const newSearchParams = new URLSearchParams(searchParams.toString());
+    newSearchParams.set('sort', event.target.value.toLowerCase());
+    setSearchParams(newSearchParams.toString());
+  };
 
   return (
     <>
@@ -81,7 +102,6 @@ export const CategoryPage: React.FC<Props> = ({ category }) => {
                 <span className="category_header-select-title">Sort by</span>
                 <select
                   className="category_header-sort-select"
-                  value={sort}
                   onChange={handleSort}
                 >
                   {SortBy.map(field => (
@@ -101,9 +121,14 @@ export const CategoryPage: React.FC<Props> = ({ category }) => {
                 </span>
                 <select
                   className="category_header-sort-select"
-                  value={perPage}
                   onChange={handlePerPage}
                 >
+                  <option
+                    className="category_header-sort-option"
+                    value={filteredProducts.length}
+                  >
+                    All
+                  </option>
                   {PerPage.map(field => (
                     <option
                       className="category_header-sort-option"
@@ -119,10 +144,17 @@ export const CategoryPage: React.FC<Props> = ({ category }) => {
           </div>
 
           <div className="category_product-container">
-            {filteredProducts.map(item => (
+            {visibleItems.map(item => (
               <Card key={item.itemId} product={item} category={category.path} />
             ))}
           </div>
+          <Pagination
+            pages={pages}
+            page={page!}
+            handlePageChange={handlePageChange}
+            handlePrevPage={handlePrevPage}
+            handleNextPage={handleNextPage}
+          />
         </div>
       </div>
     </>

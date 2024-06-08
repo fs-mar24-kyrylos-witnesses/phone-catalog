@@ -5,4 +5,4 @@
 //   sixteen = '16',
 // }
 
-export const PerPage = ['All', '4', '8', '16'];
+export const PerPage = ['4', '8', '16'];
