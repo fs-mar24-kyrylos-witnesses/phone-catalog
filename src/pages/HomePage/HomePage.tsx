@@ -1,4 +1,11 @@
+import { BannerSlider } from '../../components/BannerSlider';
+
 export const HomePage = () => {
   // our First Home Page
-  return <h1>our First Home Page</h1>;
+  return (
+    <>
+      <h1>Home Page</h1>
+      <BannerSlider />
+    </>
+  );
 };

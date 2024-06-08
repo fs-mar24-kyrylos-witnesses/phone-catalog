@@ -11,7 +11,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 24px 15px 64px;
+  margin: 24px 16px 64px;
 
   @include on-desktop{
     margin-bottom: 80px;
@@ -22,7 +22,7 @@
   flex-wrap: wrap;
   margin: 0;
   padding: 0;
-  margin-right: -16px;
+  // margin-right: -21px;
   width: fit-content;
   display: flex;
   flex-direction: column;
