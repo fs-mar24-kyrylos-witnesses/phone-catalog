@@ -16,6 +16,8 @@ export function filter(
           return b.year - a.year;
         case 'cheapest':
           return a.price - b.price;
+        case 'all':
+          return 0;
         default:
           return 0;
       }

@@ -2,6 +2,8 @@ import classNames from 'classnames';
 import React from 'react';
 import arrowLeft from '../../assets/icons/arrow-left.svg';
 import arrowRight from '../../assets/icons/arrow-right.svg';
+import { SearchLink } from '../../helper/SearchLink/SearchLink';
+import './Pagination.scss';
 
 type Props = {
   pages: number[];
@@ -19,49 +21,53 @@ export const Pagination: React.FC<Props> = ({
   handleNextPage,
 }) => {
   return (
-    <ul className="pagination">
-      <li className={classNames('page-item', { disabled: +page! === 1 })}>
-        <a
-          data-cy="prevLink"
-          className="page-link"
-          aria-disabled={+page! === 1}
-          onClick={handlePrevPage}
-        >
-          <img src={arrowLeft} alt="left" />
-        </a>
-      </li>
-
-      {pages.map(pageMap => (
-        <li
-          className={classNames('page-item', { active: +page! === pageMap })}
-          key={pageMap}
-        >
-          <a
-            data-cy="pageLink"
-            className="page-link"
-            // href={`#${pageMap}`}
-            onClick={() => handlePageChange(pageMap)}
+    <div className="pagination-container">
+      <ul className="pagination">
+        <div className="pagination-items-box" onClick={handlePrevPage}>
+          <li
+            aria-disabled={+page! === 1}
+            className={classNames('pagination-page-item', {
+              disabled: +page! === 1,
+            })}
           >
-            {pageMap}
-          </a>
-        </li>
-      ))}
+            <img src={arrowLeft} alt="left" />
+          </li>
+        </div>
 
-      <li
-        className={classNames('page-item', {
-          disabled: +page! === pages.length,
-        })}
-      >
-        <a
-          data-cy="nextLink"
-          className="page-link"
-          aria-disabled={+page! === pages.length}
-          onClick={handleNextPage}
-        >
-          <img src={arrowRight} alt="right" />
-        </a>
-      </li>
-    </ul>
+        <div className="pagination-items">
+          {pages.map(pageMap => (
+            <SearchLink key={pageMap} params={{ page: pageMap.toString() }}>
+              <div
+                key={pageMap}
+                className={classNames('pagination-items-box', {
+                  active: +page! === pageMap,
+                })}
+              >
+                <li
+                  className={classNames('pagination-items-box-item', {
+                    active: +page! === pageMap,
+                  })}
+                  onClick={() => handlePageChange(pageMap)}
+                >
+                  {pageMap}
+                </li>
+              </div>
+            </SearchLink>
+          ))}
+        </div>
+
+        <div className="pagination-items-box" onClick={handleNextPage}>
+          <li
+            className={classNames('pagination-page-item', {
+              disabled: +page! === pages.length,
+            })}
+            aria-disabled={+page! === pages.length}
+          >
+            <img src={arrowRight} alt="right" />
+          </li>
+        </div>
+      </ul>
+    </div>
   );
 
   // return (

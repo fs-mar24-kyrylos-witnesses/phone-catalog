@@ -11,6 +11,7 @@ import { Card } from '../../components/Card/Card';
 import { filter } from '../../helper/filter/filter';
 import { Pagination } from '../../components/Pagination/Pagination';
 import { getNumbers } from '../../helper/getNumbers/getNumbers';
+import { SearchLink } from '../../helper/SearchLink/SearchLink';
 
 type Props = {
   category: CategoryArray;
@@ -67,7 +68,7 @@ export const CategoryPage: React.FC<Props> = ({ category }) => {
 
   const handleSort = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const newSearchParams = new URLSearchParams(searchParams.toString());
-    newSearchParams.set('sort', event.target.value.toLowerCase());
+    newSearchParams.set('sort', event.target.value);
     setSearchParams(newSearchParams.toString());
   };
 
@@ -103,14 +104,15 @@ export const CategoryPage: React.FC<Props> = ({ category }) => {
                 <select
                   className="category_header-sort-select"
                   onChange={handleSort}
+                  value={searchParams.get('sort') || ''}
                 >
                   {SortBy.map(field => (
                     <option
                       className="category_header-sort-option"
                       key={field}
-                      value={field}
+                      value={field.toLowerCase()}
                     >
-                      {field}
+                      <SearchLink params={{ sort: field }}>{field}</SearchLink>
                     </option>
                   ))}
                 </select>
@@ -122,12 +124,17 @@ export const CategoryPage: React.FC<Props> = ({ category }) => {
                 <select
                   className="category_header-sort-select"
                   onChange={handlePerPage}
+                  value={searchParams.get('perPage') || filteredProducts.length}
                 >
                   <option
                     className="category_header-sort-option"
                     value={filteredProducts.length}
                   >
-                    All
+                    <SearchLink
+                      params={{ perPage: filteredProducts.length.toString() }}
+                    >
+                      All
+                    </SearchLink>
                   </option>
                   {PerPage.map(field => (
                     <option
@@ -135,7 +142,9 @@ export const CategoryPage: React.FC<Props> = ({ category }) => {
                       key={field}
                       value={field}
                     >
-                      {field}
+                      <SearchLink params={{ perPage: field }}>
+                        {field}
+                      </SearchLink>
                     </option>
                   ))}
                 </select>
@@ -148,14 +157,14 @@ export const CategoryPage: React.FC<Props> = ({ category }) => {
               <Card key={item.itemId} product={item} category={category.path} />
             ))}
           </div>
-          <Pagination
-            pages={pages}
-            page={page!}
-            handlePageChange={handlePageChange}
-            handlePrevPage={handlePrevPage}
-            handleNextPage={handleNextPage}
-          />
         </div>
+        <Pagination
+          pages={pages}
+          page={page!}
+          handlePageChange={handlePageChange}
+          handlePrevPage={handlePrevPage}
+          handleNextPage={handleNextPage}
+        />
       </div>
     </>
     // <h1>

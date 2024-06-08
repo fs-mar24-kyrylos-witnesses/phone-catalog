@@ -4,7 +4,8 @@
 @import '../../prepare-styles/usable-fonts.scss';
 
 .main-main{
-  // max-width: 100vw;
+  // width: 100vw;
+  flex-wrap: wrap;
   min-width: fit-content;
   display: flex;
   flex-direction: column;
@@ -18,6 +19,7 @@
 }
 
 .main-container{
+  flex-wrap: wrap;
   margin: 0;
   padding: 0;
   margin-right: -16px;
@@ -138,4 +140,8 @@
 
   gap: 40px 16px;
   margin: 24px 0px;
+
+  @include on-tablet{
+    margin: 24px 0px 40px;
+  }
 }
