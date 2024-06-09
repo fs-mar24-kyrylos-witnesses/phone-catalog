@@ -11,8 +11,8 @@ type Props = {
 
 export const Card: React.FC<Props> = ({ product, category }) => {
   return (
-    <Link to={`/${category}/${product.itemId}`}>
-      <div className="card_container">
+    <div className="card_container">
+      <Link to={`/${category}/${product.itemId}`}>
         <div className="card_container-position">
           <img
             className="card_container-img"
@@ -20,7 +20,9 @@ export const Card: React.FC<Props> = ({ product, category }) => {
             alt={product.name}
           />
         </div>
+      </Link>
 
+      <Link to={`/${category}/${product.itemId}`}>
         <div className="card_container-info">
           <p className="card_container-title">{product.name}</p>
           <div className="card_container-info-prices">
@@ -32,7 +34,9 @@ export const Card: React.FC<Props> = ({ product, category }) => {
             </p>
           </div>
         </div>
+      </Link>
 
+      <Link to={`/${category}/${product.itemId}`}>
         <div className="card_container-about">
           <div className="card_container-about-characteristics">
             <p className="card_container-about-characteristics-title">Screen</p>
@@ -55,19 +59,19 @@ export const Card: React.FC<Props> = ({ product, category }) => {
             </p>
           </div>
         </div>
-        <div className="card_container-handle">
-          <div className="card_container-handle-bag">
-            <p className="card_container-handle-bag-addToBag">Add to cart</p>
-          </div>
-          <div className="card_container-handle-favs">
-            <img
-              className="card_container-handle-favs-addToFavs"
-              src={heart}
-              alt="Add to fav"
-            />
-          </div>
+      </Link>
+      <div className="card_container-handle">
+        <div className="card_container-handle-bag">
+          <p className="card_container-handle-bag-addToBag">Add to cart</p>
+        </div>
+        <div className="card_container-handle-favs">
+          <img
+            className="card_container-handle-favs-addToFavs"
+            src={heart}
+            alt="Add to fav"
+          />
         </div>
       </div>
-    </Link>
+    </div>
   );
 };

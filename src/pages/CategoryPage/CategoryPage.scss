@@ -4,14 +4,13 @@
 @import '../../prepare-styles/usable-fonts.scss';
 
 .main-main{
-  // width: 100vw;
   flex-wrap: wrap;
-  min-width: fit-content;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 24px 16px 64px;
+  margin: 24px 0 64px;
+  padding-inline: 16px;
 
   @include on-desktop{
     margin-bottom: 80px;
@@ -21,13 +20,18 @@
 .main-container{
   flex-wrap: wrap;
   margin: 0;
-  padding: 0;
-  // margin-right: -21px;
-  width: fit-content;
+  padding-left: 16px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: start;
+
+  @include on-tablet {
+    padding: 0;
+  }
+
+  @include on-bigTablet {
+    padding-inline: 16px;
+  }
 }
 
 .category_header {
@@ -124,10 +128,13 @@
 
 .category_product-container {
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(255px, 287px));
+  width:100%;
+  
 
   @include on-tablet {
     grid-template-columns: repeat(2, 1fr);
+
   }
 
   @include on-bigTablet {
