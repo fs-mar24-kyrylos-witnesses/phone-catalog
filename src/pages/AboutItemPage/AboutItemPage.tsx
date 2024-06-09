@@ -1,14 +1,17 @@
 import './AboutItemPage.scss';
 
+import cn from 'classnames';
 import { Link, useParams } from 'react-router-dom';
-import { useProductStore } from '../../store/productStore';
 import { useEffect, useState } from 'react';
+
+import { useProductStore } from '../../store/productStore';
 import { Category } from '../../types/Category';
 
 import home from '../../assets/icons/home.svg';
 import arrowRight from '../../assets/icons/arrow-right.svg';
 import arrowLeft from '../../assets/icons/arrow-left.svg';
-import cn from 'classnames';
+import { getProductSpecs } from '../../helper/getProductSpecs';
+import { Spec } from '../../types/Spec';
 
 type Props = {
   categoryArea: Category;
@@ -19,6 +22,12 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
   const { itemId } = useParams(); // our product id
   const { fetchProductById } = useProductStore(); // func that gives product depending on the id and category
   const selectedProduct = useProductStore(state => state.selectedProduct); // finally selected product
+  let productSpecs: Spec[] = [];
+
+  // todo -- add null handler
+  if (selectedProduct) {
+    productSpecs = getProductSpecs(selectedProduct);
+  }
 
   const [selectedColor, setSelectedColor] = useState(selectedProduct?.color);
   const [selectedCapacity, setSelectedCapacity] = useState(
@@ -56,15 +65,17 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
           </span>
         </Link>
       </div>
+
       <Link className="back-button__container" to={`/${categoryArea}`}>
         <img className="back-button__icon" src={arrowLeft} alt="arrow" />
         <span className="back-button__text">Back</span>
       </Link>
+
       <h2 className="main-title product-name">{selectedProduct?.name}</h2>
 
       <div className="photos">photos will be here</div>
 
-      <div className="colors">
+      <section className="colors">
         <div className="colors__title">
           <p className="colors__title-available">Available colors</p>
           <span className="colors__title-id">ID:</span>
@@ -87,11 +98,11 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
             );
           })}
         </div>
-      </div>
 
-      <div className="separator"></div>
+        <div className="separator"></div>
+      </section>
 
-      <div className="capacity">
+      <section className="capacity">
         <p className="capacity__title-available">Select capacity</p>
         <div className="capacity__selection">
           {selectedProduct?.capacityAvailable.map(capacity => {
@@ -108,9 +119,72 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
             );
           })}
         </div>
-      </div>
+      </section>
 
-      <div className="separator"></div>
+      <section className="buy">
+        <div className="buy__price">
+          {!selectedProduct?.priceDiscount ||
+          selectedProduct.priceDiscount === selectedProduct.priceRegular ? (
+            <span className="buy__price-main">
+              ${selectedProduct?.priceRegular}
+            </span>
+          ) : (
+            <>
+              <span className="buy__price-main">
+                ${selectedProduct?.priceDiscount}
+              </span>
+              <span className="buy__price-discount">
+                ${selectedProduct?.priceRegular}
+              </span>
+            </>
+          )}
+        </div>
+
+        <div className="buy__buttons">
+          <button className="buy__add-to-cart">Add to cart</button>
+
+          <button className="buy__favorite">
+            <div className="buy__favorite-image"></div>
+          </button>
+        </div>
+      </section>
+
+      <section className="short-specs"></section>
+
+      <section className="about">
+        <h3 className="about__title">About</h3>
+
+        <div className="separator"></div>
+
+        {selectedProduct?.description.map(section => (
+          <div className="about__section" key={section.title}>
+            <h4 className="about__section-title">{section.title}</h4>
+
+            {section.text.map(text => (
+              <p className="about__section-text" key={text}>
+                {text}
+              </p>
+            ))}
+          </div>
+        ))}
+      </section>
+
+      <section className="specs">
+        <h3 className="specs__title">Tech specs</h3>
+
+        <div className="separator"></div>
+
+        <ul className="specs__container">
+          {productSpecs.map(spec => (
+            <li className="specs__spec-section" key={spec.title}>
+              <span className="specs__spec-name">{spec.title}</span>
+              <span className="specs__spec-value">{spec.value}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="slider">slider will be here</section>
     </div>
   );
 };
