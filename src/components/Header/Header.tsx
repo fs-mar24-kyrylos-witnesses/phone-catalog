@@ -3,10 +3,10 @@ import './Header.scss';
 import { useProductStore } from '../../store/productStore';
 import { Link } from 'react-router-dom';
 
-import logo from '../../assets/icons/Logo.svg';
+import logo from '../../assets/icons/logo.svg';
 import like from '../../assets/icons/heart.svg';
-import cart from '../../assets/icons/Shopping bag (Cart).svg';
-import menu from '../../assets/icons/Menu.svg';
+import cart from '../../assets/icons/cart-icon.svg';
+import menu from '../../assets/icons/menu.svg';
 
 export const Header: React.FC = () => {
   const isMenuOpen = useProductStore(state => state.isMenuOpen);
