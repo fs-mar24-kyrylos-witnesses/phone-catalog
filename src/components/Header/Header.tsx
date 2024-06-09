@@ -26,7 +26,7 @@ export const Header: React.FC = () => {
 
       <div className="header__icons">
         <div className="header__icons__container header__icons__container-like">
-          <Link className="header__icons__icon-like" to="favorites"></Link>
+          <Link className="header__icons__icon-like" to="favourites"></Link>
         </div>
         <div className="header__icons__container header__icons__container-cart">
           <Link className="header__icons__icon-cart" to="cart"></Link>
