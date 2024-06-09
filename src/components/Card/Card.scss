@@ -10,19 +10,7 @@
   justify-content: space-between;
   gap: 8px;
   border: 1px solid $grayElements;
-
   padding: 32px; 
-  width: 67vw; 
-  max-width: 287px; 
-  min-width: 255px;
-
-  height: 68.5vh; 
-  min-height: 440px;
-  max-height: 506px;
-
-  @include on-desktop{
-    max-width: 274px;
-  }
 
   &-position {
     display: flex;

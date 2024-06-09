@@ -6,7 +6,6 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  // flex-wrap: wrap;
 }
 
 .pagination-container{
@@ -16,7 +15,15 @@ align-items: center;
 flex-direction: column;
 width: 100%;
 height: 100%;
-// flex-wrap: wrap;
+grid-column: span 4;
+
+@include on-tablet {
+  grid-column: span 12;
+}
+
+@include on-desktop {
+  grid-column: span 24;
+}
 }
 
 .pagination-items{

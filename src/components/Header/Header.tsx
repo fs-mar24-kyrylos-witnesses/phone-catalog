@@ -6,7 +6,7 @@ export const Header: React.FC = () => {
   return (
     <header className="header">
       <div className="header__container">
-        <a className="header__logo" href="#home"></a>
+        <Link className="header__logo" to="home"></Link>
 
         <nav className="header__nav">
           <Link className="header__nav-link" to="home">
