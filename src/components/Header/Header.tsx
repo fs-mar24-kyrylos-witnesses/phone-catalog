@@ -1,5 +1,6 @@
 import React from 'react';
 import './Header.scss';
+import { Link } from 'react-router-dom';
 
 export const Header: React.FC = () => {
   return (
@@ -8,27 +9,27 @@ export const Header: React.FC = () => {
         <a className="header__logo" href="#home"></a>
 
         <nav className="header__nav">
-          <a className="header__nav-link" href="#home">
+          <Link className="header__nav-link" to="home">
             HOME
-          </a>
-          <a className="header__nav-link" href="#phones">
+          </Link>
+          <Link className="header__nav-link" to="phones">
             PHONES
-          </a>
-          <a className="header__nav-link" href="#tablets">
+          </Link>
+          <Link className="header__nav-link" to="tablets">
             TABLETS
-          </a>
-          <a className="header__nav-link" href="#accessories">
+          </Link>
+          <Link className="header__nav-link" to="accessories">
             ACCESSORIES
-          </a>
+          </Link>
         </nav>
       </div>
 
       <div className="header__icons">
         <div className="header__icons__container header__icons__container-like">
-          <a className="header__icons__icon-like" href="#favorites"></a>
+          <Link className="header__icons__icon-like" to="favourites"></Link>
         </div>
         <div className="header__icons__container header__icons__container-cart">
-          <a className="header__icons__icon-cart" href="#cart"></a>
+          <Link className="header__icons__icon-cart" to="cart"></Link>
         </div>
         <div className="header__icons__container header__icons__container-menu">
           <a className="header__icons__icon-menu" href="#menu"></a>
