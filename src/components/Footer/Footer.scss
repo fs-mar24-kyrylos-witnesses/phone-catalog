@@ -1,9 +1,9 @@
 @import '/src/prepare-styles/colors.scss';
-@import '/src/prepare-styles/mixins.scss'; 
-@import '/src/prepare-styles/usable-fonts.scss'; 
+@import '/src/prepare-styles/mixins.scss';
+@import '/src/prepare-styles/usable-fonts.scss';
 
 .container {
-  font-family: 'Mont-Regular'; 
+  font-family: 'Mont-Regular';
   @include content-padding-inline;
 }
 
@@ -60,7 +60,7 @@
   }
 
   &__link {
-    font-family: 'Mont-Bold'; 
+    font-family: 'Mont-Bold';
     text-decoration: none;
     font-weight: 800;
     font-size: 12px;
@@ -89,11 +89,10 @@
   }
 
   &__label {
-    font-family: 'Mont-SemiBold'; 
+    font-family: 'Mont-SemiBold';
     font-weight: 700;
     font-size: 12px;
     color: $graySecondary;
     margin-right: 16px;
   }
 }
-

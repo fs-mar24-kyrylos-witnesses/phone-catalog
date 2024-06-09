@@ -1,4 +1,4 @@
-@import '../../prepare-styles/mixins.scss'; 
+@import '../../prepare-styles/mixins.scss';
 @import '../../prepare-styles/colors.scss';
 @import '../../prepare-styles/usable-fonts.scss';
 
@@ -10,8 +10,8 @@
   flex-direction: row;
   justify-content: space-between;
 
-  background-color: #ffffff;
-  border-bottom: 1px solid #e2e6e9;
+  background-color: $white;
+  border-bottom: 1px solid $grayElements;
 
   @include on-desktop {
     height: 64px;
@@ -32,13 +32,10 @@
 
   &__logo {
     width: 64px;
-    height: 22px;
-    background-image: url('../../assets/header/Logo-mob.svg');
+    height: auto;
 
     @include on-desktop {
       width: 80px;
-      height: 28px;
-      background-image: url('../../assets/header/Logo-desc.svg');
     }
   }
 
@@ -55,6 +52,18 @@
     @include on-desktop {
       display: flex;
       gap: 64px;
+    }
+
+    &--open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 48px;
+      left: 0;
+      width: 100%;
+      background-color: $white;
+      border-top: 1px solid $grayElements;
+      z-index: 1000;
     }
 
     &-link {
@@ -112,7 +121,7 @@
       justify-content: center;
       align-items: center;
 
-      border-left: 1px solid #e2e6e9;
+      border-left: 1px solid $grayElements;
 
       @include on-desktop {
         width: 64px;
@@ -148,16 +157,9 @@
 
         @include on-tablet {
           display: block;
-          width: 16px;
-          height: 16px;
-          background-image: url('../../assets/header/Like.svg');
-        }
 
-        @include on-desktop {
-          display: block;
           width: 16px;
-          height: 16px;
-          background-image: url('../../assets/header/Like.svg');
+          height: auto;
         }
       }
 
@@ -166,30 +168,18 @@
 
         @include on-tablet {
           display: block;
-          width: 16px;
-          height: 16px;
-          background-image: url('../../assets/header/ShoppingCart.svg');
-        }
 
-        @include on-desktop {
-          display: block;
           width: 16px;
-          height: 16px;
-          background-image: url('../../assets/header/ShoppingCart.svg');
+          height: auto;
         }
       }
 
       &-menu {
         display: block;
         width: 16px;
-        height: 16px;
-        background-image: url('../../assets/header/Menu.svg');
+        height: auto;
 
         @include on-tablet {
-          display: none;
-        }
-
-        @include on-desktop {
           display: none;
         }
       }
