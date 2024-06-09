@@ -7,7 +7,7 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   gap: 8px;
   border: 1px solid $grayElements;
 
@@ -36,9 +36,9 @@
   }
 
   &-img {
-    width: 100%;
+    width: 90%;
     height: 100%;
-    object-fit: contain;
+    object-fit:contain;
     overflow: hidden;
   }
 
@@ -56,6 +56,7 @@
     justify-content: left;
     align-items: start;
     position: relative;
+    
 
     &-prices {
       display: flex;
@@ -133,6 +134,7 @@
     width: 100%;
     justify-content: space-between;
     gap: 8px;
+    // overflow: hidden;
 
     &-bag {
       background-color: $grayPrimary;
