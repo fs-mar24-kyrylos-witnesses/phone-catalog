@@ -167,10 +167,5 @@ export const CategoryPage: React.FC<Props> = ({ category }) => {
         />
       </div>
     </>
-    // <h1>
-    //   {category.items.map(item => (
-    //     <Link to={`${category.path}/${item.itemId}`}>{item.name}</Link>
-    //   ))}
-    // </h1>
   );
 };

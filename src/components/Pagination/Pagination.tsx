@@ -69,28 +69,4 @@ export const Pagination: React.FC<Props> = ({
       </ul>
     </div>
   );
-
-  // return (
-  // <div className="category_pagination">
-  //   <div className="category_pagination-button">
-  //     <img src={arrowLeft} alt="left" onClick={handlePrevPage} />
-  //   </div>
-
-  //   {pages.map(page => (
-  //     <div
-  //       key={page}
-  //       // className={className('category_pagination-pages', {
-  //       //   'category_pagination-pages-active': page === currPage,
-  //       // })}
-  //       onClick={() => handlePageChange(page)}
-  //     >
-  //       <span>{page}</span>
-  //     </div>
-  //   ))}
-
-  //   <div className="category_pagination-button">
-  //     <img src={arrowRight} alt="right" onClick={handleNextPage} />
-  //   </div>
-  // </div>
-  // );
 };
