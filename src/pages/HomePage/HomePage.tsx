@@ -1,11 +1,12 @@
 import { BannerSlider } from '../../components/BannerSlider';
+import './HomePage.scss';
 
 export const HomePage = () => {
-  // our First Home Page
   return (
-    <>
-      <h1>Home Page</h1>
+    <div className="container__home-page">
+      <h1 className="main-title">Welcome to Nice Gadgets store!</h1>
+
       <BannerSlider />
-    </>
+    </div>
   );
 };
