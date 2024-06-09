@@ -1,26 +1,35 @@
-@import '../src/prepare-styles/colors.scss';
-@import '../src/prepare-styles/reset.scss';
-@import '../src/prepare-styles/typography.scss';
+@import '../../prepare-styles/colors.scss';
+@import '../../prepare-styles/reset.scss';
+@import '../../prepare-styles/typography.scss';
+@import '../../prepare-styles/mixins.scss';
 
 .card_container {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
   gap: 8px;
   border: 1px solid $grayElements;
 
   padding: 32px; 
   width: 67vw; 
-  max-width: 273px; 
+  max-width: 287px; 
+  min-width: 255px;
+
   height: 68.5vh; 
+  min-height: 440px;
   max-height: 506px;
+
+  @include on-desktop{
+    max-width: 274px;
+  }
 
   &-position {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row;
+    overflow: hidden;
     
     width: 100%;
     height: 20vh;
@@ -29,7 +38,8 @@
   &-img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit:contain;
+    overflow: hidden;
   }
 
   &-title {
@@ -46,6 +56,7 @@
     justify-content: left;
     align-items: start;
     position: relative;
+    
 
     &-prices {
       display: flex;
@@ -90,6 +101,7 @@
     display: flex;
     flex-direction: column;
     row-gap: 8px;
+    overflow: hidden;
 
     &-characteristics {
       display: flex;
@@ -118,6 +130,7 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
+    height: 40px;
     width: 100%;
     justify-content: space-between;
     gap: 8px;
@@ -130,10 +143,6 @@
       justify-content: center;
       width: 100%;
       height: 100%;
-
-      &:hover{
-        box-shadow: rgba(23, 32, 49, 0.4);
-      }
 
       &-addToBag{
         font-family: 'Mont-Regular', sans-serif;
@@ -152,9 +161,7 @@
       justify-content: center;
       border: 1px solid $grayIconsPlaceholders;
 
-      &:hover{
-        border: 1px solid $grayPrimary;
-      }
+      @include hover(border-color, $grayPrimary);
     }
   }
 }

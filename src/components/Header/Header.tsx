@@ -1,6 +1,7 @@
 import React from 'react';
 import './Header.scss';
 import { useProductStore } from '../../store/productStore';
+import { Link } from 'react-router-dom';
 
 import logo from '../../assets/icons/Logo.svg';
 import like from '../../assets/icons/heart.svg';
@@ -19,43 +20,43 @@ export const Header: React.FC = () => {
         </a>
 
         <nav className={`header__nav ${isMenuOpen ? 'header__nav--open' : ''}`}>
-          <a className="header__nav-link" href="#home">
+          <Link className="header__nav-link" to="#home">
             HOME
-          </a>
-          <a className="header__nav-link" href="#phones">
+          </Link>
+          <Link className="header__nav-link" to="#phones">
             PHONES
-          </a>
-          <a className="header__nav-link" href="#tablets">
+          </Link>
+          <Link className="header__nav-link" to="tablets">
             TABLETS
-          </a>
-          <a className="header__nav-link" href="#accessories">
+          </Link>
+          <Link className="header__nav-link" to="accessories">
             ACCESSORIES
-          </a>
+          </Link>
         </nav>
       </div>
 
       <div className="header__icons">
         <div className="header__icons__container header__icons__container-like">
-          <a href="#favorites">
+          <Link to="#favorites">
             <img className="header__icons__icon-like" src={like} alt="Like" />
-          </a>
+          </Link>
         </div>
         <div className="header__icons__container header__icons__container-cart">
-          <a href="#cart">
+          <Link to="#cart">
             <img
               className="header__icons__icon-cart"
               src={cart}
               alt="Shopping Cart"
             />
-          </a>
+          </Link>
         </div>
         <div
           className="header__icons__container header__icons__container-menu"
           onClick={toggleMenu}
         >
-          <a href="#menu">
+          <Link to="#menu">
             <img className="header__icons__icon-menu" src={menu} alt="Menu" />
-          </a>
+          </Link>
         </div>
       </div>
     </header>

@@ -1,0 +1,142 @@
+@import '../../prepare-styles/mixins.scss';
+@import '../../prepare-styles/variables.scss';
+@import '../../prepare-styles/colors.scss';
+@import '../../prepare-styles/usable-fonts.scss';
+
+
+
+.card-item__container {
+  font-family: 'Mont-SemiBold', sans-serif;
+  border: 1px solid $grayElements;
+  height: 160px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $white;
+
+  @include on-tablet {
+    margin-bottom: 24px;
+    height: 128px;
+  }
+
+  @include on-desktop {
+    width: 752px;
+  }
+}
+
+.card-item {
+  margin: 16px;
+  height: auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: auto 50% auto;
+  justify-content: space-between;
+
+  @include on-tablet {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    margin: 24px;
+    height: 128px;
+  }
+}
+
+.cart-item__img {
+  display: flex;
+  width: 66px;
+  height: 66px;
+  margin: 1.5%;
+  grid-area: 1 / 2 / 2 / 4;
+}
+
+.cross {
+  border: none;
+  background: none;
+  grid-area: 1 / 1 / 2 / 2;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.cart-item__name {
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 600;
+  color: $grayPrimary;
+  flex-grow: 1;
+  min-width: 0;
+  margin: 1.5%;
+  width: 100%;
+  grid-area: 1 / 4 / 2 / 5;
+  text-decoration: none;
+}
+
+.cart-item__buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1.5%;
+  grid-area: 2 / 1 / 3 / 3;
+}
+
+.cart-item__buttons-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  background-color: $white;
+   border: 1px solid $icon-color;
+
+  @include hover(border, 1px solid $grayPrimary);
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.icon--disabled {
+  cursor: default;
+  background-color: $white;
+
+  &:hover {
+    border: 1px solid $grayElements; 
+  }
+
+  svg {
+    color: $grayElements;
+  }
+}
+
+
+.cart-item__count {
+  margin: 0 25%;
+}
+
+.cart-item__price {
+  font-family: 'Mont-Bold', sans-serif;
+  font-size: 22px;
+  line-height: 30.8px;
+  font-weight: 800;
+  color: $grayPrimary;
+  margin: 1.5%;
+  margin-left: auto;
+  justify-self: end;
+  grid-area: 2 / 3 / 3 / 5;
+  position: relative;
+
+  @include on-tablet {
+    margin-left: 10%;
+  }
+
+  &::before {
+    content: '$';
+  }
+}

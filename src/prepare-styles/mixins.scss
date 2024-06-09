@@ -6,6 +6,12 @@
   }
 }
 
+@mixin on-bigTablet {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
 @mixin on-desktop {
   @media (min-width: $desktop-min-width) {
     @content;
@@ -29,7 +35,7 @@
 
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  column-gap: 16px;
   justify-content: center;
 
   @include on-tablet {
@@ -42,5 +48,13 @@
     padding-inline: 0;
 
     grid-template-columns: repeat(24, 32px);
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+
+  &:hover {
+    #{$property}: #{$toValue};
   }
 }
