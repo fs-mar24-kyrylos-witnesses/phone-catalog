@@ -29,36 +29,32 @@ export const BannerSlider = () => {
   };
 
   return (
-    <>
-      <div className="container">
-        <div className="carousel">
-          <button onClick={goPrev} className="carousel__button-prev"></button>
+    <div className="carousel">
+      <button onClick={goPrev} className="carousel__button-prev"></button>
 
-          <Swiper
-            onSwiper={swiperInstance => {
-              swiperRef.current = swiperInstance;
-            }}
-            modules={[Navigation, Pagination, Autoplay]}
-            slidesPerView={1}
-            slidesPerGroup={1}
-            pagination={{ clickable: true }}
-            loop
-            autoplay={{ delay: 5000 }}
-          >
-            {images.map((image, index) => {
-              return (
-                <SwiperSlide key={index}>
-                  <div className={`carousel__image-wrapper `}>
-                    <img src={image} alt="Banner" className="carousel__image" />
-                  </div>
-                </SwiperSlide>
-              );
-            })}
-          </Swiper>
+      <Swiper
+        onSwiper={swiperInstance => {
+          swiperRef.current = swiperInstance;
+        }}
+        modules={[Navigation, Pagination, Autoplay]}
+        slidesPerView={1}
+        slidesPerGroup={1}
+        pagination={{ clickable: true }}
+        loop
+        autoplay={{ delay: 5000 }}
+      >
+        {images.map((image, index) => {
+          return (
+            <SwiperSlide key={index}>
+              <div className={`carousel__image-wrapper `}>
+                <img src={image} alt="Banner" className="carousel__image" />
+              </div>
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
 
-          <button onClick={goNext} className="carousel__button-next"></button>
-        </div>
-      </div>
-    </>
+      <button onClick={goNext} className="carousel__button-next"></button>
+    </div>
   );
 };
