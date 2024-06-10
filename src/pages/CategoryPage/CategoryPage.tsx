@@ -101,6 +101,7 @@ export const CategoryPage: React.FC<Props> = ({ category }) => {
             <div className="category_header-select">
               <span className="category_header-select-title">Sort by</span>
               <select
+                name="sort"
                 className="category_header-sort-select"
                 onChange={handleSort}
                 value={searchParams.get('sort') || ''}
@@ -121,6 +122,7 @@ export const CategoryPage: React.FC<Props> = ({ category }) => {
                 Items on page
               </span>
               <select
+                name="perPage"
                 className="category_header-sort-select"
                 onChange={handlePerPage}
                 value={searchParams.get('perPage') || filteredProducts.length}
