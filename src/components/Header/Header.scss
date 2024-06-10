@@ -1,4 +1,4 @@
-@import '../../prepare-styles/mixins.scss'; 
+@import '../../prepare-styles/mixins.scss';
 @import '../../prepare-styles/colors.scss';
 @import '../../prepare-styles/usable-fonts.scss';
 
@@ -195,4 +195,28 @@
       }
     }
   }
+}
+
+.header__icons__container {
+  position: relative;
+}
+
+.adding {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background-color: $red;
+  border-radius: 50%;
+  bottom: 50%;
+  left: 50%;
+  border: 1px solid $white;
+}
+
+.length {
+  position: absolute;
+  font-size: 13px;
+  color: $white;
+  font-style: 'Mont-Bold', sans-serif;
+  bottom: 51%;
+  left: 60%;
 }

@@ -1,8 +1,11 @@
 import React from 'react';
 import './Header.scss';
 import { Link } from 'react-router-dom';
+import { useStore } from '../../store/productStore';
 
 export const Header: React.FC = () => {
+  const { favourites, cartProducts, getLength } = useStore();
+
   return (
     <header className="header">
       <div className="header__container">
@@ -25,12 +28,32 @@ export const Header: React.FC = () => {
       </div>
 
       <div className="header__icons">
-        <div className="header__icons__container header__icons__container-like">
-          <Link className="header__icons__icon-like" to="favourites"></Link>
-        </div>
-        <div className="header__icons__container header__icons__container-cart">
-          <Link className="header__icons__icon-cart" to="cart"></Link>
-        </div>
+        <Link to="favourites">
+          <div className="header__icons__container header__icons__container-like">
+            {favourites.length > 0 && (
+              <>
+                <div className="adding"></div>
+                <span className="length">
+                  {favourites.length > 0 && getLength('fav')}
+                </span>
+              </>
+            )}
+            <Link className="header__icons__icon-like" to="favourites"></Link>
+          </div>
+        </Link>
+        <Link to="cart">
+          <div className="header__icons__container header__icons__container-cart">
+            {cartProducts.length > 0 && (
+              <>
+                <div className="adding"></div>
+                <span className="length">
+                  {cartProducts.length > 0 && getLength('cart')}
+                </span>
+              </>
+            )}
+            <Link className="header__icons__icon-cart" to="cart"></Link>
+          </div>
+        </Link>
         <div className="header__icons__container header__icons__container-menu">
           <a className="header__icons__icon-menu" href="#menu"></a>
         </div>
