@@ -10,12 +10,12 @@
   // justify-content: space-between;
   // gap: 8px;
   border: 1px solid $grayElements;
-  padding: 32px; 
+  padding: 32px;
   // padding-inline: 16px;
 
   display: grid;
-  grid-template-rows: repeat(1, 1fr);
-width: 100%;
+  grid-template-columns: repeat(1, 1fr);
+  width: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -35,17 +35,16 @@ width: 100%;
     align-items: center;
     flex-direction: row;
     overflow: hidden;
-    
-height: 20vh;
-width: 100%;
-object-fit: contain;
 
+    height: 20vh;
+    width: 100%;
+    object-fit: contain;
   }
 
   &-img {
     width: 100%;
     height: 100%;
-    object-fit:contain;
+    object-fit: contain;
     object-position: center;
     overflow: hidden;
   }
@@ -55,7 +54,8 @@ object-fit: contain;
     font-size: 14px;
     color: $grayPrimary;
     line-height: 21px;
-    margin-top: 24px;
+    height: 42px;
+    margin-top: 16px;
   }
 
   &-info {
@@ -64,7 +64,7 @@ object-fit: contain;
     justify-content: left;
     align-items: start;
     position: relative;
-    
+
 
     &-prices {
       display: flex;
@@ -76,7 +76,7 @@ object-fit: contain;
         position: absolute;
         content: '';
         display: block;
-        bottom: -8px;
+        bottom: -5px;
         left: 0;
         right: 0;
         width: 100%;
@@ -85,15 +85,15 @@ object-fit: contain;
         width: 100%;
       }
 
-      &-salePrice{
+      &-salePrice {
         font-family: 'Mont-Bold', sans-serif;
         font-weight: 800;
         font-size: 22px;
         color: $grayPrimary;
         line-height: 30.8px;
       }
-      
-      &-fullPrice{
+
+      &-fullPrice {
         font-family: 'Mont-SemiBold', sans-serif;
         font-size: 22px;
         color: $graySecondary;
@@ -117,14 +117,14 @@ object-fit: contain;
       flex-direction: row;
       justify-content: space-between;
 
-      &-title{
+      &-title {
         font-family: 'Mont-Bold', sans-serif;
         font-size: 12px;
         color: $graySecondary;
         line-height: 15.34px;
       }
-      
-      &-value{
+
+      &-value {
         font-family: 'Mont-Bold', sans-serif;
         font-size: 12px;
         color: $grayPrimary;
@@ -152,11 +152,10 @@ object-fit: contain;
       width: 100%;
       height: 100%;
       flex: 1;
-      
 
       @include hover(border-color, $grayIconsPlaceholders);
 
-      &-addToBag{
+      &-addToBag {
         cursor: pointer;
         font-family: 'Mont-SemiBold', sans-serif;
         font-size: 14px;
@@ -177,7 +176,7 @@ object-fit: contain;
 
       @include hover(border-color, $graySecondary);
 
-      &-addToFavs{
+      &-addToFavs {
         cursor: pointer;
       }
     }
@@ -185,13 +184,13 @@ object-fit: contain;
 }
 
 .cart-bag {
-color: $green;
-background-color: $white;
-border: 1px solid $grayElements;
+  color: $green;
+  background-color: $white;
+  border: 1px solid $grayElements;
 }
 
 .cart-addToBag {
-color: $green;
+  color: $green;
 }
 
 .card_container-position,
