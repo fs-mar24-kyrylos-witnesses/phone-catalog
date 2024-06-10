@@ -31,12 +31,11 @@ export const Header: React.FC = () => {
         <Link to="favourites">
           <div className="header__icons__container header__icons__container-like">
             {favourites.length > 0 && (
-              <>
-                <div className="adding"></div>
+              <div className="adding">
                 <span className="length">
                   {favourites.length > 0 && getLength('fav')}
                 </span>
-              </>
+              </div>
             )}
             <Link className="header__icons__icon-like" to="favourites"></Link>
           </div>
@@ -44,12 +43,11 @@ export const Header: React.FC = () => {
         <Link to="cart">
           <div className="header__icons__container header__icons__container-cart">
             {cartProducts.length > 0 && (
-              <>
-                <div className="adding"></div>
+              <div className="adding">
                 <span className="length">
                   {cartProducts.length > 0 && getLength('cart')}
                 </span>
-              </>
+              </div>
             )}
             <Link className="header__icons__icon-cart" to="cart"></Link>
           </div>

@@ -21,12 +21,24 @@ type ProductStore = {
   fetchProductById: (id: string, mode: Category) => Promise<void>;
 };
 
+type CartItem = {
+  slug: string;
+  quantity: number;
+  price: number;
+  sumOfPrice: number;
+};
+
 type Store = {
   favourites: string[];
   cartProducts: string[];
+  cartToObject: CartItem[];
+  productStore: ProductStore;
+
   addTo: (slug: string, type: 'fav' | 'cart') => void;
   removeFrom: (slug: string, type: 'fav' | 'cart') => void;
   getLength: (type: 'fav' | 'cart') => number;
+  operation: (slug: string, type: 'plus' | 'minus') => void;
+  toObject: () => void;
 };
 
 export const useProductStore = createZustand<ProductStore>(set => ({
@@ -74,6 +86,8 @@ export const useStore = create<Store>()(
     (set, get) => ({
       favourites: [],
       cartProducts: [],
+      cartToObject: [],
+      productStore: useProductStore(),
 
       addTo: (slug: string, type: 'fav' | 'cart') => {
         set(state => {
@@ -105,9 +119,48 @@ export const useStore = create<Store>()(
           ? state.favourites.length
           : state.cartProducts.length;
       },
+
+      operation: (slug: string, type: 'plus' | 'minus') => {
+        set(state => {
+          const updatedCartObj = state.cartToObject.map(item => {
+            if (item.slug === slug) {
+              const updatedQuantity =
+                type === 'plus'
+                  ? item.quantity + 1
+                  : Math.max(item.quantity - 1, 0);
+              const updatedSumOfPrice = updatedQuantity * item.price;
+              return {
+                ...item,
+                quantity: updatedQuantity,
+                sumOfPrice: updatedSumOfPrice,
+              };
+            }
+            return item;
+          });
+          return { cartToObject: updatedCartObj };
+        });
+      },
+
+      toObject: () => {
+        const state = get();
+        const newObj = state.cartProducts.map(fav => {
+          const price =
+            state.productStore.catalogProducts.find(
+              product => product.itemId === fav,
+            )?.price ?? 0;
+
+          return {
+            slug: fav,
+            quantity: 1,
+            price: price,
+            sumOfPrice: price,
+          };
+        });
+        set({ cartToObject: newObj });
+      },
     }),
     {
-      name: 'add-remove',
+      name: 'store',
       getStorage: () => localStorage,
     },
   ),

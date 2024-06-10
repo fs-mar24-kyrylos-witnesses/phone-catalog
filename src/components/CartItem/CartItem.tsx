@@ -1,56 +1,47 @@
-import React from 'react';
-
 import Minus from '../../assets/icons/item-minus.svg';
 import Plus from '../../assets/icons/item-plus.svg';
 import Union from '../../assets/icons/close.svg';
-import Photo from '../../assets/icons/iphone-In-cart-Item.png';
 
 import './CartItem.scss';
+import { Product } from '../../types/Product';
+import { useStore } from '../../store/productStore';
+import React from 'react';
 
-export const CartItem = () => {
-  const [count, setCount] = React.useState(1);
+type Props = {
+  product: Product;
+};
 
-  function handleClickPlus() {
-    setCount(count + 1);
-  }
+export const CartItem: React.FC<Props> = ({ product }) => {
+  const { operation, count, removeFrom } = useStore();
 
-  function handleClickMinus() {
-    if (count > 1) {
-      setCount(count - 1);
-    }
-  }
   return (
-    <div className="card-item__container">
-      <div className="card-item">
-        <div className="cross">
-          <img src={Union} alt="union" />
-        </div>
-        <div className="cart-item__img">
-          <img src={Photo} alt="Photo" />
-        </div>
-        <p className="cart-item__name">
-          Apple iPhone 14 Pro 128GB Silver (MQ023)
-        </p>
-        <div className="cart-item__buttons">
-          <div className="cart-item__buttons-icons">
-            <img
-              src={Minus}
-              alt="minus"
-              className="cart-item__buttons-icon"
-              onClick={handleClickMinus}
-            />
+    <div className="product">
+      <div className="product-info">
+        <img
+          onClick={() => removeFrom(product.itemId, 'cart')}
+          src={Union}
+          alt="close"
+        />
+        <img src={product.image} alt="product" />
+        <p className="product-info-title">{product.name}</p>
+      </div>
+      <div className="product-handle">
+        <div className="product-handle-buttons">
+          <div
+            className="product-handle-button-box"
+            onClick={() => operation('minus')}
+          >
+            <img src={Minus} alt="minus" />
           </div>
-          <div className="cart-item__count">{count}</div>
-          <div className="cart-item__buttons-icons">
-            <img
-              src={Plus}
-              alt="plus"
-              className="cart-item__buttons-icon"
-              onClick={handleClickPlus}
-            />
+          <p className="product-handle-button-count">{count}</p>
+          <div
+            className="product-handle-button-box"
+            onClick={() => operation('plus')}
+          >
+            <img src={Plus} alt="plus" />
           </div>
         </div>
-        <p className="cart-item__price">1000</p>
+        <p className="product-handle-price">{product.price}</p>
       </div>
     </div>
   );
