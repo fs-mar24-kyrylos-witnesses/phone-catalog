@@ -84,12 +84,11 @@
         background-image: url(../../img/category-accessories.png);
         background-color: $accessory-category-background;
         background-position: 50px 40px;
-        background-size: 470px 250px;
+        background-size: 570px 250px;
 
         @include on-desktop {
           background-position: 90px 65px;
-
-          background-size: 550px 307px;
+          background-size: 650px 307px;
         }
       }
     }
@@ -108,7 +107,6 @@
 
     &-count {
       margin-top: 4px;
-
       font-family: 'Mont-Regular', sans-serif;
       font-size: 14px;
       font-weight: 500;
