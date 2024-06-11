@@ -14,27 +14,6 @@ type Props = {
 export const Card: React.FC<Props> = ({ product, category }) => {
   const { favourites, cartProducts, addTo, removeFrom } = useStore();
 
-  // const [favs, setFavs] = useLocaleStorage<string[]>('favs', []);
-  // const [cart, setCart] = useLocaleStorage<string[]>('cart', []);
-
-  // const addTo = (slug: string, type: 'fav' | 'cart') => {
-  //   if (type === 'fav') {
-  //     setFavs(prev => [...prev, slug]);
-  //   } else if (type === 'cart') {
-  //     setCart(prev => [...prev, slug]);
-  //   }
-  // };
-
-  // const removeFrom = (slug: string, type: 'fav' | 'cart') => {
-  //   if (type === 'fav') {
-  //     const newFavs = [...favs].filter(itemSlug => itemSlug !== slug);
-  //     setFavs(newFavs);
-  //   } else if (type === 'cart') {
-  //     const newCart = cart.filter(itemSlug => itemSlug !== slug);
-  //     setCart(newCart);
-  //   }
-  // };
-
   return (
     <div className="card_container">
       <Link to={`/${category}/${product.itemId}`}>
