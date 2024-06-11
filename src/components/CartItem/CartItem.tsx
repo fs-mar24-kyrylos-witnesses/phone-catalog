@@ -12,7 +12,7 @@ type Props = {
 };
 
 export const CartItem: React.FC<Props> = ({ product }) => {
-  const { operation, count, removeFrom } = useStore();
+  const { operation, cartToObject, removeFrom } = useStore();
 
   return (
     <div className="product">
@@ -29,19 +29,23 @@ export const CartItem: React.FC<Props> = ({ product }) => {
         <div className="product-handle-buttons">
           <div
             className="product-handle-button-box"
-            onClick={() => operation('minus')}
+            onClick={() => operation(product.itemId, 'minus')}
           >
             <img src={Minus} alt="minus" />
           </div>
-          <p className="product-handle-button-count">{count}</p>
+          <p className="product-handle-button-count">
+            {cartToObject.find(item => item.slug === product.itemId)?.quantity}
+          </p>
           <div
             className="product-handle-button-box"
-            onClick={() => operation('plus')}
+            onClick={() => operation(product.itemId, 'plus')}
           >
             <img src={Plus} alt="plus" />
           </div>
         </div>
-        <p className="product-handle-price">{product.price}</p>
+        <p className="product-handle-price">
+          {cartToObject.find(item => item.slug === product.itemId)?.price}
+        </p>
       </div>
     </div>
   );
