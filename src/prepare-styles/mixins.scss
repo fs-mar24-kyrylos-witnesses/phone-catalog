@@ -36,6 +36,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   column-gap: 16px;
+  justify-content: center;
 
   @include on-tablet {
     grid-template-columns: repeat(12, 1fr);
