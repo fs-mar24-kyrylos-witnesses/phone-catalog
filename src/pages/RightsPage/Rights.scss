@@ -10,7 +10,7 @@
   margin-top: 100px;
   display: flex;
   flex-direction: column;
-  min-height: 71vh;
+  min-height: calc(100vh - $header-height - $footer-height);
   justify-content: space-between;
 
   &__earth {
