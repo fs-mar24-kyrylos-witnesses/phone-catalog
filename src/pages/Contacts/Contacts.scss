@@ -5,7 +5,7 @@
 
 .contacts {
   font-family: 'Mont-SemiBold', sans-serif; 
-  min-height: 75vh;
+  min-height: calc(100vh - $header-height - $footer-height);
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,51 +1,56 @@
-import Minus from '../../assets/icons/item-minus.svg';
-import Plus from '../../assets/icons/item-plus.svg';
+import Minus from '../../assets/icons/minus.svg';
+import Plus from '../../assets/icons/plus.svg';
 import Union from '../../assets/icons/close.svg';
 
 import './CartItem.scss';
 import { Product } from '../../types/Product';
 import { useStore } from '../../store/productStore';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 type Props = {
   product: Product;
+  count: number;
+  setCount: (count: number) => void;
 };
 
-export const CartItem: React.FC<Props> = ({ product }) => {
-  const { operation, cartToObject, removeFrom } = useStore();
+export const CartItem: React.FC<Props> = ({ product, count, setCount }) => {
+  const { removeFrom } = useStore();
+
+  const handleIncrease = () => setCount(count + 1);
+  const handleDecrease = () => setCount(count > 1 ? count - 1 : 1);
 
   return (
     <div className="product">
       <div className="product-info">
         <img
+          className="product-info-close"
           onClick={() => removeFrom(product.itemId, 'cart')}
           src={Union}
           alt="close"
         />
-        <img src={product.image} alt="product" />
+        <Link to={`/${product.category}/${product.itemId}`}>
+          <img className="product-info-img" src={product.image} alt="product" />
+        </Link>
         <p className="product-info-title">{product.name}</p>
       </div>
       <div className="product-handle">
         <div className="product-handle-buttons">
           <div
-            className="product-handle-button-box"
-            onClick={() => operation(product.itemId, 'minus')}
+            className="product-handle-buttons-box"
+            onClick={() => handleDecrease()}
           >
             <img src={Minus} alt="minus" />
           </div>
-          <p className="product-handle-button-count">
-            {cartToObject.find(item => item.slug === product.itemId)?.quantity}
-          </p>
+          <p className="product-handle-buttons-count">{count}</p>
           <div
-            className="product-handle-button-box"
-            onClick={() => operation(product.itemId, 'plus')}
+            className="product-handle-buttons-box"
+            onClick={() => handleIncrease()}
           >
             <img src={Plus} alt="plus" />
           </div>
         </div>
-        <p className="product-handle-price">
-          {cartToObject.find(item => item.slug === product.itemId)?.price}
-        </p>
+        <p className="product-handle-price">{`$${product.price}`}</p>
       </div>
     </div>
   );

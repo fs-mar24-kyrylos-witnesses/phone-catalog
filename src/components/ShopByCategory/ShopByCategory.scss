@@ -1,0 +1,119 @@
+@import '../../prepare-styles/colors.scss';
+@import '../../prepare-styles/reset.scss';
+@import '../../prepare-styles/typography.scss';
+@import '../../prepare-styles/mixins.scss';
+
+.shopBy {
+  &-title {
+    margin-bottom: 24px;
+    margin-inline: 16px;
+    max-width: 1136px;
+    width: 100%;
+
+    @include on-tablet {
+      margin-inline: 24px;
+    }
+
+    @include on-desktop {
+      margin: 0 auto 24px;
+    }
+  }
+
+  &-content {
+    @include grid-align;
+    gap: 32px;
+
+    @include on-tablet {
+      gap: 16px;
+    }
+  }
+
+  &-category {
+    grid-column: span 4;
+    min-height: 363px;
+
+    @include on-tablet {
+      min-height: 262px;
+      max-height: 262px;
+    }
+
+    @include on-desktop {
+      min-height: 443px;
+      max-height: 443px;
+      grid-column: span 8;
+    }
+
+    &-bg {
+      width: 100%;
+      height: 288px;
+
+      background-repeat: no-repeat;
+
+      @include on-tablet {
+        height: 188px;
+      }
+
+      @include on-desktop {
+        height: 368px;
+      }
+
+      &-phones {
+        background-image: url(../../img/category-phones.png);
+        background-color: $phone-category-background;
+        background-position: 70px 10px;
+        background-size: 302px 357px;
+
+        @include on-desktop {
+          background-position: 120px 40px;
+          background-size: 322px 357px;
+        }
+      }
+
+      &-tablets {
+        background-image: url(../../img/category-tablets.png);
+        background-color: $tablet-category-background;
+        background-position: 20px 20px;
+        background-size: 427px 427px;
+
+        @include on-desktop {
+          background-position: 100px 45px;
+        }
+      }
+
+      &-accessories {
+        background-image: url(../../img/category-accessories.png);
+        background-color: $accessory-category-background;
+        background-position: 50px 40px;
+        background-size: 570px 250px;
+
+        @include on-desktop {
+          background-position: 90px 65px;
+          background-size: 650px 307px;
+        }
+      }
+    }
+
+    &-title {
+      margin-top: 24px;
+
+      font-family: 'Mont', sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 25.56px;
+      text-align: left;
+
+      color: $grayPrimary;
+    }
+
+    &-count {
+      margin-top: 4px;
+      font-family: 'Mont-Regular', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+      text-align: left;
+
+      color: $graySecondary;
+    }
+  }
+}

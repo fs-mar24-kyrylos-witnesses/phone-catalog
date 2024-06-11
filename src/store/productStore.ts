@@ -15,39 +15,23 @@ type ProductStore = {
   error: string;
   loading: boolean;
 
+  isMenuOpen: boolean;
+  toggleMenu: () => void;
+
   setCatalogProducts: (products: Product[]) => void;
   setSelectedProduct: (selectedProduct: ProductInfo) => void;
   fetchAllProducts: () => Promise<void>;
   fetchProductById: (id: string, mode: Category) => Promise<void>;
 };
 
-type CartItem = {
-  slug: string;
-  quantity: number;
-  price: number;
-  sumOfPrice: number;
-};
-
 type Store = {
-  // just slugs
   favourites: string[];
   cartProducts: string[];
 
-  // selected products from main array
-  favsProducts: Product[];
-  bagProducts: Product[];
-
-  // objects
-  cartToObject: CartItem[];
-
-  productStore: ProductStore;
-
+  products: Product[];
   addTo: (slug: string, type: 'fav' | 'cart') => void;
   removeFrom: (slug: string, type: 'fav' | 'cart') => void;
   getLength: (type: 'fav' | 'cart') => number;
-  operation: (slug: string, type: 'plus' | 'minus') => void;
-  toObject: () => void;
-  getTotalPrice: () => number;
 };
 
 export const useProductStore = createZustand<ProductStore>(set => ({
@@ -57,6 +41,7 @@ export const useProductStore = createZustand<ProductStore>(set => ({
   selectedProduct: null,
   loading: false,
   error: '',
+  isMenuOpen: false,
 
   fetchAllProducts: async () => {
     set({ loading: true });
@@ -88,6 +73,8 @@ export const useProductStore = createZustand<ProductStore>(set => ({
 
   setSelectedProduct: (selectedProduct: ProductInfo) =>
     set({ selectedProduct }),
+
+  toggleMenu: () => set(state => ({ isMenuOpen: !state.isMenuOpen })),
 }));
 
 export const useStore = create<Store>()(
@@ -99,8 +86,7 @@ export const useStore = create<Store>()(
       favsProducts: [],
       bagProducts: [],
 
-      cartToObject: [],
-      productStore: useProductStore(),
+      products: [],
 
       addTo: (slug: string, type: 'fav' | 'cart') => {
         set(state => {
@@ -131,74 +117,6 @@ export const useStore = create<Store>()(
         return type === 'fav'
           ? state.favourites.length
           : state.cartProducts.length;
-      },
-
-      toObject: () => {
-        const state = get();
-        const newObj = state.cartProducts.map(fav => {
-          const price =
-            state.productStore.catalogProducts.find(
-              product => product.itemId === fav,
-            )?.price || 0;
-
-          return {
-            slug: fav,
-            quantity: 1,
-            price: price,
-            sumOfPrice: price,
-          };
-        });
-        set({ cartToObject: newObj });
-      },
-
-      operation: (slug: string, type: 'plus' | 'minus') => {
-        set(state => {
-          const updatedCartObj = state.cartToObject.map(item => {
-            if (item.slug === slug) {
-              const updatedQuantity =
-                type === 'plus' ? item.quantity + 1 : item.quantity - 1;
-              const updatedSumOfPrice = updatedQuantity * item.price;
-              return {
-                ...item,
-                quantity: updatedQuantity,
-                sumOfPrice: updatedSumOfPrice,
-              };
-            }
-            return item;
-          });
-          return { cartToObject: updatedCartObj };
-        });
-      },
-
-      getFromSlugToProducts: () => {
-        const state = get();
-        const favs = state.favourites
-          .map(favSlug =>
-            state.productStore.catalogProducts.find(
-              item => favSlug === item.itemId,
-            ),
-          )
-          .filter((item): item is Product => item !== undefined);
-
-        set({ favsProducts: favs });
-        const bag = state.cartProducts
-          .map(favSlug =>
-            state.productStore.catalogProducts.find(
-              item => favSlug === item.itemId,
-            ),
-          )
-          .filter((item): item is Product => item !== undefined);
-
-        set({ bagProducts: bag });
-      },
-
-      getTotalPrice: () => {
-        const state = get();
-
-        return state.cartToObject.reduce(
-          (acc, item) => (item.sumOfPrice ? acc + item.price : 0),
-          0,
-        );
       },
     }),
     {

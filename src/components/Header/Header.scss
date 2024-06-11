@@ -3,23 +3,29 @@
 @import '../../prepare-styles/usable-fonts.scss';
 
 .header {
+  position: sticky;
+  top: 0;
   height: 48px;
   padding-left: 16px;
+
+  z-index: 999;
 
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 
-  background-color: #ffffff;
-  border-bottom: 1px solid #e2e6e9;
+  background-color: $white;
+  border-bottom: 1px solid $grayElements;
 
   @include on-desktop {
     height: 64px;
   }
 
   &__container {
+    width: 100%;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 
     @include on-tablet {
       gap: 32px;
@@ -32,167 +38,229 @@
 
   &__logo {
     width: 64px;
-    height: 22px;
-    background-image: url('../../assets/header/Logo-mob.svg');
+    height: auto;
 
     @include on-desktop {
       width: 80px;
-      height: 28px;
-      background-image: url('../../assets/header/Logo-desc.svg');
     }
   }
 
-  &__nav {
+  .nav {
     display: none;
-    height: 100%;
+    justify-content: space-between;
+    height: calc(100vh - 48px);
+    width: 100%;
+    padding-top: 24px;
 
     @include on-tablet {
       display: flex;
       align-items: center;
+
+      padding: 0;
+      height: 100%;
       gap: 32px;
     }
 
     @include on-desktop {
-      display: flex;
       gap: 64px;
     }
 
-    &-link {
-      height: 100%;
-      position: relative;
+    &--open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 48px;
+      left: 0;
+      width: 100%;
+      background-color: $white;
+      border-bottom: 1px solid $grayElements;
+      z-index: 1000;
+    }
 
+    &__container {
       display: flex;
       align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 16px;
 
-      text-decoration: none;
-      color: $graySecondary;
-      letter-spacing: 0.04em;
-
-      font-family: 'Mont-Bold', sans-serif;
-      font-weight: 800;
-      font-size: 12px;
-      line-height: 11px;
-      text-transform: uppercase;
-
-      transition: color 0.3s;
-
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: 0px;
-        left: 0;
-        right: 0;
-        height: 3px;
-        background-color: $grayPrimary;
-        transform: scaleX(0);
-        transition: transform 0.3s;
-        transform-origin: bottom right;
+      @include on-tablet {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+        gap: 32px;
       }
 
-      &:hover {
-        color: $grayPrimary;
+      @include on-desktop {
+        gap: 64px;
+      }
+
+      &-link {
+        position: relative;
+        height: 100%;
+
+        display: flex;
+        align-items: center;
+
+        text-decoration: none;
+        color: $graySecondary;
+        letter-spacing: 0.04em;
+
+        font-family: 'Mont-Bold', sans-serif;
+        font-weight: 800;
+        font-size: 12px;
+        line-height: 30px;
+        text-transform: uppercase;
+
+        transition: color 0.3s;
+
+        @include on-tablet {
+          line-height: 11px;
+          height: 100%;
+        }
 
         &::after {
-          transform: scaleX(1);
-          transform-origin: bottom left;
+          content: '';
+          position: absolute;
+          bottom: 0px;
+          left: 0;
+          right: 0;
+          height: 3px;
+          background-color: $grayPrimary;
+          transform: scaleX(0);
+          transition: transform 0.3s;
+          transform-origin: bottom right;
+        }
+
+        &:hover {
+          color: $grayPrimary;
+
+          &::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+          }
+        }
+      }
+    }
+
+    &__icons {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+
+      @include on-tablet {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: auto;
+      }
+
+      &__container {
+        position: relative;
+        width: 50%;
+        height: 48px;
+
+        display: block;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        border-left: 1px solid $grayElements;
+        border-top: 1px solid $grayElements;
+
+        transition: color 0.3s;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0px;
+          left: 0;
+          right: 0;
+          height: 3px;
+          background-color: $grayPrimary;
+          transform: scaleX(0);
+          transition: transform 0.15s;
+          transform-origin: bottom right;
+        }
+
+        &:hover {
+          color: $grayPrimary;
+
+          &::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+          }
+        }
+
+        @include on-tablet {
+          width: 48px;
+        }
+
+        @include on-desktop {
+          width: 64px;
+          height: 64px;
+        }
+
+        &-like {
+          display: flex;
+
+          @include on-tablet {
+            display: flex;
+          }
+        }
+
+        &-cart {
+          display: flex;
+
+          @include on-tablet {
+            display: flex;
+          }
+        }
+      }
+
+      &__icon {
+        &-like {
+          display: block;
+
+          @include on-tablet {
+            display: block;
+
+            width: 16px;
+            height: auto;
+          }
+        }
+
+        &-cart {
+          display: block;
+
+          @include on-tablet {
+            display: block;
+
+            width: 16px;
+            height: auto;
+          }
         }
       }
     }
   }
 
-  &__icons {
+  &__menu {
+    width: 48px;
+    height: 48px;
+
     display: flex;
+    justify-content: center;
     align-items: center;
 
-    &__container {
-      width: 48px;
-      height: 48px;
+    border-left: 1px solid $grayElements;
 
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      border-left: 1px solid #e2e6e9;
-
-      @include on-desktop {
-        width: 64px;
-        height: 64px;
-      }
-
-      &-like {
-        display: none;
-
-        @include on-tablet {
-          display: flex;
-        }
-      }
-
-      &-cart {
-        display: none;
-
-        @include on-tablet {
-          display: flex;
-        }
-      }
-
-      &-menu {
-        @include on-tablet {
-          display: none;
-        }
-      }
+    @include on-tablet {
+      display: none;
     }
 
-    &__icon {
-      &-like {
-        display: none;
-
-        @include on-tablet {
-          display: block;
-          width: 16px;
-          height: 16px;
-          background-image: url('../../assets/header/Like.svg');
-        }
-
-        @include on-desktop {
-          display: block;
-          width: 16px;
-          height: 16px;
-          background-image: url('../../assets/header/Like.svg');
-        }
-      }
-
-      &-cart {
-        display: none;
-
-        @include on-tablet {
-          display: block;
-          width: 16px;
-          height: 16px;
-          background-image: url('../../assets/header/ShoppingCart.svg');
-        }
-
-        @include on-desktop {
-          display: block;
-          width: 16px;
-          height: 16px;
-          background-image: url('../../assets/header/ShoppingCart.svg');
-        }
-      }
-
-      &-menu {
-        display: block;
-        width: 16px;
-        height: 16px;
-        background-image: url('../../assets/header/Menu.svg');
-
-        @include on-tablet {
-          display: none;
-        }
-
-        @include on-desktop {
-          display: none;
-        }
-      }
+    &-link {
+      height: 16px;
     }
   }
 }

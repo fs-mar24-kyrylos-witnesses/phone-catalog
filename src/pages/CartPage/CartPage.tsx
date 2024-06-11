@@ -1,31 +1,65 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './CartPage.scss';
-import { useStore } from '../../store/productStore';
+import { useProductStore, useStore } from '../../store/productStore';
 // import { Link } from 'react-router-dom';
 import arrowLeft from '../../assets/icons/arrow-left.svg';
 import { CartItem } from '../../components/CartItem';
-// import { Product } from '../../types/Product';
+import { Product } from '../../types/Product';
 
 export const CartPage: React.FC = () => {
-  const { getTotalPrice, bagProducts } = useStore();
+  const { catalogProducts } = useProductStore();
+  const { cartProducts, getLength } = useStore();
+
+  const cart: Product[] = cartProducts
+    .map(prod => catalogProducts.find(item => prod === item.itemId))
+    .filter((item): item is Product => item !== undefined);
+
+  const [counts, setCounts] = useState(cart.map(() => 1));
+
+  useEffect(() => {
+    const newCounts = cart.map(item => {
+      return counts[cart.indexOf(item)] || 1;
+    });
+    setCounts(newCounts);
+  }, [cart, cartProducts, counts]);
+
+  const handleCountChange = (index: number, newCount: number) => {
+    const newCounts = [...counts];
+    newCounts[index] = newCount;
+    setCounts(newCounts);
+  };
+
+  const getTotalPrice = () => {
+    return cart.reduce((total, item, index) => {
+      return total + item.price * counts[index];
+    }, 0);
+  };
 
   return (
     <div className="container">
       <div className="title">
         <div className="title-map">
-          <img src={arrowLeft} alt="arrLeft" />
-          <p className="title-map-back">Back</p>
+          <img className="title-map-img" src={arrowLeft} alt="arrLeft" />
+          <span className="title-map-back">Back</span>
         </div>
         <h1>Cart</h1>
       </div>
       <div className="fav-items">
-        {bagProducts.map(item => (
-          <CartItem key={item?.itemId} product={item!} />
+        {cart.map((item, index) => (
+          <CartItem
+            key={item?.itemId}
+            product={item!}
+            count={counts[index]}
+            setCount={(newCount: number) => handleCountChange(index, newCount)}
+          />
         ))}
       </div>
       <div className="checkout">
-        <p className="checkout-price">{getTotalPrice()}</p>
-        <div className="checkout-button">Checkout</div>
+        <p className="checkout-price">{`$${getTotalPrice()}`}</p>
+        <p className="checkout-total">{`Total for ${getLength('cart')} items`}</p>
+        <div className="checkout-button">
+          <p className="checkout-button-text">Checkout</p>
+        </div>
       </div>
     </div>
   );

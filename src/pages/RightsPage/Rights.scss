@@ -1,0 +1,59 @@
+@import '../../prepare-styles/variables.scss';
+@import '../../prepare-styles/mixins.scss';
+@import '../../prepare-styles/colors.scss';
+
+@import '../../prepare-styles/variables.scss';
+@import '../../prepare-styles/mixins.scss';
+@import '../../prepare-styles/colors.scss';
+
+.rights {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - $header-height - $footer-height);
+  justify-content: space-between;
+
+  &__earth {
+    width: 100%;
+    cursor: pointer;
+
+    @include on-tablet {
+      width: 100%;
+    }
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+
+    @include on-tablet {
+      height: auto;
+    }
+
+    @include on-desktop {
+      flex-direction: row;
+      height: auto;
+    }
+  }
+
+  &__text {
+    font-family: 'Mont-SemiBold', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.6;
+    color: $grayPrimary;
+    padding: 20px;
+
+    @include on-desktop {
+      padding: 5em;
+      margin-top: 0;
+    }
+  }
+
+  &__year {
+    text-align: center;
+    margin-top: 28px;
+  }
+}
