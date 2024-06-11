@@ -29,8 +29,10 @@ export const ShopByCategory = () => {
                 ></div>
               </Link>
 
-              <Link to={`/${category}`}>
-                <h3 className="shopBy-category-title">
+              <Link to={`/${category}`} className="shopBy-category-link">
+                <h3
+                  className={`h3 shopBy-category-title shopBy-category-title-${category}`}
+                >
                   {allCategoriesTitle[index]}
                 </h3>
               </Link>
