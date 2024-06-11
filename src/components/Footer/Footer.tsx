@@ -2,6 +2,7 @@ import React from 'react';
 import './Footer.scss';
 import logo from '../../assets/icons/logo.svg';
 import arrowUp from '../../assets/icons/arrow-up.svg';
+import { Link } from 'react-router-dom';
 
 export const Footer: React.FC = () => {
   return (
@@ -9,35 +10,39 @@ export const Footer: React.FC = () => {
       <div className="container footer">
         <div className="footer__content">
           <div className="footer__logo-wrapper">
-            <a href="/" className="footer__logo">
+            <Link to="/" className="footer__logo">
               <img className="footer__img" alt="logo" src={logo} />
-            </a>
+            </Link>
           </div>
 
           <div className="footer__links-block">
-            <a
-              href="https://github.com/fs-mar24-kyrylos-witnesses/phone-catalog"
+            <Link
+              to="https://github.com/fs-mar24-kyrylos-witnesses/phone-catalog"
               target="_blank"
               rel="noopener noreferrer"
               className="footer__link"
             >
               GITHUB
-            </a>
+            </Link>
 
-            <a href="/" className="footer__link">
+            <Link to="contacts" className="footer__link">
               CONTACTS
-            </a>
+            </Link>
 
-            <a href="/" className="footer__link">
+            <Link to="rights" className="footer__link">
               RIGHTS
-            </a>
+            </Link>
           </div>
 
           <div className="footer__anchor">
             <span className="footer__label">Back to top</span>
-            <a href="#top" className="footer__link footer__link--top">
+            <Link
+              to="#"
+              onClick={() => window.scrollTo(0, 0)}
+              className="footer__link footer__link--top"
+            >
               <img src={arrowUp} alt="Arrow Up" className="footer__arrow" />
-            </a>
+            </Link>
           </div>
         </div>
       </div>

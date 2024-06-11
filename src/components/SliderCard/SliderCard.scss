@@ -3,43 +3,51 @@
 @import '../../prepare-styles/typography.scss';
 @import '../../prepare-styles/mixins.scss';
 
-.card_container {
+.card {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 8px;
+  min-width: 212px;
+  max-height: 439px;
+  padding: 32px;
+
   border: 1px solid $grayElements;
 
-  padding: 32px; 
-  width: 67vw; 
-  max-width: 287px; 
-  min-width: 255px;
-
-  height: 68.5vh; 
-  min-height: 440px;
-  max-height: 506px;
-
-  @include on-desktop{
-    max-width: 274px;
+  @include on-tablet {
+    max-height: 512px;
+    min-height: 512px;
   }
 
-  &-position {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    overflow: hidden;
-    
-    width: 100%;
-    height: 20vh;
+  @include on-desktop {
+    max-height: 506px;
+  }
+
+  &-img-wrapper {
+    @include on-tablet {
+      min-height: 202px;
+      max-height: 202px;
+    }
+
+    @include on-desktop {
+      min-height: 196px;
+      max-height: 196px;
+    }
   }
 
   &-img {
     width: 100%;
-    height: 100%;
-    object-fit:contain;
-    overflow: hidden;
+    height: auto;
+    max-height: 129px;
+    object-fit: contain;
+
+    @include on-tablet {
+      max-height: 202px;
+    }
+
+    @include on-desktop {
+      max-height: 196px;
+    }
   }
 
   &-title {
@@ -47,7 +55,8 @@
     font-size: 14px;
     color: $grayPrimary;
     line-height: 21px;
-    margin-top: 24px;
+    padding-top: 16px;
+    min-height: 79px;
   }
 
   &-info {
@@ -55,8 +64,7 @@
     flex-direction: column;
     justify-content: left;
     align-items: start;
-    position: relative;
-    
+    margin-top: auto;
 
     &-prices {
       display: flex;
@@ -64,59 +72,58 @@
       gap: 8px;
       margin-top: 8px;
 
-      ::after {
-        position: absolute;
-        content: '';
-        display: block;
-        bottom: -7px;
-        left: 0;
-        right: 0;
-        width: 100%;
-        background-color: $grayElements;
-        height: 1px;
-        width: 100%;
-      }
-
-      &-salePrice{
+      &-salePrice {
         font-family: 'Mont-Bold', sans-serif;
         font-weight: 800;
         font-size: 22px;
         color: $grayPrimary;
         line-height: 30.8px;
       }
-      
-      &-fullPrice{
+
+      &-fullPrice {
         font-family: 'Mont-SemiBold', sans-serif;
         font-size: 22px;
         color: $graySecondary;
         line-height: 28.12px;
         text-decoration: line-through;
+
+        &-without-decoration {
+          font-family: 'Mont-Bold', sans-serif;
+          font-weight: 800;
+          font-size: 22px;
+          color: $grayPrimary;
+          line-height: 30.8px;
+        }
       }
     }
   }
 
-  &-about {
+  &-divider-line {
     width: 100%;
-    margin: 8px 0;
+    height: 1px;
+    background-color: $grayElements;
+  }
+
+  &-about {
     display: flex;
     flex-direction: column;
+    width: 100%;
     row-gap: 8px;
-    overflow: hidden;
+    padding: 8px 0;
 
     &-characteristics {
       display: flex;
-      row-gap: 8px;
       flex-direction: row;
       justify-content: space-between;
 
-      &-title{
+      &-title {
         font-family: 'Mont-Bold', sans-serif;
         font-size: 12px;
         color: $graySecondary;
         line-height: 15.34px;
       }
-      
-      &-value{
+
+      &-value {
         font-family: 'Mont-Bold', sans-serif;
         font-size: 12px;
         color: $grayPrimary;
@@ -127,7 +134,6 @@
   }
 
   &-handle {
-    box-sizing: border-box;
     display: flex;
     flex-direction: row;
     height: 40px;
@@ -144,7 +150,7 @@
       width: 100%;
       height: 100%;
 
-      &-addToBag{
+      &-addToBag {
         font-family: 'Mont-Regular', sans-serif;
         font-size: 14px;
         color: $white;
@@ -153,8 +159,7 @@
     }
 
     &-favs {
-      box-sizing: border-box;
-      height: 42px;
+      height: 40px;
       width: 55px;
       display: flex;
       align-items: center;

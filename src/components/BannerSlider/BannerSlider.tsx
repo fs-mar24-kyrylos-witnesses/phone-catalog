@@ -1,5 +1,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+
 import { Swiper as SwiperClass } from 'swiper/core';
 import SwiperCore from 'swiper';
 
@@ -19,6 +20,8 @@ const images = [
 
 export const BannerSlider = () => {
   const swiperRef = useRef<SwiperClass | null>(null);
+
+  const allCategories = ['phones', 'tablets', 'accessories'];
 
   const goNext = () => {
     swiperRef.current && swiperRef.current.slideNext();
@@ -46,7 +49,9 @@ export const BannerSlider = () => {
         {images.map((image, index) => {
           return (
             <SwiperSlide key={index}>
-              <div className={`carousel__image-wrapper `}>
+              <div
+                className={`carousel__image-wrapper carousel__image-wrapper-${allCategories[index]}`}
+              >
                 <img src={image} alt="Banner" className="carousel__image" />
               </div>
             </SwiperSlide>

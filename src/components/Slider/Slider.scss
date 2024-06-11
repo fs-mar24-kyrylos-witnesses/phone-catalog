@@ -1,0 +1,91 @@
+@import '../../prepare-styles/colors.scss';
+@import '../../prepare-styles/mixins.scss';
+
+.slider-card--container {
+  max-width: 300px;
+
+  @include on-tablet {
+    max-width: 350px;
+  }
+
+  @include on-desktop {
+    max-width: 272px;
+  }
+}
+
+.slider {
+  margin-left: 16px;
+
+  overflow-x: auto;
+
+  @include on-tablet {
+    margin-left: 24px;
+  }
+
+  @include on-desktop {
+    max-width: 1136px;
+    margin: 0 auto;
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &__button--wrapper {
+    display: flex;
+    width: 80px;
+    margin-right: 16px;
+    gap: 16px;
+
+    @include on-tablet {
+      margin-right: 24px;
+    }
+
+    @include on-desktop {
+      margin-right: 0;
+    }
+  }
+
+  &__button-next,
+  &__button-prev {
+    height: 32px;
+    width: 32px;
+    box-sizing: border-box;
+    outline: none;
+    border: 1px solid $grayIconsPlaceholders;
+
+    background-color: $white;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    background-position: center;
+
+    transition: border $effect-duration ease;
+
+    &:hover {
+      border: 1px solid $grayPrimary;
+    }
+
+    &:active {
+      background-color: darken($white, 2%);
+      background-size: 15px 15px;
+    }
+  }
+
+  &__button-next {
+    background-image: url('../../assets/icons/arrow-right.svg');
+  }
+
+  &__button-prev {
+    background-image: url('../../assets/icons/arrow-left.svg');
+  }
+}
+
+.swiper-container {
+  min-width: 440px;
+
+  @include on-tablet {
+    min-width: 744px;
+  }
+}

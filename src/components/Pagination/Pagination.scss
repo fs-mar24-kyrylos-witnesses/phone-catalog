@@ -1,0 +1,67 @@
+@import '../../prepare-styles/colors.scss';
+@import '../../prepare-styles/mixins.scss';
+@import '../../prepare-styles/usable-fonts.scss';
+
+.pagination{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  // flex-wrap: wrap;
+}
+
+.pagination-container{
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+width: 100%;
+height: 100%;
+// flex-wrap: wrap;
+}
+
+.pagination-items{
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  padding-inline: 16px;
+  flex-wrap: wrap;
+
+  &-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $grayElements;
+
+    @include hover(border-color, $grayPrimary);
+
+    &-item{
+      font-family: 'Mont-SemiBold', sans-serif;
+      font-size: 14px;
+      line-height: 21px;
+      color: $grayPrimary;
+    }
+  }
+}
+
+img{
+  min-width: 16px;
+  min-height: 16px;
+}
+
+li{
+ display: flex;
+}
+
+.disabled{
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.active{
+  border-color: $grayPrimary;
+  background-color: $grayPrimary;
+  color: $white;
+}
