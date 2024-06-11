@@ -25,18 +25,22 @@ export const Footer: React.FC = () => {
               GITHUB
             </Link>
 
-            <Link to="/" className="footer__link">
+            <Link to="contacts" className="footer__link">
               CONTACTS
             </Link>
 
-            <Link to="/" className="footer__link">
+            <Link to="rights" className="footer__link">
               RIGHTS
             </Link>
           </div>
 
           <div className="footer__anchor">
             <span className="footer__label">Back to top</span>
-            <Link to="#home" className="footer__link footer__link--top">
+            <Link
+              to="#"
+              onClick={() => window.scrollTo(0, 0)}
+              className="footer__link footer__link--top"
+            >
               <img src={arrowUp} alt="Arrow Up" className="footer__arrow" />
             </Link>
           </div>
