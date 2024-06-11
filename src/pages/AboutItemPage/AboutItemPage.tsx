@@ -17,8 +17,13 @@ type Props = {
   categoryArea: Category;
 };
 
+function normalizeCapacity(capacity: string) {
+  return capacity.slice(0, capacity.length - 2) + ' ' + capacity.slice(-2);
+}
+
 export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
-  const normalizedCategory = categoryArea;
+  const normalizedCategory =
+    categoryArea[0].toUpperCase() + categoryArea.slice(1);
   const { itemId } = useParams(); // our product id
   const { fetchProductById } = useProductStore(); // func that gives product depending on the id and category
   const selectedProduct = useProductStore(state => state.selectedProduct); // finally selected product
@@ -29,43 +34,40 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
     productSpecs = getProductSpecs(selectedProduct);
   }
 
-  const [selectedColor, setSelectedColor] = useState(selectedProduct?.color);
-  const [selectedCapacity, setSelectedCapacity] = useState(
-    selectedProduct?.capacity,
-  );
+  const shortProductSpecs = productSpecs.slice(0, 4);
+
+  const [selectedColor, setSelectedColor] = useState<string | undefined>();
+  const [selectedCapacity, setSelectedCapacity] = useState<
+    string | undefined
+  >();
 
   useEffect(() => {
     itemId?.toString() && fetchProductById(itemId, categoryArea);
   }, [itemId, categoryArea, fetchProductById]);
 
+  useEffect(() => {
+    if (selectedProduct) {
+      setSelectedColor(selectedProduct.color);
+      setSelectedCapacity(selectedProduct.capacity);
+    }
+  }, [selectedProduct]);
+
   return (
     <div className="container">
       <div className="about-item-page">
-        <div className="category_header-map">
+        <div className="breadcrumbs">
           <Link to="/home">
-            <img
-              className="category_header-map-homeIcon"
-              src={home}
-              alt="Home"
-            />
+            <img className="breadcrumbs__home" src={home} alt="Home" />
           </Link>
-          <img
-            className="category_header-map-arrowRightIcon"
-            src={arrowRight}
-            alt="arrow"
-          />
+          <img className="breadcrumbs__arrow" src={arrowRight} alt="arrow" />
           <Link to={`/${categoryArea}`}>
-            <span className="category_header-map-categoryName">
+            <span className="breadcrumbs__text breadcrumbs__text--category small-text">
               {normalizedCategory}
             </span>
           </Link>
-          <img
-            className="category_header-map-arrowRightIcon"
-            src={arrowRight}
-            alt="arrow"
-          />
+          <img className="breadcrumbs__arrow" src={arrowRight} alt="arrow" />
           <Link to={``}>
-            <span className="category_header-map-categoryName">
+            <span className="breadcrumbs__text breadcrumbs__text--model small-text">
               {selectedProduct?.name}
             </span>
           </Link>
@@ -73,59 +75,59 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
 
         <Link className="back-button__container" to={`/${categoryArea}`}>
           <img className="back-button__icon" src={arrowLeft} alt="arrow" />
-          <span className="back-button__text">Back</span>
+          <span className="back-button__text small-text">Back</span>
         </Link>
 
-        <h2 className="main-title product-name h2">{selectedProduct?.name}</h2>
+        <h2 className="product-name h2">{selectedProduct?.name}</h2>
 
-        <div className="product-properties-section">
+        <div className="product">
           <div className="photos">photos will be here</div>
 
           <div className="product-properties">
             <section className="colors">
               <div className="colors__title">
-                <p className="colors__title-available">Available colors</p>
-                <span className="colors__title-id">ID:</span>
+                <p className="colors__title-available small-text">
+                  Available colors
+                </p>
+                <span className="colors__title-id small-text">ID: 000000</span>
               </div>
               <div className="colors__selection">
-                {selectedProduct?.colorsAvailable.map(color => {
-                  return (
-                    <button
-                      key={color}
-                      className={cn('circle-button', {
-                        'circle-button--selected': color === selectedColor,
-                      })}
-                      onClick={() => setSelectedColor(color)}
-                    >
-                      <div
-                        className="circle-button__color"
-                        style={{ backgroundColor: color }}
-                      ></div>
-                    </button>
-                  );
-                })}
+                {selectedProduct?.colorsAvailable.map(color => (
+                  <button
+                    key={color}
+                    className={cn('circle-button', {
+                      'circle-button--selected': color === selectedColor,
+                    })}
+                    onClick={() => setSelectedColor(color)}
+                  >
+                    <div
+                      className="circle-button__color"
+                      style={{ backgroundColor: color }}
+                    ></div>
+                  </button>
+                ))}
               </div>
 
               <div className="separator"></div>
             </section>
 
             <section className="capacity">
-              <p className="capacity__title-available">Select capacity</p>
+              <p className="capacity__title-available small-text">
+                Select capacity
+              </p>
               <div className="capacity__selection">
-                {selectedProduct?.capacityAvailable.map(capacity => {
-                  return (
-                    <button
-                      className={cn('capacity-button', {
-                        'capacity-button--selected':
-                          capacity === selectedCapacity,
-                      })}
-                      key={capacity}
-                      onClick={() => setSelectedCapacity(capacity)}
-                    >
-                      {capacity}
-                    </button>
-                  );
-                })}
+                {selectedProduct?.capacityAvailable.map(capacity => (
+                  <button
+                    className={cn('capacity-button', 'body-text', {
+                      'capacity-button--selected':
+                        capacity === selectedCapacity,
+                    })}
+                    key={capacity}
+                    onClick={() => setSelectedCapacity(capacity)}
+                  >
+                    {normalizeCapacity(capacity)}
+                  </button>
+                ))}
               </div>
 
               <div className="separator"></div>
@@ -136,12 +138,12 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
                 {!selectedProduct?.priceDiscount ||
                 selectedProduct.priceDiscount ===
                   selectedProduct.priceRegular ? (
-                  <span className="buy__price-main">
+                  <span className="buy__price-main h2">
                     ${selectedProduct?.priceRegular}
                   </span>
                 ) : (
                   <>
-                    <span className="buy__price-main">
+                    <span className="buy__price-main h2">
                       ${selectedProduct?.priceDiscount}
                     </span>
                     <span className="buy__price-discount">
@@ -152,9 +154,7 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
               </div>
 
               <div className="buy__buttons">
-                <button className="buy__add-to-cart buy__add-to-cart--selected">
-                  Add to cart
-                </button>
+                <button className="buy__add-to-cart">Add to cart</button>
 
                 <button className="buy__favorite">
                   <div className="buy__favorite-image"></div>
@@ -162,7 +162,18 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
               </div>
             </section>
 
-            <section className="short-specs"></section>
+            <ul className="short-specs">
+              {shortProductSpecs.map(spec => (
+                <li className="short-specs__spec" key={spec.title}>
+                  <span className="short-specs__spec-name small-text">
+                    {spec.title}
+                  </span>
+                  <span className="short-specs__spec-value small-text">
+                    {spec.value}
+                  </span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
