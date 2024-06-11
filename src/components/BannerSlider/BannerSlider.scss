@@ -34,15 +34,15 @@
     }
 
     &-phones {
-      background-color: #e8e4db;
+      background-color: $phone-banner-background;
     }
 
     &-accessories {
-      background-color: #f4a877;
+      background-color: $accessory-banner-background;
     }
 
     &-tablets {
-      background-color: #c0c1c6;
+      background-color: $tablet-banner-background;
     }
   }
 
