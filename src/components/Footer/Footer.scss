@@ -2,11 +2,16 @@
 @import '/src/prepare-styles/mixins.scss';
 @import '/src/prepare-styles/usable-fonts.scss';
 
+.container {
+  font-family: 'Mont-Regular';
+  @include content-padding-inline;
+}
+
 .footer {
   font-family: 'Mont-Regular', sans-serif;
   display: block;
   text-align: left;
-  padding-block: 32px;
+  padding-block: 32px; // i dont know is it need
   padding-inline: 16px;
   border-top: 1px solid $grayElements;
 
@@ -122,6 +127,10 @@
   }
 
   &__label {
+    font-family: 'Mont-SemiBold';
+    font-weight: 700;
+    font-size: 12px;
+    color: $graySecondary;
     padding-block: 8.5px;
     margin-right: 16px;
     color: $graySecondary;
@@ -130,4 +139,3 @@
     font-weight: 700;
   }
 }
-

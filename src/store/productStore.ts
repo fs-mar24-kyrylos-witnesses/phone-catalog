@@ -12,6 +12,9 @@ type ProductStore = {
   error: string;
   loading: boolean;
 
+  isMenuOpen: boolean;
+  toggleMenu: () => void;
+
   setCatalogProducts: (products: Product[]) => void;
   setSelectedProduct: (selectedProduct: ProductInfo) => void;
   fetchAllProducts: () => Promise<void>;
@@ -23,6 +26,7 @@ export const useProductStore = createZustand<ProductStore>(set => ({
   selectedProduct: null,
   loading: false,
   error: '',
+  isMenuOpen: false,
 
   fetchAllProducts: async () => {
     set({ loading: true });
@@ -54,4 +58,6 @@ export const useProductStore = createZustand<ProductStore>(set => ({
 
   setSelectedProduct: (selectedProduct: ProductInfo) =>
     set({ selectedProduct }),
+
+  toggleMenu: () => set(state => ({ isMenuOpen: !state.isMenuOpen })),
 }));
