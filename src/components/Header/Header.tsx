@@ -27,11 +27,11 @@ export const Header: React.FC = () => {
           })}
         >
           <div className="nav__container">
-            <Link className="nav__container-link" to="#home">
+            <Link className="nav__container-link" to="home">
               HOME
             </Link>
 
-            <Link className="nav__container-link" to="#phones">
+            <Link className="nav__container-link" to="phones">
               PHONES
             </Link>
 
