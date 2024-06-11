@@ -1,12 +1,64 @@
 import { BannerSlider } from '../../components/BannerSlider';
+import { ShopByCategory } from '../../components/ShopByCategory';
+import { Slider } from '../../components/Slider';
+import { useProductStore } from '../../store/productStore';
+import { Product } from '../../types/Product';
+import { SliderTitle } from '../../types/SliderTitle';
+
 import './HomePage.scss';
 
 export const HomePage = () => {
-  return (
-    <div className="container__home-page">
-      <h1 className="main-title">Welcome to Nice Gadgets store!</h1>
+  const allProducts = useProductStore(state => state.catalogProducts);
+  const phones = allProducts.filter(product => product.category === 'phones');
+  const newestPhones = phones
+    .filter(product => product.year === 2022 || product.year === 2020)
+    .slice(0, 36);
 
-      <BannerSlider />
-    </div>
+  const phonesWithBigDiscount = phones
+    .sort((a, b) => {
+      const discountPercentageA = ((a.fullPrice - a.price) / a.fullPrice) * 100;
+      const discountPercentageB = ((b.fullPrice - b.price) / b.fullPrice) * 100;
+      return discountPercentageB - discountPercentageA;
+    })
+    .slice(0, 36);
+
+  const selectRandomlyEveryThird = (product: Product[]) => {
+    const selectedProduct = [];
+    for (let i = 0; i < product.length; i += 3) {
+      const endIndex = Math.min(i + 3, product.length);
+      const randomIndex = Math.floor(Math.random() * (endIndex - i)) + i;
+      selectedProduct.push(product[randomIndex]);
+    }
+    return selectedProduct;
+  };
+
+  const selectedNewestPhones = selectRandomlyEveryThird(newestPhones);
+  const selectedPhonesWithBigDiscount = selectRandomlyEveryThird(
+    phonesWithBigDiscount,
+  );
+
+  return (
+    <>
+      <div className="grid__home-page">
+        <h1 className="main-title">Welcome to Nice Gadgets store!</h1>
+
+        <BannerSlider />
+      </div>
+      <div className="container__home-page">
+        <Slider
+          products={selectedNewestPhones}
+          titleName={SliderTitle.newModels}
+          discount={false}
+        />
+
+        <ShopByCategory />
+
+        <Slider
+          products={selectedPhonesWithBigDiscount}
+          titleName={SliderTitle.hotPrices}
+          discount={true}
+        />
+      </div>
+    </>
   );
 };
