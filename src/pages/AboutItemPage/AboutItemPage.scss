@@ -305,6 +305,7 @@
   }
 
   &__section-text {
+    color: $graySecondary;
     margin-top: 16px;
   }
 }
@@ -356,7 +357,7 @@
   align-items: center;
 
   grid-column: 1 / -1;
-  
+
   background-color: #e2e6e9;
 }
 

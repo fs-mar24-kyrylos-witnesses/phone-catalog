@@ -154,7 +154,9 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
               </div>
 
               <div className="buy__buttons">
-                <button className="buy__add-to-cart">Add to cart</button>
+                <button className="buy__add-to-cart button-text">
+                  Add to cart
+                </button>
 
                 <button className="buy__favorite">
                   <div className="buy__favorite-image"></div>
