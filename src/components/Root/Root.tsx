@@ -12,6 +12,8 @@ import { AboutItemPage } from '../../pages/AboutItemPage/AboutItemPage';
 import { HomePage } from '../../pages/HomePage/HomePage';
 import { FavouritesPage } from '../../pages/FavouritesPage/FavouritesPage';
 import { CartPage } from '../../pages/CartPage/CartPage';
+import { Contacts } from '../../pages/Contacts';
+import { RightsPage } from '../../pages/RightsPage/RightsPage.tsx';
 
 export const Root = () => (
   <Router>
@@ -31,6 +33,8 @@ export const Root = () => (
         <Route path="favourites" element={<FavouritesPage />} />
         <Route path="cart" element={<CartPage />} />
         <Route path="*" element={<NotFoundPage />} />
+        <Route path="contacts" element={<Contacts />} />
+        <Route path="rights" element={<RightsPage />} />
       </Route>
     </Routes>
   </Router>
