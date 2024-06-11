@@ -26,27 +26,23 @@
   }
 
   @include on-desktop {
-    padding-inline: 152px;
+    max-width: 1136px;
+    padding-inline: 0;
+    margin-inline: auto;
   }
 }
 
 @mixin grid-align {
-  padding-inline: 16px;
-
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   column-gap: 16px;
   justify-content: center;
 
   @include on-tablet {
-    padding-inline: 24px;
-
     grid-template-columns: repeat(12, 1fr);
   }
 
   @include on-desktop {
-    padding-inline: 0;
-
     grid-template-columns: repeat(24, 32px);
   }
 }

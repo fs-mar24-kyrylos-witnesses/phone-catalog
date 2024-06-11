@@ -18,5 +18,7 @@ export type ProductInfo = {
   resolution: string;
   processor: string;
   ram: string;
+  camera: string;
+  zoom: string;
   cell: string[];
 };
