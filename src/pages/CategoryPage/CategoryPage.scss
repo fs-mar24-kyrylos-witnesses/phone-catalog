@@ -9,9 +9,14 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  margin: 24px 0 64px;
+  margin: 24px 16px 64px;
+
+  @include on-tablet {
+    margin-inline: 24px;
+  }
 
   @include on-desktop {
+    margin-inline: 32px;
     margin-bottom: 80px;
   }
 }
