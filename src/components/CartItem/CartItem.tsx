@@ -58,7 +58,7 @@ export const CartItem: React.FC<Props> = ({ product, count, setCount }) => {
             <img src={Plus} alt="plus" />
           </div>
         </div>
-        <p className="product-handle-price">{`$${product.price}`}</p>
+        <p className="product-handle-price">{`$${product.price * count}`}</p>
       </div>
     </div>
   );

@@ -23,7 +23,7 @@ export const Header: React.FC = () => {
   return (
     <header className="header">
       <div className="header__container">
-        <Link to="">
+        <Link to="home">
           <img src={logo} alt="NiceGadgetsLogo" className="header__logo" />
         </Link>
 
