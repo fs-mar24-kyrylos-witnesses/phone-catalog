@@ -5,6 +5,7 @@ import heart from '../../assets/icons/heart.svg';
 import filledHeart from '../../assets/icons/heart-filled.svg';
 import { Link } from 'react-router-dom';
 import { useStore } from '../../store/productStore';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   product: Product;
@@ -13,6 +14,7 @@ type Props = {
 
 export const Card: React.FC<Props> = ({ product, category }) => {
   const { favourites, cartProducts, addTo, removeFrom } = useStore();
+  const { t } = useTranslation();
 
   return (
     <div className="card_container">
@@ -43,21 +45,26 @@ export const Card: React.FC<Props> = ({ product, category }) => {
       <Link to={`/${category}/${product.itemId}`}>
         <div className="card_container-about">
           <div className="card_container-about-characteristics">
-            <p className="card_container-about-characteristics-title">Screen</p>
+            <p className="card_container-about-characteristics-title">
+              {t('screen')}
+            </p>
             <p className="card_container-about-characteristics-value">
               {product.screen}
             </p>
           </div>
           <div className="card_container-about-characteristics">
             <p className="card_container-about-characteristics-title">
-              Capacity
+              {t('capacity')}
             </p>
             <p className="card_container-about-characteristics-value">
               {product.capacity}
             </p>
           </div>
           <div className="card_container-about-characteristics">
-            <p className="card_container-about-characteristics-title">RAM</p>
+            <p className="card_container-about-characteristics-title">
+              {' '}
+              {t('RAM')}
+            </p>
             <p className="card_container-about-characteristics-value">
               {product.ram}
             </p>
@@ -71,7 +78,7 @@ export const Card: React.FC<Props> = ({ product, category }) => {
             className="card_container-handle-bag cart-bag"
           >
             <p className="card_container-handle-bag-addToBag cart-addToBag">
-              Added to cart
+              {t('addedToCart')}
             </p>
           </div>
         ) : (
@@ -79,7 +86,9 @@ export const Card: React.FC<Props> = ({ product, category }) => {
             onClick={() => addTo(product.itemId, 'cart')}
             className="card_container-handle-bag"
           >
-            <p className="card_container-handle-bag-addToBag">Add to cart</p>
+            <p className="card_container-handle-bag-addToBag">
+              {t('addToCart')}
+            </p>
           </div>
         )}
 

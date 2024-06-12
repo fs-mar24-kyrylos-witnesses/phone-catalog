@@ -4,6 +4,7 @@ import { Slider } from '../../components/Slider';
 import { useProductStore } from '../../store/productStore';
 import { Product } from '../../types/Product';
 import { SliderTitle } from '../../types/SliderTitle';
+import { useTranslation } from 'react-i18next';
 
 import './HomePage.scss';
 
@@ -37,17 +38,19 @@ export const HomePage = () => {
     phonesWithBigDiscount,
   );
 
+  const { t } = useTranslation();
+
   return (
     <>
       <div className="grid__home-page">
-        <h1 className="main-title">Welcome to Nice Gadgets store!</h1>
+        <h1 className="main-title">{t('welcomeToNiceGadgetsStore')}</h1>
 
         <BannerSlider />
       </div>
       <div className="container__home-page">
         <Slider
           products={selectedNewestPhones}
-          titleName={SliderTitle.newModels}
+          titleName={t(SliderTitle.newModels)}
           discount={false}
         />
 
@@ -55,7 +58,7 @@ export const HomePage = () => {
 
         <Slider
           products={selectedPhonesWithBigDiscount}
-          titleName={SliderTitle.hotPrices}
+          titleName={t(SliderTitle.hotPrices)}
           discount={true}
         />
       </div>

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useProductStore } from '../../store/productStore';
 import './ShopByCategory.scss';
+import { useTranslation } from 'react-i18next';
 
 export const ShopByCategory = () => {
   const CatalogProduct = useProductStore(state => state.catalogProducts);
@@ -15,10 +16,11 @@ export const ShopByCategory = () => {
   const categoryCounts = allCategories.map(category => {
     return countProductsByCategory(category);
   });
+  const { t } = useTranslation();
 
   return (
     <div className="shopBy">
-      <h2 className="section-title shopBy-title">Shop by category</h2>
+      <h2 className="section-title shopBy-title">{t('shopByCategory')}</h2>
       <div className="shopBy-content">
         {allCategories.map((category, index) => {
           return (
