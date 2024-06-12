@@ -12,10 +12,14 @@ import { Category } from '../../types/Category';
 import home from '../../assets/icons/home.svg';
 import arrowRight from '../../assets/icons/arrow-right.svg';
 import arrowLeft from '../../assets/icons/arrow-left.svg';
+import heart from '../../assets/icons/heart.svg';
+import heartFilled from '../../assets/icons/heart-filled.svg';
 
 import { getProductSpecs } from '../../helper/getProductSpecs';
 import { Spec } from '../../types/Spec';
 import { ProductInfo } from '../../types/ProductInfo';
+import { useStore } from '../../store/productStore';
+import { Product } from '../../types/Product';
 
 type Props = {
   categoryArea: Category;
@@ -25,12 +29,15 @@ function normalizeCapacity(capacity: string) {
   return capacity.slice(0, capacity.length - 2) + ' ' + capacity.slice(-2);
 }
 
+// todo -- ADD PAGE CHANGE ON CAPACITY OR COLOR SWITCH
+
 export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
   const normalizedCategory =
     categoryArea[0].toUpperCase() + categoryArea.slice(1);
 
   const { itemId } = useParams(); // our product id
   const { catalogProducts, fetchProductById } = useProductStore(); // func that gives product depending on the id and category
+  const { favourites, cartProducts, addTo, removeFrom } = useStore();
 
   const [selectedProduct, setSelectedProduct] = useState<
     ProductInfo | undefined
@@ -42,6 +49,7 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
   const [selectedCapacity, setSelectedCapacity] = useState<
     string | undefined
   >();
+  const [recommendedProducts, setRecommendedProducts] = useState<Product[]>([]);
 
   // todo -- remove this bullshit check
   useEffect(() => {
@@ -56,18 +64,42 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
         setSelectedImage(response.images[0]);
         setSelectedColor(response.color);
         setSelectedCapacity(response.capacity);
+
+        setRecommendedProducts(
+          catalogProducts
+            .filter(item => item.category === categoryArea)
+            .sort(() => Math.random() - 0.5) // shuffling the array to take random 12 products
+            .slice(0, 12),
+        );
       }
     });
-  }, []);
-
-  console.log(selectedProduct);
+  }, [
+    catalogProducts,
+    categoryArea,
+    fetchProductById,
+    itemId,
+    setRecommendedProducts,
+  ]);
 
   const shortProductSpecs = productSpecs.slice(0, 4);
 
-  const recommendedProducts = catalogProducts
-    .filter(item => item.category === categoryArea)
-    .sort(() => Math.random() - 0.5) // shuffling the array to take random 12 products
-    .slice(0, 12);
+  const toggleFavorite = (productId: string) => {
+    console.log('TOGGLING FAVORITE ', productId);
+    if (favourites.includes(productId)) {
+      removeFrom(productId, 'fav');
+    } else {
+      addTo(productId, 'fav');
+    }
+  };
+
+  const toggleCart = (productId: string) => {
+    console.log('TOGGLING CART ', productId);
+    if (cartProducts.includes(productId)) {
+      removeFrom(productId, 'cart');
+    } else {
+      addTo(productId, 'cart');
+    }
+  };
 
   return (
     <div className="container">
@@ -196,12 +228,35 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
               </div>
 
               <div className="buy__buttons">
-                <button className="buy__add-to-cart button-text">
+                <button
+                  className={cn('buy__add-to-cart', 'button-text', {
+                    'buy__add-to-cart--selected': cartProducts.includes(
+                      selectedProduct?.id || '',
+                      // todo -- delete this bullshit
+                    ),
+                  })}
+                  onClick={() => toggleCart(selectedProduct?.id || '')}
+                >
                   Add to cart
                 </button>
 
-                <button className="buy__favorite">
-                  <div className="buy__favorite-image"></div>
+                <button
+                  className={cn('buy__favorite', 'button-text', {
+                    'buy__favorite--selected': cartProducts.includes(
+                      selectedProduct?.id || '',
+                      // todo -- delete this bullshit
+                    ),
+                  })}
+                  onClick={() => toggleFavorite(selectedProduct?.id || '')}
+                >
+                  <img
+                    src={
+                      favourites.includes(selectedProduct?.id || '')
+                        ? heartFilled
+                        : heart
+                    }
+                    alt="Add to favorite"
+                  />
                 </button>
               </div>
             </section>
