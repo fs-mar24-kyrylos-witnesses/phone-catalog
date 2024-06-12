@@ -1,6 +1,7 @@
 import i18n from 'i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import { initReactI18next } from 'react-i18next';
+import { SliderTitle } from '../types/SliderTitle';
 
 i18n
   .use(LanguageDetector)
@@ -19,9 +20,9 @@ i18n
           accessories: 'Accessories',
           Accessories: 'Accessories',
           welcomeToNiceGadgetsStore: 'Welcome to Nice Gadgets store!',
-          brandNewModels: 'Brand new models',
+          [SliderTitle.newModels]: 'Brand new models',
           shopByCategory: 'Shop by category',
-          hotPrices: 'Hot prices',
+          [SliderTitle.hotPrices]: 'Hot prices',
           mobilePhones: 'Mobile phones',
           models: 'models',
           sortBy: 'Sort by',
@@ -46,7 +47,7 @@ i18n
           wantToConfirmOrder: 'Do you want to confirm the order?',
           no: 'No',
           yes: 'Yes',
-          goBack: 'Go back',
+          goBack: 'Back',
           availableColors: 'Available colors',
           selectCapacity: 'Select capacity',
           resolution: 'Resolution',
@@ -73,9 +74,9 @@ i18n
           accessories: 'Аксесуари',
           Accessories: 'Аксесуари',
           welcomeToNiceGadgetsStore: 'Ласкаво просимо в магазин Nice Gadgets!',
-          brandNewModels: 'Нові моделі',
+          [SliderTitle.newModels]: 'Нові моделі',
           shopByCategory: 'За категоріями',
-          hotPrices: 'Гарячі ціни',
+          [SliderTitle.hotPrices]: 'Гарячі ціни',
           mobilePhones: 'Мобільні телефони',
           models: 'моделі',
           sortBy: 'Сортувати за',
@@ -128,13 +129,13 @@ i18n
           Accessories: 'Phụ kiện',
           welcomeToNiceGadgetsStore:
             'Chào mừng đến với cửa hàng tiện ích tuyệt vời!',
-          brandNewModels: 'Mẫu mới hoàn toàn',
+          [SliderTitle.newModels]: 'Mẫu mới hoàn toàn',
           shopByCategory: 'Mua theo danh mục',
-          hotPrices: 'Giá hot',
+          [SliderTitle.hotPrices]: 'Giá hot',
           mobilePhones: 'Điện thoại di động',
           models: 'Mẫu',
           sortBy: 'Sắp xếp theo',
-          itemsOnPage: 'Số lượng mục trên mỗi trang',
+          itemsOnPage: 'Số lượng mục trên ',
           screen: 'Màn hình',
           capacity: 'Dung lượng',
           RAM: 'Bộ nhớ RAM',

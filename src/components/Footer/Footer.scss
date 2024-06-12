@@ -1,29 +1,33 @@
 @import '/src/prepare-styles/colors.scss';
 @import '/src/prepare-styles/mixins.scss';
 @import '/src/prepare-styles/usable-fonts.scss';
-
-
+@import '/src/prepare-styles/variables.scss';
 
 .footer {
-  font-family: 'Mont-Regular';
-  @include content-padding-inline;
   font-family: 'Mont-Regular', sans-serif;
   display: block;
   text-align: left;
-  padding-block: 32px; // i dont know is it need
   padding-inline: 16px;
   border-top: 1px solid $grayElements;
+  padding-inline: 32px;
+  padding-block: 32px;
+  box-sizing: border-box ;
 
 
   @include on-tablet {
     padding-inline: 32px;
-    height: 96px;
+    padding-top: 0px;
+    height: $footer-height;
     flex-wrap: wrap;
     align-items: center;
+    padding-block: 0px;
   }
 
   @include on-desktop {
-    padding-inline: 152px;
+    padding-inline: 0px;
+    padding-top: 0px;
+    padding-block: 0px;
+
   }
 
   &--fixed {
@@ -31,9 +35,13 @@
   }
 
   &__content {
+    width: 100%; 
+    max-width: 1136px;
     position: relative;
     display: flex;
     flex-direction: column;
+    margin: 0 auto;
+    height: $footer-height; 
 
     @include on-tablet {
       flex-direction: row;
@@ -42,8 +50,7 @@
     }
 
     @include on-desktop {
-      margin-inline: auto;
-      max-width: 1200px;
+      margin: 0 auto; 
     }
   }
 
@@ -90,6 +97,7 @@
     letter-spacing: 0.04em;
     color: $graySecondary;
     text-transform: uppercase;
+    
 
     @include hover(color, $grayPrimary);
 
@@ -104,6 +112,7 @@
       background-color: $white;
       padding: 8px;
       transition: all $effect-duration;
+      
 
       &:hover {
         background-color: $white; 
@@ -119,6 +128,7 @@
     justify-content: center;
     text-align: center;
     margin-top: 16px;
+    padding-block: 32px;
 
     @include on-tablet {
       margin-top: 0;
@@ -132,9 +142,9 @@
     color: $graySecondary;
     padding-block: 8.5px;
     margin-right: 16px;
-    color: $graySecondary;
     font-size: 12px;
     line-height: 15px;
     font-weight: 700;
   }
 }
+

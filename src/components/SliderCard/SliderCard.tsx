@@ -5,6 +5,7 @@ import heart from '../../assets/icons/heart.svg';
 import { Link } from 'react-router-dom';
 import filledHeart from '../../assets/icons/heart-filled.svg';
 import { useStore } from '../../store/productStore';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   product: Product;
@@ -18,6 +19,7 @@ export const SliderCard: React.FC<Props> = ({
   discount,
 }) => {
   const { favourites, cartProducts, addTo, removeFrom } = useStore();
+  const { t } = useTranslation();
 
   return (
     <div className="card">
@@ -49,17 +51,17 @@ export const SliderCard: React.FC<Props> = ({
       <Link to={`/${category}/${product.itemId}`}>
         <div className="card-about">
           <div className="card-about-characteristics">
-            <p className="card-about-characteristics-title">Screen</p>
+            <p className="card-about-characteristics-title">{t('screen')}</p>
             <p className="card-about-characteristics-value">{product.screen}</p>
           </div>
           <div className="card-about-characteristics">
-            <p className="card-about-characteristics-title">Capacity</p>
+            <p className="card-about-characteristics-title">{t('capacity')}</p>
             <p className="card-about-characteristics-value">
               {product.capacity}
             </p>
           </div>
           <div className="card-about-characteristics">
-            <p className="card-about-characteristics-title">RAM</p>
+            <p className="card-about-characteristics-title">{t('RAM')}</p>
             <p className="card-about-characteristics-value">{product.ram}</p>
           </div>
         </div>
@@ -71,7 +73,7 @@ export const SliderCard: React.FC<Props> = ({
             className="card_container-handle-bag cart-bag"
           >
             <p className="card_container-handle-bag-addToBag cart-addToBag">
-              Added to cart
+              {t('addedToCart')}
             </p>
           </div>
         ) : (
@@ -79,7 +81,9 @@ export const SliderCard: React.FC<Props> = ({
             onClick={() => addTo(product.itemId, 'cart')}
             className="card_container-handle-bag"
           >
-            <p className="card_container-handle-bag-addToBag">Add to cart</p>
+            <p className="card_container-handle-bag-addToBag">
+              {t('addToCart')}
+            </p>
           </div>
         )}
 

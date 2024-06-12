@@ -9,6 +9,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import './BannerSlider.scss';
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 SwiperCore.use([Navigation, Pagination]);
 
@@ -45,15 +46,18 @@ export const BannerSlider = () => {
         pagination={{ clickable: true }}
         loop
         autoplay={{ delay: 5000 }}
+        speed={500}
       >
         {images.map((image, index) => {
           return (
             <SwiperSlide key={index}>
-              <div
-                className={`carousel__image-wrapper carousel__image-wrapper-${allCategories[index]}`}
-              >
-                <img src={image} alt="Banner" className="carousel__image" />
-              </div>
+              <Link to={`/${allCategories[index]}`}>
+                <div
+                  className={`carousel__image-wrapper carousel__image-wrapper-${allCategories[index]}`}
+                >
+                  <img src={image} alt="Banner" className="carousel__image" />
+                </div>
+              </Link>
             </SwiperSlide>
           );
         })}

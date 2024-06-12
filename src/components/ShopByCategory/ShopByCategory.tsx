@@ -1,11 +1,17 @@
 import { Link } from 'react-router-dom';
 import { useProductStore } from '../../store/productStore';
 import './ShopByCategory.scss';
+import { useTranslation } from 'react-i18next';
 
 export const ShopByCategory = () => {
+  const { t } = useTranslation();
   const CatalogProduct = useProductStore(state => state.catalogProducts);
   const allCategories = ['phones', 'tablets', 'accessories'];
-  const allCategoriesTitle = ['Mobile phones', 'Tablets', 'Accessories'];
+  const allCategoriesTitle = [
+    t('mobilePhones'),
+    t('tablets'),
+    t('accessories'),
+  ];
 
   const countProductsByCategory = (category: string) => {
     return CatalogProduct.filter(product => product.category === category)
@@ -18,7 +24,7 @@ export const ShopByCategory = () => {
 
   return (
     <div className="shopBy">
-      <h2 className="section-title shopBy-title">Shop by category</h2>
+      <h2 className="section-title shopBy-title">{t('shopByCategory')}</h2>
       <div className="shopBy-content">
         {allCategories.map((category, index) => {
           return (
@@ -38,7 +44,7 @@ export const ShopByCategory = () => {
               </Link>
 
               <p className="shopBy-category-count">
-                {categoryCounts[index]} models
+                {categoryCounts[index]} {t('models')}
               </p>
             </div>
           );
