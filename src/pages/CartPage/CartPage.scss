@@ -168,3 +168,16 @@ h1{
   flex-direction: column;
   padding-top: 1.984px;
 }
+
+.emptyCartContain{
+  box-sizing: border-box;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.emptyCart{
+  width: 30%;
+}
