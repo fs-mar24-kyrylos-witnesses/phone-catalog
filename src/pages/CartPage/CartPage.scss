@@ -5,6 +5,7 @@
 
 .container-cart {
   @include grid-align;
+  @include content-padding-inline;
   flex-direction: column;
   margin-top: 24px;
   margin-bottom: 56px;
