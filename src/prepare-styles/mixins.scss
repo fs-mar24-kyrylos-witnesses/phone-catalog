@@ -34,15 +34,19 @@
 
 @mixin grid-align {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  column-gap: 16px;
   justify-content: center;
+  padding-inline: 16px;
+  column-gap: 16px;
+
+  grid-template-columns: repeat(4, 1fr);
 
   @include on-tablet {
+    padding-inline: 24px;
     grid-template-columns: repeat(12, 1fr);
   }
 
   @include on-desktop {
+    padding-inline: 0;
     grid-template-columns: repeat(24, 32px);
   }
 }
