@@ -42,6 +42,7 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
   >();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     itemId?.toString() && fetchProductById(itemId, categoryArea);
   }, [itemId, categoryArea, fetchProductById]);
 
