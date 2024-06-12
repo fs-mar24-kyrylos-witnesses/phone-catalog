@@ -2,8 +2,10 @@ import React, { useEffect } from 'react';
 import './Rights.scss';
 
 import { EarthCanvas } from './Earth';
+import { useTranslation } from 'react-i18next';
 
 export const RightsPage: React.FC = () => {
+  const { t } = useTranslation();
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -17,12 +19,7 @@ export const RightsPage: React.FC = () => {
           <EarthCanvas />
         </div>
         <div className="rights__text">
-          <p>
-            Усі права захищені і належать команді Kyrylos Witnesses. Наш код -
-            це наш інструмент для інновацій та будівництва майбутнього. Кожен
-            рядок коду - це крок вперед у нашій місії зробити технології
-            доступними і корисними для всіх.
-          </p>
+          <p>{t('rightsText')}</p>
           <p className="rights__year">© 2024</p>
         </div>
       </div>
