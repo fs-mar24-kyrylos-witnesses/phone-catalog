@@ -5,6 +5,7 @@
 
 .fav-container {
   @include grid-align;
+  @include content-padding-inline;
 
   flex-wrap: wrap;
   align-items: center;

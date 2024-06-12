@@ -5,6 +5,7 @@
 
 .main-main {
   @include grid-align;
+  @include content-padding-inline;
 
   flex-wrap: wrap;
   align-items: center;
