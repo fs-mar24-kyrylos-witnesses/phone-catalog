@@ -14,6 +14,7 @@ import { FavouritesPage } from '../../pages/FavouritesPage/FavouritesPage';
 import { CartPage } from '../../pages/CartPage/CartPage';
 import { Contacts } from '../../pages/Contacts';
 import { RightsPage } from '../../pages/RightsPage/RightsPage.tsx';
+import '../../utils/i18n.ts';
 
 export const Root = () => (
   <Router>
