@@ -1,33 +1,64 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './CartPage.scss';
-import goBackIcon from '../../assets/icons/arrow-left.svg';
-import { CartItem } from '../../components/CartItem/CartItem';
+import { useProductStore, useStore } from '../../store/productStore';
+// import { Link } from 'react-router-dom';
+import arrowLeft from '../../assets/icons/arrow-left.svg';
+import { CartItem } from '../../components/CartItem';
+import { Product } from '../../types/Product';
 
 export const CartPage: React.FC = () => {
-  return (
-    <div>
-      <div className="cart">
-        <div className="button-go-back">
-          <img src={goBackIcon} alt="Go back" className="button-go-back__img" />
-          <a href=".." className="button-go-back__link">
-            Go back
-          </a>
-        </div>
+  const { catalogProducts } = useProductStore();
+  const { cartProducts, getLength } = useStore();
 
-        <h1 className="cart__title">Cart</h1>
-        <div className="cart__content-wrapper">
-          <div className="cart__content">
-            <CartItem />
-            <CartItem />
-            <CartItem />
-          </div>
-          <div className="cart__summary">
-            <div className="cart__total-price">$2000</div>
-            <div className="cart__total-price--label">Total for 2 items</div>
-            <button type="button" className="cart__submit-btn">
-              Checkout
-            </button>
-          </div>
+  const cart: Product[] = cartProducts
+    .map(prod => catalogProducts.find(item => prod === item.itemId))
+    .filter((item): item is Product => item !== undefined);
+
+  const [counts, setCounts] = useState(cart.map(() => 1));
+
+  useEffect(() => {
+    const newCounts = cart.map(item => {
+      return counts[cart.indexOf(item)] || 1;
+    });
+    setCounts(newCounts);
+  }, [cart, cartProducts, counts]);
+
+  const handleCountChange = (index: number, newCount: number) => {
+    const newCounts = [...counts];
+    newCounts[index] = newCount;
+    setCounts(newCounts);
+  };
+
+  const getTotalPrice = () => {
+    return cart.reduce((total, item, index) => {
+      return total + item.price * counts[index];
+    }, 0);
+  };
+
+  return (
+    <div className="container-cart">
+      <div className="title">
+        <div className="title-map">
+          <img className="title-map-img" src={arrowLeft} alt="arrLeft" />
+          <span className="title-map-back">Back</span>
+        </div>
+        <h1>Cart</h1>
+      </div>
+      <div className="fav-items">
+        {cart.map((item, index) => (
+          <CartItem
+            key={item?.itemId}
+            product={item!}
+            count={counts[index]}
+            setCount={(newCount: number) => handleCountChange(index, newCount)}
+          />
+        ))}
+      </div>
+      <div className="checkout">
+        <p className="checkout-price">{`$${getTotalPrice()}`}</p>
+        <p className="checkout-total">{`Total for ${getLength('cart')} items`}</p>
+        <div className="checkout-button">
+          <p className="checkout-button-text">Checkout</p>
         </div>
       </div>
     </div>

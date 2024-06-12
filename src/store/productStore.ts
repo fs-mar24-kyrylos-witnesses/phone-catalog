@@ -1,4 +1,5 @@
-import { create as createZustand } from 'zustand';
+import { create, create as createZustand } from 'zustand';
+import { persist } from 'zustand/middleware';
 
 import { ProductInfo } from '../types/ProductInfo';
 import { Product } from '../types/Product';
@@ -19,6 +20,16 @@ type ProductStore = {
   setSelectedProduct: (selectedProduct: ProductInfo) => void;
   fetchAllProducts: () => Promise<void>;
   fetchProductById: (id: string, mode: Category) => Promise<void>;
+};
+
+type Store = {
+  favourites: string[];
+  cartProducts: string[];
+
+  products: Product[];
+  addTo: (slug: string, type: 'fav' | 'cart') => void;
+  removeFrom: (slug: string, type: 'fav' | 'cart') => void;
+  getLength: (type: 'fav' | 'cart') => number;
 };
 
 export const useProductStore = createZustand<ProductStore>(set => ({
@@ -61,3 +72,52 @@ export const useProductStore = createZustand<ProductStore>(set => ({
 
   toggleMenu: () => set(state => ({ isMenuOpen: !state.isMenuOpen })),
 }));
+
+export const useStore = create<Store>()(
+  persist(
+    (set, get) => ({
+      favourites: [],
+      cartProducts: [],
+
+      favsProducts: [],
+      bagProducts: [],
+
+      products: [],
+
+      addTo: (slug: string, type: 'fav' | 'cart') => {
+        set(state => {
+          if (type === 'fav') {
+            return { favourites: [...state.favourites, slug] };
+          } else {
+            return { cartProducts: [...state.cartProducts, slug] };
+          }
+        });
+      },
+
+      removeFrom: (slug: string, type: 'fav' | 'cart') => {
+        set(state => {
+          if (type === 'fav') {
+            return {
+              favourites: state.favourites.filter(item => item !== slug),
+            };
+          } else {
+            return {
+              cartProducts: state.cartProducts.filter(item => item !== slug),
+            };
+          }
+        });
+      },
+
+      getLength: (type: 'fav' | 'cart') => {
+        const state = get();
+        return type === 'fav'
+          ? state.favourites.length
+          : state.cartProducts.length;
+      },
+    }),
+    {
+      name: 'store',
+      getStorage: () => localStorage,
+    },
+  ),
+);

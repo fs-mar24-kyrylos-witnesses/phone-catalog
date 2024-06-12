@@ -75,88 +75,86 @@ export const CategoryPage: React.FC<Props> = ({ category }) => {
   return (
     <>
       <div className="main-main">
-        <div className="main-container">
-          <div className="category_header">
-            <div className="category_header-map">
-              <Link to={`/home`}>
-                <img
-                  className="category_header-map-homeIcon"
-                  src={home}
-                  alt="Home"
-                />
-              </Link>
+        <div className="category_header">
+          <div className="category_header-map">
+            <Link to={`/home`}>
               <img
-                className="category_header-map-arrowRightIcon"
-                src={arrowRight}
-                alt="arrow"
+                className="category_header-map-homeIcon"
+                src={home}
+                alt="Home"
               />
-              <Link to={`/${category.path}`}>
-                <span className="category_header-map-categoryName">
-                  {category.name}
-                </span>
-              </Link>
-            </div>
-            <h1 className="main-title">{category.titleName}</h1>
-            <p className="category_header-itemsCount">{`${actualProducts.length} models`}</p>
-            <div className="category_header-sortAndPerpage">
-              <div className="category_header-select">
-                <span className="category_header-select-title">Sort by</span>
-                <select
-                  className="category_header-sort-select"
-                  onChange={handleSort}
-                  value={searchParams.get('sort') || ''}
-                >
-                  {SortBy.map(field => (
-                    <option
-                      className="category_header-sort-option"
-                      key={field}
-                      value={field.toLowerCase()}
-                    >
-                      <SearchLink params={{ sort: field }}>{field}</SearchLink>
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div className="category_header-select">
-                <span className="category_header-select-title">
-                  Items on page
-                </span>
-                <select
-                  className="category_header-sort-select"
-                  onChange={handlePerPage}
-                  value={searchParams.get('perPage') || filteredProducts.length}
-                >
+            </Link>
+            <img
+              className="category_header-map-arrowRightIcon"
+              src={arrowRight}
+              alt="arrow"
+            />
+            <Link to={`/${category.path}`}>
+              <span className="category_header-map-categoryName">
+                {category.name}
+              </span>
+            </Link>
+          </div>
+          <h1 className="main-title-category">{category.titleName}</h1>
+          <p className="category_header-itemsCount">{`${actualProducts.length} models`}</p>
+          <div className="category_header-sortAndPerpage">
+            <div className="category_header-select">
+              <span className="category_header-select-title">Sort by</span>
+              <select
+                name="sort"
+                className="category_header-sort-select"
+                onChange={handleSort}
+                value={searchParams.get('sort') || ''}
+              >
+                {SortBy.map(field => (
                   <option
                     className="category_header-sort-option"
-                    value={filteredProducts.length}
+                    key={field}
+                    value={field.toLowerCase()}
                   >
-                    <SearchLink
-                      params={{ perPage: filteredProducts.length.toString() }}
-                    >
-                      All
-                    </SearchLink>
+                    <SearchLink params={{ sort: field }}>{field}</SearchLink>
                   </option>
-                  {PerPage.map(field => (
-                    <option
-                      className="category_header-sort-option"
-                      key={field}
-                      value={field}
-                    >
-                      <SearchLink params={{ perPage: field }}>
-                        {field}
-                      </SearchLink>
-                    </option>
-                  ))}
-                </select>
-              </div>
+                ))}
+              </select>
+            </div>
+            <div className="category_header-select">
+              <span className="category_header-select-title">
+                Items on page
+              </span>
+              <select
+                name="perPage"
+                className="category_header-sort-select"
+                onChange={handlePerPage}
+                value={searchParams.get('perPage') || filteredProducts.length}
+              >
+                <option
+                  className="category_header-sort-option"
+                  value={filteredProducts.length}
+                >
+                  <SearchLink
+                    params={{ perPage: filteredProducts.length.toString() }}
+                  >
+                    All
+                  </SearchLink>
+                </option>
+                {PerPage.map(field => (
+                  <option
+                    className="category_header-sort-option"
+                    key={field}
+                    value={field}
+                  >
+                    <SearchLink params={{ perPage: field }}>{field}</SearchLink>
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
+        </div>
 
-          <div className="category_product-container">
-            {visibleItems.map(item => (
-              <Card key={item.itemId} product={item} category={category.path} />
-            ))}
-          </div>
+        <div className="category_product-container">
+          {visibleItems.map(item => (
+            <Card key={item.itemId} product={item} category={category.path} />
+          ))}
         </div>
         <Pagination
           pages={pages}
