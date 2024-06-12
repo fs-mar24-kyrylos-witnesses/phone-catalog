@@ -2,18 +2,14 @@
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Settings
+## Launch
 
-In VSCode press F1, type `Preferences: Open Settings (UI)` paste settings below
-
+1. Install all the packages needed
+```bash
+npm i
 ```
-"eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
-  "eslint.options": {
-    "extensions": [".js", ".jsx", ".ts", ".tsx"]
-  }
+
+2. Launch and open development server
+```bash
+npm start
 ```
