@@ -80,7 +80,7 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
 
         <h2 className="product-name h2">{selectedProduct?.name}</h2>
 
-        <div className="product">
+        <div className="product-section">
           <div className="photos">photos will be here</div>
 
           <div className="product-properties">

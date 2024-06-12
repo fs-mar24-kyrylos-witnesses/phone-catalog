@@ -4,7 +4,7 @@ import cn from 'classnames';
 import { Link } from 'react-router-dom';
 
 import { useStore, useProductStore } from '../../store/productStore';
-        
+
 import { LanguagesSelector } from '../LanguagesSelector/LanguagesSelector';
 import { useTranslation } from 'react-i18next';
 
