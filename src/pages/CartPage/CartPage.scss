@@ -3,7 +3,7 @@
 @import '../../prepare-styles/colors.scss';
 @import '../../prepare-styles/usable-fonts.scss';
 
-.container {
+.container-cart {
   @include grid-align;
   flex-direction: column;
   margin-top: 24px;

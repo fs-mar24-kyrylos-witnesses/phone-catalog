@@ -36,7 +36,7 @@ export const CartPage: React.FC = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container-cart">
       <div className="title">
         <div className="title-map">
           <img className="title-map-img" src={arrowLeft} alt="arrLeft" />

@@ -3,6 +3,8 @@ import './Header.scss';
 import cn from 'classnames';
 import { Link } from 'react-router-dom';
 import { useStore, useProductStore } from '../../store/productStore';
+import { LanguagesSelector } from '../LanguagesSelector/LanguagesSelector';
+import { useTranslation } from 'react-i18next';
 
 import logo from '../../assets/icons/logo.svg';
 import like from '../../assets/icons/heart.svg';
@@ -15,6 +17,7 @@ export const Header: React.FC = () => {
 
   const isMenuOpen = useProductStore(state => state.isMenuOpen);
   const toggleMenu = useProductStore(state => state.toggleMenu);
+  const { t } = useTranslation();
 
   return (
     <header className="header">
@@ -30,23 +33,24 @@ export const Header: React.FC = () => {
         >
           <div className="nav__container">
             <Link className="nav__container-link" to="home">
-              HOME
+              {t('home')}
             </Link>
 
             <Link className="nav__container-link" to="phones">
-              PHONES
+              {t('phones')}
             </Link>
 
             <Link className="nav__container-link" to="tablets">
-              TABLETS
+              {t('tablets')}
             </Link>
 
             <Link className="nav__container-link" to="accessories">
-              ACCESSORIES
+              {t('accessories')}
             </Link>
           </div>
 
           <div className="nav__icons">
+            <LanguagesSelector />
             <Link
               className="nav__icons__container nav__icons__container-like"
               to="favourites"
