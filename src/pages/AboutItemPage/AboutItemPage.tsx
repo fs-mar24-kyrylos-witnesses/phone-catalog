@@ -15,6 +15,7 @@ import arrowLeft from '../../assets/icons/arrow-left.svg';
 
 import { getProductSpecs } from '../../helper/getProductSpecs';
 import { Spec } from '../../types/Spec';
+import { ProductInfo } from '../../types/ProductInfo';
 
 type Props = {
   categoryArea: Category;
@@ -28,45 +29,45 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
   const normalizedCategory =
     categoryArea[0].toUpperCase() + categoryArea.slice(1);
 
-  const { catalogProducts } = useProductStore();
   const { itemId } = useParams(); // our product id
-  const { fetchProductById } = useProductStore(); // func that gives product depending on the id and category
-  const selectedProduct = useProductStore(state => state.selectedProduct); // finally selected product
+  const { catalogProducts, fetchProductById } = useProductStore(); // func that gives product depending on the id and category
 
-  const recommendedProducts = catalogProducts
-    .filter(item => item.category === categoryArea)
-    .sort(() => Math.random() - 0.5) // shuffling the array to take random 12 products
-    .slice(0, 12);
-  let productSpecs: Spec[] = [];
-
-  // todo -- add null handler
-  if (selectedProduct) {
-    productSpecs = getProductSpecs(selectedProduct);
-  }
-
-  const shortProductSpecs = productSpecs.slice(0, 4);
-
-  const [productPhotos, setProductPhotos] = useState<string[]>([]);
-  const [selectedPhoto, setSelectedPhoto] = useState<string>('');
-
+  const [selectedProduct, setSelectedProduct] = useState<
+    ProductInfo | undefined
+  >(undefined);
+  const [productSpecs, setProductSpecs] = useState<Spec[]>([]);
+  const [productImages, setProductImages] = useState<string[]>([]);
+  const [selectedImage, setSelectedImage] = useState<string>('');
   const [selectedColor, setSelectedColor] = useState<string | undefined>();
   const [selectedCapacity, setSelectedCapacity] = useState<
     string | undefined
   >();
 
-  useEffect(() => {
-    if (selectedProduct) {
-      setProductPhotos(selectedProduct.images);
-      setSelectedPhoto(selectedProduct.images[0]);
-      setSelectedColor(selectedProduct.color);
-      setSelectedCapacity(selectedProduct.capacity);
-    }
-  }, [selectedProduct]);
-
+  // todo -- remove this bullshit check
   useEffect(() => {
     window.scrollTo(0, 0);
-    itemId?.toString() && fetchProductById(itemId, categoryArea);
-  }, [itemId, categoryArea, fetchProductById]);
+
+    fetchProductById(itemId || '', categoryArea).then(response => {
+      setSelectedProduct(response);
+
+      if (response) {
+        setProductSpecs(getProductSpecs(response));
+        setProductImages(response.images);
+        setSelectedImage(response.images[0]);
+        setSelectedColor(response.color);
+        setSelectedCapacity(response.capacity);
+      }
+    });
+  }, []);
+
+  console.log(selectedProduct);
+
+  const shortProductSpecs = productSpecs.slice(0, 4);
+
+  const recommendedProducts = catalogProducts
+    .filter(item => item.category === categoryArea)
+    .sort(() => Math.random() - 0.5) // shuffling the array to take random 12 products
+    .slice(0, 12);
 
   return (
     <div className="container">
@@ -98,26 +99,26 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
 
         <div className="product-section">
           <div className="product-images">
-            {productPhotos.map(photo => (
+            {productImages.map(photo => (
               <img
                 key={photo}
                 src={photo}
                 alt="Product image"
                 className={cn('product-images__image', {
-                  'product-images__image--selected': selectedPhoto === photo,
+                  'product-images__image--selected': selectedImage === photo,
                 })}
-                onClick={() => setSelectedPhoto(photo)}
+                onClick={() => setSelectedImage(photo)}
               />
             ))}
           </div>
 
           <div className="selected-image-container">
-            {productPhotos.map(photo => (
+            {productImages.map(photo => (
               <div
                 key={photo}
                 style={{ backgroundImage: `url(${photo})` }}
                 className={cn('selected-image', {
-                  'selected-image--active': selectedPhoto === photo,
+                  'selected-image--active': selectedImage === photo,
                 })}
                 aria-label="Product image"
               ></div>
