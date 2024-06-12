@@ -171,3 +171,16 @@ h1 {
 .title-map-img {
   display: block;
 }
+
+.emptyCartContain{
+  box-sizing: border-box;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.emptyCart{
+  width: 30%;
+}

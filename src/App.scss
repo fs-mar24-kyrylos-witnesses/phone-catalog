@@ -2,11 +2,3 @@
 @import '../src/prepare-styles/reset.scss';
 @import '../src/prepare-styles/typography.scss';
 @import '../src/prepare-styles/variables.scss';
-
-.mainOutlet {
-  min-height: calc(100vh - $header-height - 252px);
-
-  @include on-tablet {
-    height: calc(100vh - $header-height - $footer-height);
-  }
-}
