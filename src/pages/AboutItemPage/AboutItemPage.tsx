@@ -4,14 +4,22 @@ import cn from 'classnames';
 import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
+import { Slider } from '../../components/Slider';
+
 import { useProductStore } from '../../store/productStore';
 import { Category } from '../../types/Category';
 
 import home from '../../assets/icons/home.svg';
 import arrowRight from '../../assets/icons/arrow-right.svg';
 import arrowLeft from '../../assets/icons/arrow-left.svg';
+import heart from '../../assets/icons/heart.svg';
+import heartFilled from '../../assets/icons/heart-filled.svg';
+
 import { getProductSpecs } from '../../helper/getProductSpecs';
 import { Spec } from '../../types/Spec';
+import { ProductInfo } from '../../types/ProductInfo';
+import { useStore } from '../../store/productStore';
+import { Product } from '../../types/Product';
 
 type Props = {
   categoryArea: Category;
@@ -21,37 +29,77 @@ function normalizeCapacity(capacity: string) {
   return capacity.slice(0, capacity.length - 2) + ' ' + capacity.slice(-2);
 }
 
+// todo -- ADD PAGE CHANGE ON CAPACITY OR COLOR SWITCH
+
 export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
   const normalizedCategory =
     categoryArea[0].toUpperCase() + categoryArea.slice(1);
+
   const { itemId } = useParams(); // our product id
-  const { fetchProductById } = useProductStore(); // func that gives product depending on the id and category
-  const selectedProduct = useProductStore(state => state.selectedProduct); // finally selected product
-  let productSpecs: Spec[] = [];
+  const { catalogProducts, fetchProductById } = useProductStore(); // func that gives product depending on the id and category
+  const { favourites, cartProducts, addTo, removeFrom } = useStore();
 
-  // todo -- add null handler
-  if (selectedProduct) {
-    productSpecs = getProductSpecs(selectedProduct);
-  }
-
-  const shortProductSpecs = productSpecs.slice(0, 4);
-
+  const [selectedProduct, setSelectedProduct] = useState<
+    ProductInfo | undefined
+  >(undefined);
+  const [productSpecs, setProductSpecs] = useState<Spec[]>([]);
+  const [productImages, setProductImages] = useState<string[]>([]);
+  const [selectedImage, setSelectedImage] = useState<string>('');
   const [selectedColor, setSelectedColor] = useState<string | undefined>();
   const [selectedCapacity, setSelectedCapacity] = useState<
     string | undefined
   >();
+  const [recommendedProducts, setRecommendedProducts] = useState<Product[]>([]);
 
+  // todo -- remove this bullshit check
   useEffect(() => {
     window.scrollTo(0, 0);
-    itemId?.toString() && fetchProductById(itemId, categoryArea);
-  }, [itemId, categoryArea, fetchProductById]);
 
-  useEffect(() => {
-    if (selectedProduct) {
-      setSelectedColor(selectedProduct.color);
-      setSelectedCapacity(selectedProduct.capacity);
+    fetchProductById(itemId || '', categoryArea).then(response => {
+      setSelectedProduct(response);
+
+      if (response) {
+        setProductSpecs(getProductSpecs(response));
+        setProductImages(response.images);
+        setSelectedImage(response.images[0]);
+        setSelectedColor(response.color);
+        setSelectedCapacity(response.capacity);
+
+        setRecommendedProducts(
+          catalogProducts
+            .filter(item => item.category === categoryArea)
+            .sort(() => Math.random() - 0.5) // shuffling the array to take random 12 products
+            .slice(0, 12),
+        );
+      }
+    });
+  }, [
+    catalogProducts,
+    categoryArea,
+    fetchProductById,
+    itemId,
+    setRecommendedProducts,
+  ]);
+
+  const shortProductSpecs = productSpecs.slice(0, 4);
+
+  const toggleFavorite = (productId: string) => {
+    console.log('TOGGLING FAVORITE ', productId);
+    if (favourites.includes(productId)) {
+      removeFrom(productId, 'fav');
+    } else {
+      addTo(productId, 'fav');
     }
-  }, [selectedProduct]);
+  };
+
+  const toggleCart = (productId: string) => {
+    console.log('TOGGLING CART ', productId);
+    if (cartProducts.includes(productId)) {
+      removeFrom(productId, 'cart');
+    } else {
+      addTo(productId, 'cart');
+    }
+  };
 
   return (
     <div className="container">
@@ -82,7 +130,32 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
         <h2 className="product-name h2">{selectedProduct?.name}</h2>
 
         <div className="product-section">
-          <div className="photos">photos will be here</div>
+          <div className="product-images">
+            {productImages.map(photo => (
+              <img
+                key={photo}
+                src={photo}
+                alt="Product image"
+                className={cn('product-images__image', {
+                  'product-images__image--selected': selectedImage === photo,
+                })}
+                onClick={() => setSelectedImage(photo)}
+              />
+            ))}
+          </div>
+
+          <div className="selected-image-container">
+            {productImages.map(photo => (
+              <div
+                key={photo}
+                style={{ backgroundImage: `url(${photo})` }}
+                className={cn('selected-image', {
+                  'selected-image--active': selectedImage === photo,
+                })}
+                aria-label="Product image"
+              ></div>
+            ))}
+          </div>
 
           <div className="product-properties">
             <section className="colors">
@@ -155,12 +228,35 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
               </div>
 
               <div className="buy__buttons">
-                <button className="buy__add-to-cart button-text">
+                <button
+                  className={cn('buy__add-to-cart', 'button-text', {
+                    'buy__add-to-cart--selected': cartProducts.includes(
+                      selectedProduct?.id || '',
+                      // todo -- delete this bullshit
+                    ),
+                  })}
+                  onClick={() => toggleCart(selectedProduct?.id || '')}
+                >
                   Add to cart
                 </button>
 
-                <button className="buy__favorite">
-                  <div className="buy__favorite-image"></div>
+                <button
+                  className={cn('buy__favorite', 'button-text', {
+                    'buy__favorite--selected': cartProducts.includes(
+                      selectedProduct?.id || '',
+                      // todo -- delete this bullshit
+                    ),
+                  })}
+                  onClick={() => toggleFavorite(selectedProduct?.id || '')}
+                >
+                  <img
+                    src={
+                      favourites.includes(selectedProduct?.id || '')
+                        ? heartFilled
+                        : heart
+                    }
+                    alt="Add to favorite"
+                  />
                 </button>
               </div>
             </section>
@@ -219,7 +315,12 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
           </section>
         </div>
 
-        <section className="slider-TEMP">slider will be here</section>
+        <section className="slider-section slider--no-margin">
+          <Slider
+            titleName="You may also like"
+            products={recommendedProducts}
+          ></Slider>
+        </section>
       </div>
     </div>
   );
