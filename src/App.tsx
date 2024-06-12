@@ -15,7 +15,9 @@ export const App = () => {
   return (
     <>
       <Header />
-      <Outlet />
+      <div className="mainOutlet">
+        <Outlet />
+      </div>
       <Footer />
     </>
   );
