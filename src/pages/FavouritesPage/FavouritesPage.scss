@@ -71,7 +71,11 @@
     }
 
     &-homeIcon {
-      width: 16px;
+      display: block;
+    }
+
+    &-arrowRightIcon {
+      display: block;
     }
   }
 }
@@ -81,7 +85,7 @@
   grid-template-columns: repeat(auto-fill, 1fr);
   justify-items: stretch;
   align-items: stretch;
-  gap: 40px 16px; 
+  gap: 40px 16px;
 
   @include on-tablet {
     grid-template-columns: repeat(2, 1fr);
@@ -94,4 +98,4 @@
   @include on-desktop {
     grid-template-columns: repeat(4, 1fr);
   }
-} 
+}

@@ -7,7 +7,7 @@
   font-family: 'Mont-Regular', sans-serif;
   display: block;
   text-align: left;
-  padding-block: 32px 0; 
+  padding-block: 32px 0;
   padding-inline: 16px;
   border-top: 1px solid $grayElements;
 
@@ -27,12 +27,13 @@
   }
 
   &__content {
-    width: 100%; 
+    width: 100%;
     max-width: 1136px;
     position: relative;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
+    padding-block: 0 32px;
 
     @include on-tablet {
       flex-direction: row;
@@ -41,7 +42,7 @@
     }
 
     @include on-desktop {
-      margin: 0 auto; 
+      margin: 0 auto;
     }
   }
 
@@ -57,7 +58,7 @@
     display: block;
     height: 32px;
     position: relative;
-    background-color: $white; 
+    background-color: $white;
     color: $grayPrimary;
   }
 
@@ -98,14 +99,14 @@
 
     &--top {
       margin-bottom: 0px;
-      border: 1px solid $grayElements; 
+      border: 1px solid $grayElements;
       background-color: $white;
       padding: 8px;
       transition: all $effect-duration;
 
       &:hover {
-        background-color: $white; 
-        border: 1px solid $grayPrimary; 
+        background-color: $white;
+        border: 1px solid $grayPrimary;
         cursor: pointer;
       }
     }
@@ -116,10 +117,10 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin-top: 16px;
+    padding-top: 32px;
 
     @include on-tablet {
-      margin-top: 0;
+      padding-top: 0;
     }
   }
 

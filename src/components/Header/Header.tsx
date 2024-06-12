@@ -4,7 +4,6 @@ import cn from 'classnames';
 import { Link } from 'react-router-dom';
 
 import { useStore, useProductStore } from '../../store/productStore';
-
 import { LanguagesSelector } from '../LanguagesSelector/LanguagesSelector';
 import { useTranslation } from 'react-i18next';
 
@@ -24,7 +23,7 @@ export const Header: React.FC = () => {
   return (
     <header className="header">
       <div className="header__container">
-        <Link to="">
+        <Link to="home">
           <img src={logo} alt="NiceGadgetsLogo" className="header__logo" />
         </Link>
 
