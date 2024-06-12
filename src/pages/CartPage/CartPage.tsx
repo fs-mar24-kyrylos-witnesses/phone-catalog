@@ -66,11 +66,6 @@ export const CartPage: React.FC = () => {
               <p className="checkout-button-text">Checkout</p>
             </div>
           </div>
-    <div className="container-cart">
-      <div className="title">
-        <div className="title-map">
-          <img className="title-map-img" src={arrowLeft} alt="arrLeft" />
-          <span className="title-map-back">Back</span>
         </div>
       ) : (
         <div className="emptyCartContain">
