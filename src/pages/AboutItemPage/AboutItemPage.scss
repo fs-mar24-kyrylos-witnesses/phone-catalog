@@ -152,10 +152,12 @@
 
 .selected-image {
   position: absolute;
-  top: 10px; // Adjust based on container padding
-  left: 10px; // Adjust based on container padding
-  right: 10px; // Adjust based on container padding
-  bottom: 10px; // Adjust based on container padding
+
+  // this is needed to simulate padding for element with absolute positioning 
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px; 
 
   background-size: contain;
   background-repeat: no-repeat;
