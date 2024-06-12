@@ -4,12 +4,15 @@ import cn from 'classnames';
 import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
+import { Slider } from '../../components/Slider';
+
 import { useProductStore } from '../../store/productStore';
 import { Category } from '../../types/Category';
 
 import home from '../../assets/icons/home.svg';
 import arrowRight from '../../assets/icons/arrow-right.svg';
 import arrowLeft from '../../assets/icons/arrow-left.svg';
+
 import { getProductSpecs } from '../../helper/getProductSpecs';
 import { Spec } from '../../types/Spec';
 
@@ -24,6 +27,13 @@ function normalizeCapacity(capacity: string) {
 export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
   const normalizedCategory =
     categoryArea[0].toUpperCase() + categoryArea.slice(1);
+
+  const { catalogProducts } = useProductStore();
+  const recommendedProducts = catalogProducts
+    .filter(item => item.category === categoryArea)
+    .sort(() => Math.random() - 0.5) // shuffling the array to take random 12 products
+    .slice(0, 12);
+
   const { itemId } = useParams(); // our product id
   const { fetchProductById } = useProductStore(); // func that gives product depending on the id and category
   const selectedProduct = useProductStore(state => state.selectedProduct); // finally selected product
@@ -219,7 +229,12 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
           </section>
         </div>
 
-        <section className="slider-TEMP">slider will be here</section>
+        <section className="slider-section slider--no-margin">
+          <Slider
+            titleName="You may also like"
+            products={recommendedProducts}
+          ></Slider>
+        </section>
       </div>
     </div>
   );

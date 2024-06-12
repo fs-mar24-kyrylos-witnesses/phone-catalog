@@ -341,18 +341,12 @@
   }
 }
 
-.slider-TEMP {
-  height: 300px;
-
+.slider-section {
   margin-top: 56px;
+}
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  grid-column: 1 / -1;
-
-  background-color: #e2e6e9;
+.slider--no-margin {
+  margin-left: 0;
 }
 
 /*#region capacityButton*/
