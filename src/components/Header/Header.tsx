@@ -55,7 +55,7 @@ export const Header: React.FC = () => {
             <LanguagesSelector />
             <Link
               className="nav__icons__container nav__icons__container-like"
-              to="#favorites"
+              to="favourites"
             >
               {favourites.length > 0 && (
                 <div className="adding">
