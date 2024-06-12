@@ -7,6 +7,7 @@ import { Product } from '../../types/Product';
 import { useStore } from '../../store/productStore';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import classNames from 'classnames';
 
 type Props = {
   product: Product;
@@ -37,12 +38,19 @@ export const CartItem: React.FC<Props> = ({ product, count, setCount }) => {
       <div className="product-handle">
         <div className="product-handle-buttons">
           <div
-            className="product-handle-buttons-box"
+            className={classNames('product-handle-buttons-box', {
+              disabled: count === 1,
+            })}
+            aria-disabled={count === 1}
             onClick={() => handleDecrease()}
           >
             <img src={Minus} alt="minus" />
           </div>
-          <p className="product-handle-buttons-count">{count}</p>
+
+          <div className="product-handle-buttons-count">
+            <p className="product-handle-buttons-count-text">{count}</p>
+          </div>
+
           <div
             className="product-handle-buttons-box"
             onClick={() => handleIncrease()}
