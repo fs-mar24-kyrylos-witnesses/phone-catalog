@@ -46,8 +46,8 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
 
   const shortProductSpecs = productSpecs.slice(0, 4);
 
-  const productPhotos = selectedProduct?.images || ['']; // todo -- add handler
-  const [selectedPhoto, setSelectedPhoto] = useState<string>(productPhotos[0]);
+  const [productPhotos, setProductPhotos] = useState<string[]>([]);
+  const [selectedPhoto, setSelectedPhoto] = useState<string>('');
 
   const [selectedColor, setSelectedColor] = useState<string | undefined>();
   const [selectedCapacity, setSelectedCapacity] = useState<
@@ -55,16 +55,18 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
   >();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-    itemId?.toString() && fetchProductById(itemId, categoryArea);
-  }, [itemId, categoryArea, fetchProductById]);
-
-  useEffect(() => {
     if (selectedProduct) {
+      setProductPhotos(selectedProduct.images);
+      setSelectedPhoto(selectedProduct.images[0]);
       setSelectedColor(selectedProduct.color);
       setSelectedCapacity(selectedProduct.capacity);
     }
   }, [selectedProduct]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    itemId?.toString() && fetchProductById(itemId, categoryArea);
+  }, [itemId, categoryArea, fetchProductById]);
 
   return (
     <div className="container">
@@ -109,11 +111,18 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
             ))}
           </div>
 
-          <img
-            src={selectedPhoto}
-            alt="Product image"
-            className="selected-image"
-          />
+          <div className="selected-image-container">
+            {productPhotos.map(photo => (
+              <div
+                key={photo}
+                style={{ backgroundImage: `url(${photo})` }}
+                className={cn('selected-image', {
+                  'selected-image--active': selectedPhoto === photo,
+                })}
+                aria-label="Product image"
+              ></div>
+            ))}
+          </div>
 
           <div className="product-properties">
             <section className="colors">

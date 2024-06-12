@@ -115,22 +115,27 @@
 
     border: 1px solid $grayElements;
 
+    cursor: pointer;
+
+    @include hover(border, 1px solid $grayIconsPlaceholders);
+
     &--selected {
       border: 1px solid $grayPrimary;
+      @include hover(border, 1px solid $grayPrimary);
     }
   }
 }
 
-.selected-image {
+.selected-image-container {
   width: 100%;
   aspect-ratio: 1 / 1;
-
   margin-bottom: 16px;
-  padding: 10px;
+  box-sizing: border-box;
+  
+  position: relative;
+  padding: 10px; // Add padding here
 
   order: 1;
-
-  object-fit: contain;
 
   grid-column: 1 / -1;
 
@@ -144,6 +149,27 @@
     grid-column: span 10;
   }
 }
+
+.selected-image {
+  position: absolute;
+  top: 10px; // Adjust based on container padding
+  left: 10px; // Adjust based on container padding
+  right: 10px; // Adjust based on container padding
+  bottom: 10px; // Adjust based on container padding
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  transition: opacity 0.3s ease-in-out;
+
+  opacity: 0;
+
+  &--active {
+    opacity: 1;
+  }
+}
+
 
 .separator {
   width: 100%;
@@ -256,6 +282,8 @@
 
     color: $white;
     background-color: $grayPrimary;
+
+    cursor: pointer;
 
     @include hover(box-shadow, 0px 3px 13px 0px $hover-shadow);
 
@@ -431,14 +459,14 @@
   background-color: $white;
 
   border-radius: 50%;
-  border: 1px solid #e2e6e9;
+  border: 1px solid $grayElements;
 
   cursor: pointer;
 
-  @include hover(border, 1px solid #b4bdc3);
+  @include hover(border, 1px solid $grayIconsPlaceholders);
 
   &--selected {
-    border: 1px solid #313237;
+    border: 1px solid $grayPrimary;
   }
 }
 
