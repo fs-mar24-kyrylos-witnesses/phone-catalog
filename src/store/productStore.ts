@@ -9,8 +9,6 @@ import { Category } from '../types/Category';
 
 type ProductStore = {
   catalogProducts: Product[];
-  favourites: string[];
-  cartProducts: string[];
   selectedProduct: ProductInfo | null;
   error: string;
   loading: boolean;
@@ -36,8 +34,6 @@ type Store = {
 
 export const useProductStore = createZustand<ProductStore>(set => ({
   catalogProducts: [],
-  favourites: [],
-  cartProducts: [],
   selectedProduct: null,
   loading: false,
   error: '',

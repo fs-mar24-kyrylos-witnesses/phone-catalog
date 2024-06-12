@@ -2,12 +2,11 @@ import React from 'react';
 import './Header.scss';
 import cn from 'classnames';
 import { Link } from 'react-router-dom';
-<<<<<<< feature/Cart
+
 import { useStore, useProductStore } from '../../store/productStore';
-=======
+        
 import { LanguagesSelector } from '../LanguagesSelector/LanguagesSelector';
 import { useTranslation } from 'react-i18next';
->>>>>>> develop
 
 import logo from '../../assets/icons/logo.svg';
 import like from '../../assets/icons/heart.svg';
