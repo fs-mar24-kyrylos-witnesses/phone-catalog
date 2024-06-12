@@ -5,10 +5,12 @@ import arrowRight from '../../assets/icons/arrow-right.svg';
 import { useProductStore, useStore } from '../../store/productStore';
 import { Product } from '../../types/Product';
 import { Card } from '../../components/Card/Card';
+import { useTranslation } from 'react-i18next';
 
 export const FavouritesPage = () => {
   const { catalogProducts } = useProductStore();
   const { favourites, getLength } = useStore();
+  const { t } = useTranslation();
 
   const cart: Product[] = favourites
     .map(prod => catalogProducts.find(item => prod === item.itemId))
@@ -31,11 +33,13 @@ export const FavouritesPage = () => {
             alt="arrow"
           />
           <Link to="/favourites">
-            <span className="category_header-map-categoryName">Favourites</span>
+            <span className="category_header-map-categoryName">
+              {t('favourites')}
+            </span>
           </Link>
         </div>
-        <h1 className="main-title-category">Favourites</h1>
-        <p className="category_header-itemsCount">{`${getLength('fav')} models`}</p>
+        <h1 className="main-title-category">{t('favourites')}</h1>
+        <p className="category_header-itemsCount">{`${getLength('fav')} ${t('models')}`}</p>
       </div>
       <div className="favs">
         {cart.map(item => (
