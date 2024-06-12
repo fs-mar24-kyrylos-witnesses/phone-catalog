@@ -120,6 +120,7 @@
   grid-column: 1 / -1;
 
   @include on-tablet {
+    margin-top: 0;
     grid-column: span 5;
   }
 
