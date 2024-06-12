@@ -47,14 +47,14 @@ export const Header: React.FC = () => {
           <div className="nav__icons">
             <Link
               className="nav__icons__container nav__icons__container-like"
-              to="#favorites"
+              to="favorites"
             >
               <img className="nav__icons__icon-like" src={like} alt="Like" />
             </Link>
 
             <Link
               className="nav__icons__container nav__icons__container-cart"
-              to="#cart"
+              to="cart"
             >
               <img
                 className="nav__icons__icon-cart"
@@ -66,7 +66,7 @@ export const Header: React.FC = () => {
         </nav>
 
         <div className="header__menu" onClick={toggleMenu}>
-          <a className="header__menu-link" href="#menu">
+          <a className="header__menu-link" href="">
             {isMenuOpen ? (
               <img className="header__menu-icon" src={close} alt="Close" />
             ) : (
