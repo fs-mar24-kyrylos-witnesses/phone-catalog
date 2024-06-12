@@ -2,7 +2,9 @@ import React from 'react';
 import './Card.scss';
 import { Product } from '../../types/Product';
 import heart from '../../assets/icons/heart.svg';
+import filledHeart from '../../assets/icons/heart-filled.svg';
 import { Link } from 'react-router-dom';
+import { useStore } from '../../store/productStore';
 
 type Props = {
   product: Product;
@@ -10,6 +12,8 @@ type Props = {
 };
 
 export const Card: React.FC<Props> = ({ product, category }) => {
+  const { favourites, cartProducts, addTo, removeFrom } = useStore();
+
   return (
     <div className="card_container">
       <Link to={`/${category}/${product.itemId}`}>
@@ -61,16 +65,47 @@ export const Card: React.FC<Props> = ({ product, category }) => {
         </div>
       </Link>
       <div className="card_container-handle">
-        <div className="card_container-handle-bag">
-          <p className="card_container-handle-bag-addToBag">Add to cart</p>
-        </div>
-        <div className="card_container-handle-favs">
-          <img
-            className="card_container-handle-favs-addToFavs"
-            src={heart}
-            alt="Add to fav"
-          />
-        </div>
+        {cartProducts.includes(product.itemId) ? (
+          <div
+            onClick={() => removeFrom(product.itemId, 'cart')}
+            className="card_container-handle-bag cart-bag"
+          >
+            <p className="card_container-handle-bag-addToBag cart-addToBag">
+              Added to cart
+            </p>
+          </div>
+        ) : (
+          <div
+            onClick={() => addTo(product.itemId, 'cart')}
+            className="card_container-handle-bag"
+          >
+            <p className="card_container-handle-bag-addToBag">Add to cart</p>
+          </div>
+        )}
+
+        {favourites.includes(product.itemId) ? (
+          <div
+            onClick={() => removeFrom(product.itemId, 'fav')}
+            className="card_container-handle-favs"
+          >
+            <img
+              className="card_container-handle-favs-addToFavs"
+              src={filledHeart}
+              alt="Add to fav"
+            />
+          </div>
+        ) : (
+          <div
+            onClick={() => addTo(product.itemId, 'fav')}
+            className="card_container-handle-favs"
+          >
+            <img
+              className="card_container-handle-favs-addToFavs"
+              src={heart}
+              alt="Add to fav"
+            />
+          </div>
+        )}
       </div>
     </div>
   );

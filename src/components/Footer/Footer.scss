@@ -2,12 +2,11 @@
 @import '/src/prepare-styles/mixins.scss';
 @import '/src/prepare-styles/usable-fonts.scss';
 
-.container {
-  font-family: 'Mont-Regular';
-  @include content-padding-inline;
-}
+
 
 .footer {
+  font-family: 'Mont-Regular';
+  @include content-padding-inline;
   font-family: 'Mont-Regular', sans-serif;
   display: block;
   text-align: left;
