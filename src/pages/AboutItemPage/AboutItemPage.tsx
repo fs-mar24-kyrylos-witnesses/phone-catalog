@@ -218,7 +218,7 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
           </section>
         </div>
 
-        <section className="slider">slider will be here</section>
+        <section className="slider-TEMP">slider will be here</section>
       </div>
     </div>
   );

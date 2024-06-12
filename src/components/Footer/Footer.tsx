@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Footer.scss';
 import logo from '../../assets/icons/logo.svg';
 import arrowUp from '../../assets/icons/arrow-up.svg';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export const Footer: React.FC = () => {
+  const { t } = useTranslation();
+  const { i18n } = useTranslation();
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem('selectedLanguage');
+    if (savedLanguage) {
+      i18n.changeLanguage(savedLanguage);
+    }
+  }, [i18n]);
   return (
     <footer>
       <div className="container footer">
@@ -22,20 +31,20 @@ export const Footer: React.FC = () => {
               rel="noopener noreferrer"
               className="footer__link"
             >
-              GITHUB
+              {t('github')}
             </Link>
 
             <Link to="contacts" className="footer__link">
-              CONTACTS
+              {t('contacts')}
             </Link>
 
             <Link to="rights" className="footer__link">
-              RIGHTS
+              {t('rights')}
             </Link>
           </div>
 
           <div className="footer__anchor">
-            <span className="footer__label">Back to top</span>
+            <span className="footer__label">{t('backToTop')}</span>
             <Link
               to="#"
               onClick={() => window.scrollTo(0, 0)}
