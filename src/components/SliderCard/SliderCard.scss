@@ -132,41 +132,4 @@
       }
     }
   }
-
-  &-handle {
-    display: flex;
-    flex-direction: row;
-    height: 40px;
-    width: 100%;
-    justify-content: space-between;
-    gap: 8px;
-
-    &-bag {
-      background-color: $grayPrimary;
-      border-radius: 2px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: 100%;
-
-      &-addToBag {
-        font-family: 'Mont-Regular', sans-serif;
-        font-size: 14px;
-        color: $white;
-        line-height: 21px;
-      }
-    }
-
-    &-favs {
-      height: 40px;
-      width: 55px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid $grayIconsPlaceholders;
-
-      @include hover(border-color, $grayPrimary);
-    }
-  }
 }
