@@ -6,10 +6,11 @@
 .footer {
   font-family: 'Mont-Regular', sans-serif;
   display: block;
-  text-align: left;
-  padding-block: 32px 0; 
+  text-align: center; 
   padding-inline: 16px;
   border-top: 1px solid $grayElements;
+  height: 100%; 
+
 
   @include on-tablet {
     padding-inline: 32px;
@@ -33,10 +34,13 @@
     display: flex;
     flex-direction: column;
     margin: 0 auto;
+    align-items: center; 
+    justify-content: center; 
+    height: 100%; 
 
     @include on-tablet {
       flex-direction: row;
-      justify-content: space-between;
+      justify-content: center; 
       align-items: center;
     }
 
@@ -47,6 +51,8 @@
 
   &__logo-wrapper {
     margin-bottom: 32px;
+    display: flex; 
+    justify-content: center; 
 
     @include on-tablet {
       margin-bottom: 0;
@@ -66,12 +72,14 @@
     display: flex;
     flex-direction: column;
     row-gap: 16px;
+    align-items: center; 
 
     @include on-tablet {
       flex-direction: row;
       gap: 14px;
       margin-top: 0;
       margin-inline: auto;
+      justify-content: center; 
     }
 
     @include on-desktop {
@@ -135,3 +143,4 @@
     font-weight: 700;
   }
 }
+
