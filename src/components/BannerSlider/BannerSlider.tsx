@@ -46,6 +46,7 @@ export const BannerSlider = () => {
         pagination={{ clickable: true }}
         loop
         autoplay={{ delay: 5000 }}
+        speed={500}
       >
         {images.map((image, index) => {
           return (
