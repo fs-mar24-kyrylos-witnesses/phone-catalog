@@ -38,7 +38,7 @@ export const CartPage: React.FC = () => {
   return (
     <div className="container-cart">
       <div className="title">
-        <div onClick={() => history.go(-1)} className="title-map">
+        <div className="title-map">
           <img className="title-map-img" src={arrowLeft} alt="arrLeft" />
           <span className="title-map-back">Back</span>
         </div>
