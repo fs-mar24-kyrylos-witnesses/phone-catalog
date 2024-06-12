@@ -37,10 +37,6 @@
       background-color: $phone-banner-background;
     }
 
-    &-accessories {
-      background-color: $accessory-banner-background;
-    }
-
     &-tablets {
       background-color: $tablet-banner-background;
     }
@@ -96,6 +92,8 @@
   &__button-next {
     background-image: url('../../assets/icons/arrow-right.svg');
     margin-left: 19px;
+
+    fill: red;
 
     @include on-desktop {
       margin-left: 16px;

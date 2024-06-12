@@ -13,15 +13,15 @@ import { useRef } from 'react';
 SwiperCore.use([Navigation, Pagination]);
 
 const images = [
+  '../img/banner-kyrylo.png',
   '../img/banner-phones.png',
   '../img/banner-tablets.png',
-  '../img/banner-accessories.png',
 ];
 
 export const BannerSlider = () => {
   const swiperRef = useRef<SwiperClass | null>(null);
 
-  const allCategories = ['phones', 'tablets', 'accessories'];
+  const allCategories = ['accessories', 'phones', 'tablets'];
 
   const goNext = () => {
     swiperRef.current && swiperRef.current.slideNext();
