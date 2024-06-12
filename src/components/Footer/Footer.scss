@@ -7,19 +7,27 @@
   font-family: 'Mont-Regular', sans-serif;
   display: block;
   text-align: left;
-  padding-block: 32px 0; 
   padding-inline: 16px;
   border-top: 1px solid $grayElements;
+  padding-inline: 32px;
+  padding-block: 32px;
+  box-sizing: border-box ;
+
 
   @include on-tablet {
     padding-inline: 32px;
+    padding-top: 0px;
     height: $footer-height;
     flex-wrap: wrap;
     align-items: center;
+    padding-block: 0px;
   }
 
   @include on-desktop {
-    padding-inline: 0;
+    padding-inline: 0px;
+    padding-top: 0px;
+    padding-block: 0px;
+
   }
 
   &--fixed {
@@ -33,6 +41,7 @@
     display: flex;
     flex-direction: column;
     margin: 0 auto;
+    height: $footer-height; 
 
     @include on-tablet {
       flex-direction: row;
@@ -88,6 +97,7 @@
     letter-spacing: 0.04em;
     color: $graySecondary;
     text-transform: uppercase;
+    
 
     @include hover(color, $grayPrimary);
 
@@ -102,6 +112,7 @@
       background-color: $white;
       padding: 8px;
       transition: all $effect-duration;
+      
 
       &:hover {
         background-color: $white; 
@@ -117,6 +128,7 @@
     justify-content: center;
     text-align: center;
     margin-top: 16px;
+    padding-block: 32px;
 
     @include on-tablet {
       margin-top: 0;
@@ -135,3 +147,4 @@
     font-weight: 700;
   }
 }
+

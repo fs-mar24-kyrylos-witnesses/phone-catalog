@@ -6,7 +6,6 @@
   @include content-padding-inline;
 }
 
-
 .breadcrumbs-container {
   display: flex;
   align-items: center;
@@ -86,25 +85,93 @@
   @include grid-align;
 }
 
-.photos {
-  height: 464px;
-
+.product-images {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  gap: 8px;
+
+  order: 2;
 
   grid-column: 1 / -1;
 
-  background-color: #e2e6e9;
-
   @include on-tablet {
-    grid-column: span 7;
+    order: 1;
+    flex-direction: column;
+    grid-column: span 1;
   }
 
   @include on-desktop {
-    grid-column: span 12;
+    gap: 16px;
+    grid-column: span 2;
+  }
+
+  &__image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+
+    box-sizing: border-box;
+    padding: 8px;
+
+    object-fit: contain;
+
+    border: 1px solid $grayElements;
+
+    cursor: pointer;
+
+    @include hover(border, 1px solid $grayIconsPlaceholders);
+
+    &--selected {
+      border: 1px solid $grayPrimary;
+      @include hover(border, 1px solid $grayPrimary);
+    }
   }
 }
+
+.selected-image-container {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  
+  position: relative;
+  padding: 10px; // Add padding here
+
+  order: 1;
+
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    order: 1;
+    margin-bottom: 0;
+    grid-column: span 6;
+  }
+
+  @include on-desktop {
+    grid-column: span 10;
+  }
+}
+
+.selected-image {
+  position: absolute;
+
+  // this is needed to simulate padding for element with absolute positioning 
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px; 
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  transition: opacity 0.3s ease-in-out;
+
+  opacity: 0;
+
+  &--active {
+    opacity: 1;
+  }
+}
+
 
 .separator {
   width: 100%;
@@ -118,6 +185,8 @@
 .product-properties {
   margin-top: 40px;
   grid-column: 1 / -1;
+
+  order: 3;
 
   @include on-tablet {
     margin-top: 0;
@@ -215,6 +284,8 @@
 
     color: $white;
     background-color: $grayPrimary;
+
+    cursor: pointer;
 
     @include hover(box-shadow, 0px 3px 13px 0px $hover-shadow);
 
@@ -341,18 +412,12 @@
   }
 }
 
-.slider-TEMP {
-  height: 300px;
-
+.slider-section {
   margin-top: 56px;
+}
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  grid-column: 1 / -1;
-
-  background-color: #e2e6e9;
+.slider--no-margin {
+  margin-left: 0;
 }
 
 /*#region capacityButton*/
@@ -396,15 +461,14 @@
   background-color: $white;
 
   border-radius: 50%;
-  border: 1px solid #e2e6e9;
+  border: 1px solid $grayElements;
 
   cursor: pointer;
-  
 
-  @include hover(border, 1px solid #b4bdc3);
+  @include hover(border, 1px solid $grayIconsPlaceholders);
 
   &--selected {
-    border: 1px solid #313237;
+    border: 1px solid $grayPrimary;
   }
 }
 

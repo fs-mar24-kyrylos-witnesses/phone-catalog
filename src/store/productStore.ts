@@ -9,7 +9,6 @@ import { Category } from '../types/Category';
 
 type ProductStore = {
   catalogProducts: Product[];
-  selectedProduct: ProductInfo | null;
   error: string;
   loading: boolean;
 
@@ -17,9 +16,11 @@ type ProductStore = {
   toggleMenu: () => void;
 
   setCatalogProducts: (products: Product[]) => void;
-  setSelectedProduct: (selectedProduct: ProductInfo) => void;
   fetchAllProducts: () => Promise<void>;
-  fetchProductById: (id: string, mode: Category) => Promise<void>;
+  fetchProductById: (
+    id: string,
+    mode: Category,
+  ) => Promise<ProductInfo | undefined>;
 };
 
 type Store = {
@@ -51,13 +52,14 @@ export const useProductStore = createZustand<ProductStore>(set => ({
     }
   },
 
-  fetchProductById: async (id: string, category: Category) => {
+  fetchProductById: async (id: string, mode: Category) => {
     set({ loading: true });
     try {
-      const product = await fetchProductByIdFromApi(id, category);
-      set({ selectedProduct: product });
-    } catch {
+      const product = await fetchProductByIdFromApi(id, mode);
+      return product; // Return the product info
+    } catch (error) {
       set({ error: 'Error fetching product info' });
+      throw error; // Re-throw the error to handle it in the calling function
     } finally {
       set({ loading: false });
     }
@@ -66,9 +68,6 @@ export const useProductStore = createZustand<ProductStore>(set => ({
   setCatalogProducts: (products: Product[]) => {
     set({ catalogProducts: products });
   },
-
-  setSelectedProduct: (selectedProduct: ProductInfo) =>
-    set({ selectedProduct }),
 
   toggleMenu: () => set(state => ({ isMenuOpen: !state.isMenuOpen })),
 }));
