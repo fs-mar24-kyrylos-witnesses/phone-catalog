@@ -4,9 +4,14 @@ import './ShopByCategory.scss';
 import { useTranslation } from 'react-i18next';
 
 export const ShopByCategory = () => {
+  const { t } = useTranslation();
   const CatalogProduct = useProductStore(state => state.catalogProducts);
   const allCategories = ['phones', 'tablets', 'accessories'];
-  const allCategoriesTitle = ['Mobile phones', 'Tablets', 'Accessories'];
+  const allCategoriesTitle = [
+    t('mobilePhones'),
+    t('tablets'),
+    t('accessories'),
+  ];
 
   const countProductsByCategory = (category: string) => {
     return CatalogProduct.filter(product => product.category === category)
@@ -16,7 +21,6 @@ export const ShopByCategory = () => {
   const categoryCounts = allCategories.map(category => {
     return countProductsByCategory(category);
   });
-  const { t } = useTranslation();
 
   return (
     <div className="shopBy">
@@ -40,7 +44,7 @@ export const ShopByCategory = () => {
               </Link>
 
               <p className="shopBy-category-count">
-                {categoryCounts[index]} models
+                {categoryCounts[index]} {t('models')}
               </p>
             </div>
           );

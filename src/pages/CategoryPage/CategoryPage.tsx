@@ -12,6 +12,7 @@ import { filter } from '../../helper/filter/filter';
 import { Pagination } from '../../components/Pagination/Pagination';
 import { getNumbers } from '../../helper/getNumbers/getNumbers';
 import { SearchLink } from '../../helper/SearchLink/SearchLink';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   category: CategoryArray;
@@ -71,6 +72,7 @@ export const CategoryPage: React.FC<Props> = ({ category }) => {
     newSearchParams.set('sort', event.target.value);
     setSearchParams(newSearchParams.toString());
   };
+  const { t } = useTranslation();
 
   return (
     <>
@@ -99,7 +101,9 @@ export const CategoryPage: React.FC<Props> = ({ category }) => {
           <p className="category_header-itemsCount">{`${actualProducts.length} models`}</p>
           <div className="category_header-sortAndPerpage">
             <div className="category_header-select">
-              <span className="category_header-select-title">Sort by</span>
+              <span className="category_header-select-title">
+                {t('sortBy')}
+              </span>
               <select
                 name="sort"
                 className="category_header-sort-select"
@@ -119,7 +123,7 @@ export const CategoryPage: React.FC<Props> = ({ category }) => {
             </div>
             <div className="category_header-select">
               <span className="category_header-select-title">
-                Items on page
+                {t('itemsOnPage')}
               </span>
               <select
                 name="perPage"
@@ -134,7 +138,7 @@ export const CategoryPage: React.FC<Props> = ({ category }) => {
                   <SearchLink
                     params={{ perPage: filteredProducts.length.toString() }}
                   >
-                    All
+                    {t('all')}
                   </SearchLink>
                 </option>
                 {PerPage.map(field => (

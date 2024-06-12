@@ -6,6 +6,7 @@ import arrowLeft from '../../assets/icons/arrow-left.svg';
 import emptyCart from '../../../public/img/cart-is-empty.png';
 import { CartItem } from '../../components/CartItem';
 import { Product } from '../../types/Product';
+import { useTranslation } from 'react-i18next';
 
 export const CartPage: React.FC = () => {
   const { catalogProducts } = useProductStore();
@@ -36,6 +37,8 @@ export const CartPage: React.FC = () => {
     }, 0);
   };
 
+  const { t } = useTranslation();
+
   return (
     <>
       {cartProducts.length > 0 ? (
@@ -43,9 +46,9 @@ export const CartPage: React.FC = () => {
           <div className="title">
             <div onClick={() => history.go(-1)} className="title-map">
               <img className="title-map-img" src={arrowLeft} alt="arrLeft" />
-              <span className="title-map-back">Back</span>
+              <span className="title-map-back">{t('goBack')}</span>
             </div>
-            <h1>Cart</h1>
+            <h1>{t('cart')}</h1>
           </div>
           <div className="fav-items">
             {cart.map((item, index) => (
@@ -61,9 +64,9 @@ export const CartPage: React.FC = () => {
           </div>
           <div className="checkout">
             <p className="checkout-price">{`$${getTotalPrice()}`}</p>
-            <p className="checkout-total">{`Total for ${getLength('cart')} items`}</p>
+            <p className="checkout-total">{`${t('totalFor')} ${getLength('cart')} ${t('items')}`}</p>
             <div className="checkout-button">
-              <p className="checkout-button-text">Checkout</p>
+              <p className="checkout-button-text">{t('checkout')}</p>
             </div>
           </div>
         </div>
