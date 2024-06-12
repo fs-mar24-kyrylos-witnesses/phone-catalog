@@ -56,7 +56,7 @@ export const Slider: React.FC<SliderProps> = ({
         nextIndex = nextIndex - totalSlides;
       }
 
-      swiperRef.current.slideTo(nextIndex, 300);
+      swiperRef.current.slideTo(nextIndex, 800);
     }
   };
 
@@ -69,7 +69,7 @@ export const Slider: React.FC<SliderProps> = ({
       if (prevIndex < 0) {
         prevIndex += totalSlides;
       }
-      swiperRef.current.slideTo(prevIndex, 300);
+      swiperRef.current.slideTo(prevIndex, 800);
     }
   };
 
