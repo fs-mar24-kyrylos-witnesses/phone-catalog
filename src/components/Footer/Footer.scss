@@ -7,12 +7,11 @@
   font-family: 'Mont-Regular', sans-serif;
   display: block;
   text-align: left;
-  padding-block: px 0;
   padding-inline: 16px;
   border-top: 1px solid $grayElements;
   padding-inline: 32px;
   padding-block: 32px;
-  box-sizing: border-box;
+  box-sizing: border-box ;
 
 
   @include on-tablet {
