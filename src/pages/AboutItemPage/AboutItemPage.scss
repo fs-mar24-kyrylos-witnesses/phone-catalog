@@ -6,7 +6,6 @@
   @include content-padding-inline;
 }
 
-
 .breadcrumbs-container {
   display: flex;
   align-items: center;
@@ -86,23 +85,63 @@
   @include grid-align;
 }
 
-.photos {
-  height: 464px;
-
+.product-images {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  gap: 8px;
+
+  order: 2;
 
   grid-column: 1 / -1;
 
-  background-color: #e2e6e9;
-
   @include on-tablet {
-    grid-column: span 7;
+    order: 1;
+    flex-direction: column;
+    grid-column: span 1;
   }
 
   @include on-desktop {
-    grid-column: span 12;
+    gap: 16px;
+    grid-column: span 2;
+  }
+
+  &__image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+
+    box-sizing: border-box;
+    padding: 8px;
+
+    object-fit: contain;
+
+    border: 1px solid $grayElements;
+
+    &--selected {
+      border: 1px solid $grayPrimary;
+    }
+  }
+}
+
+.selected-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+
+  margin-bottom: 16px;
+  padding: 10px;
+
+  order: 1;
+
+  object-fit: contain;
+
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    order: 1;
+    margin-bottom: 0;
+    grid-column: span 6;
+  }
+
+  @include on-desktop {
+    grid-column: span 10;
   }
 }
 
@@ -118,6 +157,8 @@
 .product-properties {
   margin-top: 40px;
   grid-column: 1 / -1;
+
+  order: 3;
 
   @include on-tablet {
     margin-top: 0;
@@ -393,7 +434,6 @@
   border: 1px solid #e2e6e9;
 
   cursor: pointer;
-  
 
   @include hover(border, 1px solid #b4bdc3);
 

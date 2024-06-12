@@ -29,14 +29,14 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
     categoryArea[0].toUpperCase() + categoryArea.slice(1);
 
   const { catalogProducts } = useProductStore();
+  const { itemId } = useParams(); // our product id
+  const { fetchProductById } = useProductStore(); // func that gives product depending on the id and category
+  const selectedProduct = useProductStore(state => state.selectedProduct); // finally selected product
+
   const recommendedProducts = catalogProducts
     .filter(item => item.category === categoryArea)
     .sort(() => Math.random() - 0.5) // shuffling the array to take random 12 products
     .slice(0, 12);
-
-  const { itemId } = useParams(); // our product id
-  const { fetchProductById } = useProductStore(); // func that gives product depending on the id and category
-  const selectedProduct = useProductStore(state => state.selectedProduct); // finally selected product
   let productSpecs: Spec[] = [];
 
   // todo -- add null handler
@@ -45,6 +45,9 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
   }
 
   const shortProductSpecs = productSpecs.slice(0, 4);
+
+  const productPhotos = selectedProduct?.images || ['']; // todo -- add handler
+  const [selectedPhoto, setSelectedPhoto] = useState<string>(productPhotos[0]);
 
   const [selectedColor, setSelectedColor] = useState<string | undefined>();
   const [selectedCapacity, setSelectedCapacity] = useState<
@@ -92,7 +95,25 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
         <h2 className="product-name h2">{selectedProduct?.name}</h2>
 
         <div className="product-section">
-          <div className="photos">photos will be here</div>
+          <div className="product-images">
+            {productPhotos.map(photo => (
+              <img
+                key={photo}
+                src={photo}
+                alt="Product image"
+                className={cn('product-images__image', {
+                  'product-images__image--selected': selectedPhoto === photo,
+                })}
+                onClick={() => setSelectedPhoto(photo)}
+              />
+            ))}
+          </div>
+
+          <img
+            src={selectedPhoto}
+            alt="Product image"
+            className="selected-image"
+          />
 
           <div className="product-properties">
             <section className="colors">
