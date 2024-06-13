@@ -272,8 +272,8 @@
 .adding {
   box-sizing: border-box;
   position: absolute;
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   background-color: $red;
   border-radius: 50%;
   bottom: 50%;
@@ -284,8 +284,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
   padding-block: 1px;
-  font-size: 11px;
+  font-size: 9px;
+
   color: $white;
   font-family: 'Mont-SemiBold', sans-serif;
 }
