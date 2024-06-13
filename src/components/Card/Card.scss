@@ -148,8 +148,14 @@
       height: 100%;
       flex: 1;
 
-      //you don't have border in bag - line below don't work in this case
-      @include hover(border-color, $grayIconsPlaceholders);
+      transition:
+        box-shadow $effect-duration ease,
+        background-color $effect-duration ease;
+
+      &:hover {
+        box-shadow: 0px 3px 9px 0px var(--card-add-button-shadow);
+        background-color: var(--card-hover-add-button-background);
+      }
 
       &-addToBag {
         cursor: pointer;
@@ -188,14 +194,22 @@
 }
 
 .cart-bag {
-  // i don't see what this color change
-  color: $green;
   background-color: var(--card-selected-button-background);
-  border: 1px solid $grayElements;
+  border: 1px solid var(--card-selected-button-border);
+
+  &:hover {
+    background-color: var(--card-selected-button-background);
+    box-shadow: none;
+  }
 }
 
 .cart-addToBag {
   color: var(--card-selected-button-text);
+}
+
+.cart-filled {
+  background-color: var(--main-background);
+  border: 1px solid var(--elements);
 }
 
 .card_container-position,

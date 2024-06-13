@@ -24,7 +24,7 @@ $red: rgba(235, 87, 87, 1);
   --secondary: rgba(137, 147, 154, 1);
   --icons: rgba(180, 189, 195, 1);
   --elements: rgba(226, 230, 233, 1);
-  --hover-background: rgba(226, 230, 233, 1);
+  --hover-background: rgba(250, 251, 252, 1);
   --white: rgba(255, 255, 255, 1);
   --green: rgba(39, 174, 96, 1);
   --red: rgba(235, 87, 87, 1);
@@ -63,15 +63,18 @@ $red: rgba(235, 87, 87, 1);
   --card-border: var(--elements);
   --card-background: var(--white);
   --card-add-button-background: var(--primary);
+  --card-add-button-shadow: rgba(23, 32, 49, 0.4);
   --card-fav-button-background: var(--white);
   --card-fav-button-border: var(--icons);
   //card hover colors
   --card-hover-fav-button-border: var(--primary);
   --card-hover-fav-button-background: var(--white);
+  --card-hover-add-button-background: var(--primary);
 
   //card button selected colors
   --card-selected-button-text: var(--green);
   --card-selected-button-background: var(--white);
+  --card-selected-button-border: var(--elements);
 
   //footer colors
   --footer-border: var(--elements);
@@ -130,9 +133,12 @@ $red: rgba(235, 87, 87, 1);
   --card-hover-fav-button-border: var(--icons);
   --card-hover-fav-button-background: var(--icons);
 
+  --card-hover-add-button-background: rgba(163, 120, 255, 1);
+
   //card button selected colors
   --card-selected-button-background: var(--surface-2);
   --card-selected-button-text: var(--white);
+  --card-selected-button-border: var(--surface-2);
 
   //footer colors
   --footer-border: var(--surface-2);

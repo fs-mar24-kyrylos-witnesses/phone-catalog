@@ -95,7 +95,7 @@ export const Card: React.FC<Props> = ({ product, category }) => {
         {favourites.includes(product.itemId) ? (
           <div
             onClick={() => removeFrom(product.itemId, 'fav')}
-            className="card_container-handle-favs"
+            className="card_container-handle-favs cart-filled"
           >
             <img
               className="card_container-handle-favs-addToFavs"
@@ -106,7 +106,7 @@ export const Card: React.FC<Props> = ({ product, category }) => {
         ) : (
           <div
             onClick={() => addTo(product.itemId, 'fav')}
-            className="card_container-handle-favs"
+            className="card_container-handle-favs "
           >
             <img
               className="card_container-handle-favs-addToFavs"
