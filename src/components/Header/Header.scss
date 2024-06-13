@@ -15,7 +15,7 @@
   justify-content: space-between;
 
   background-color: var(--main-background);
-  border-bottom: 1px solid $grayElements;
+  border-bottom: 1px solid var(--header-border);
 
   @include on-desktop {
     height: 64px;
@@ -72,8 +72,8 @@
       top: 48px;
       left: 0;
       width: 100%;
-      background-color: $white;
-      border-bottom: 1px solid $grayElements;
+      background-color: var(--main-background);
+      border-bottom: 1px solid var(--header-border);
       z-index: 1000;
     }
 
@@ -103,7 +103,7 @@
         align-items: center;
 
         text-decoration: none;
-        color: $graySecondary;
+        color: var(--text-secondary);
         letter-spacing: 0.04em;
 
         font-family: 'Mont-Bold', sans-serif;
@@ -126,14 +126,14 @@
           left: 0;
           right: 0;
           height: 3px;
-          background-color: $grayPrimary;
+          background-color: var(--header-primary);
           transform: scaleX(0);
           transition: transform 0.3s;
           transform-origin: bottom right;
         }
 
         &:hover {
-          color: $grayPrimary;
+          color: var(--text-primary);
 
           &::after {
             transform: scaleX(1);
@@ -166,9 +166,10 @@
         justify-content: center;
         align-items: center;
 
-        border-left: 1px solid $grayElements;
-        border-top: 1px solid $grayElements;
+        border-left: 1px solid var(--header-border);
+        border-top: 1px solid var(--header-border);
 
+        //You don't have color in container
         transition: color 0.3s;
 
         &::after {
@@ -178,13 +179,14 @@
           left: 0;
           right: 0;
           height: 3px;
-          background-color: $grayPrimary;
+          background-color: var(--header-primary);
           transform: scaleX(0);
           transition: transform 0.15s;
           transform-origin: bottom right;
         }
 
         &:hover {
+          //this don't change anything
           color: $grayPrimary;
 
           &::after {
@@ -253,7 +255,7 @@
     justify-content: center;
     align-items: center;
 
-    border-left: 1px solid $grayElements;
+    border-left: 1px solid var(--header-border);
 
     @include on-tablet {
       display: none;
@@ -274,7 +276,7 @@
   position: absolute;
   width: 14px;
   height: 14px;
-  background-color: $red;
+  background-color: var(--red);
   border-radius: 50%;
   bottom: 50%;
   left: 50%;
@@ -288,6 +290,6 @@
   padding-block: 1px;
   font-size: 9px;
 
-  color: $white;
+  color: var(--white);
   font-family: 'Mont-SemiBold', sans-serif;
 }

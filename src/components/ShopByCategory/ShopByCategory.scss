@@ -55,7 +55,7 @@
 
       &-phones {
         background-image: url(../../img/category-phones.png);
-        background-color: $phone-category-background;
+        background-color: var(--phone-category-background);
         background-position: 10px 20px;
 
         background-size: 120% 140%;
@@ -76,7 +76,7 @@
 
       &-tablets {
         background-image: url(../../img/category-tablets.png);
-        background-color: $tablet-category-background;
+        background-color: var(--tablet-category-background);
         background-position: 20px 40px;
         background-size: 120% 120%;
         transition: background-position $effect-duration ease;
@@ -97,7 +97,7 @@
 
       &-accessories {
         background-image: url(../../img/category-accessories.png);
-        background-color: $accessory-category-background;
+        background-color: var(--accessory-category-background);
         background-position: 30px 60px;
         transition: background-position $effect-duration ease;
 
@@ -152,24 +152,24 @@
       }
 
       &:hover {
-        color: $white;
+        color: var(--white);
       }
 
       &-phones {
         &::before {
-          background-color: #bca58f;
+          background-color: var(--phone-category-background-text);
         }
       }
 
       &-tablets {
         &::before {
-          background-color: $tablet-category-background;
+          background-color: var(--tablet-category-background);
         }
       }
 
       &-accessories {
         &::before {
-          background-color: $accessory-category-background;
+          background-color: var(--accessory-category-background);
         }
       }
     }
@@ -183,7 +183,7 @@
       line-height: 21px;
       text-align: left;
 
-      color: $graySecondary;
+      color: var(--secondary);
     }
   }
 }

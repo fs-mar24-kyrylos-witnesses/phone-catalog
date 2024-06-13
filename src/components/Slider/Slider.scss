@@ -54,22 +54,24 @@
     width: 32px;
     box-sizing: border-box;
     outline: none;
-    border: 1px solid $grayIconsPlaceholders;
+    border: 1px solid var(--swiper-button-border);
 
-    background-color: $white;
+    background-color: var(--swiper-button-background);
     background-repeat: no-repeat;
     background-size: 16px 16px;
     background-position: center;
 
-    transition: border $effect-duration ease;
+    transition:
+      background-color $effect-duration ease,
+      border $effect-duration ease;
 
     &:hover {
-      border: 1px solid $grayPrimary;
+      border: 1px solid var(--swiper-hover-button-border);
+      background-color: var(--swiper-hover-button-background);
     }
 
     &:active {
-      background-color: darken($white, 2%);
-      background-size: 15px 15px;
+      background-color: var(--main-background);
     }
   }
 

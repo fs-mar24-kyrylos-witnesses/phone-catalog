@@ -8,11 +8,10 @@
   display: block;
   text-align: left;
   padding-inline: 16px;
-  border-top: 1px solid $grayElements;
+  border-top: 1px solid var(--footer-border);
   padding-inline: 32px;
   padding-block: 32px;
-  box-sizing: border-box ;
-
+  box-sizing: border-box;
 
   @include on-tablet {
     padding-inline: 32px;
@@ -27,7 +26,6 @@
     padding-inline: 0px;
     padding-top: 0px;
     padding-block: 0px;
-
   }
 
   &--fixed {
@@ -35,13 +33,13 @@
   }
 
   &__content {
-    width: 100%; 
+    width: 100%;
     max-width: 1136px;
     position: relative;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    height: $footer-height; 
+    height: $footer-height;
 
     @include on-tablet {
       flex-direction: row;
@@ -50,7 +48,7 @@
     }
 
     @include on-desktop {
-      margin: 0 auto; 
+      margin: 0 auto;
     }
   }
 
@@ -66,7 +64,9 @@
     display: block;
     height: 32px;
     position: relative;
-    background-color: $white; 
+    background-color: var(--main-background);
+
+    // i don't see what this color is used for
     color: $grayPrimary;
   }
 
@@ -95,28 +95,27 @@
     font-size: 12px;
     line-height: 92%;
     letter-spacing: 0.04em;
-    color: $graySecondary;
+    color: var(--text-secondary);
     text-transform: uppercase;
-    
 
-    @include hover(color, $grayPrimary);
+    @include hover(color, var(--text-primary));
 
     &.active {
+      // i don't see what this background-color is used for
       background-color: transparent;
-      color: $grayPrimary;
+      color: var(--text-primary);
     }
 
     &--top {
       margin-bottom: 0px;
-      border: 1px solid $grayElements; 
-      background-color: $white;
+      border: 1px solid var(--footer-arrow-up-border);
+      background-color: var(--footer-arrow-up-background);
       padding: 8px;
       transition: all $effect-duration;
-      
 
       &:hover {
-        background-color: $white; 
-        border: 1px solid $grayPrimary; 
+        background-color: var(--footer-hover-arrow-up-background);
+        border: 1px solid var(--footer-hover-arrow-up-border);
         cursor: pointer;
       }
     }
@@ -139,7 +138,7 @@
     font-family: 'Mont-SemiBold';
     font-weight: 700;
     font-size: 12px;
-    color: $graySecondary;
+    color: var(--text-secondary);
     padding-block: 8.5px;
     margin-right: 16px;
     font-size: 12px;
@@ -147,4 +146,3 @@
     font-weight: 700;
   }
 }
-
