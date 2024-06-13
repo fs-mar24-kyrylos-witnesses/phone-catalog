@@ -6,6 +6,7 @@
   position: relative;
   background: transparent;
   font-family: 'Mont-SemiBold', sans-serif;
+  
 
 
   &__button {
@@ -36,6 +37,7 @@
     height: 16px;
     width: 16px;
     transition: transform 0.3s ease;
+    margin-right: 30px;
   }
 
   &__list-wrapper {
