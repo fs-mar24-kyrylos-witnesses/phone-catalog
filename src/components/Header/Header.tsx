@@ -1,7 +1,7 @@
 import React from 'react';
 import './Header.scss';
 import cn from 'classnames';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import { useStore, useProductStore } from '../../store/productStore';
 
@@ -16,15 +16,22 @@ import close from '../../assets/icons/close.svg';
 
 export const Header: React.FC = () => {
   const { favourites, cartProducts, getLength } = useStore();
-
   const isMenuOpen = useProductStore(state => state.isMenuOpen);
   const toggleMenu = useProductStore(state => state.toggleMenu);
   const { t } = useTranslation();
+  const location = useLocation();
+
+  const handleLinkClick = () => {
+    if (isMenuOpen) {
+      toggleMenu();
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <header className="header">
       <div className="header__container">
-        <Link to="">
+        <Link to="/" onClick={handleLinkClick}>
           <img src={logo} alt="NiceGadgetsLogo" className="header__logo" />
         </Link>
 
@@ -34,19 +41,44 @@ export const Header: React.FC = () => {
           })}
         >
           <div className="nav__container">
-            <Link className="nav__container-link" to="home">
+            <Link
+              className={cn('nav__container-link', {
+                'nav__container-link-active': location.pathname === '/',
+              })}
+              to="/"
+              onClick={handleLinkClick}
+            >
               {t('home')}
             </Link>
 
-            <Link className="nav__container-link" to="phones">
+            <Link
+              className={cn('nav__container-link', {
+                'nav__container-link-active': location.pathname === '/phones',
+              })}
+              to="/phones"
+              onClick={handleLinkClick}
+            >
               {t('phones')}
             </Link>
 
-            <Link className="nav__container-link" to="tablets">
+            <Link
+              className={cn('nav__container-link', {
+                'nav__container-link-active': location.pathname === '/tablets',
+              })}
+              to="/tablets"
+              onClick={handleLinkClick}
+            >
               {t('tablets')}
             </Link>
 
-            <Link className="nav__container-link" to="accessories">
+            <Link
+              className={cn('nav__container-link', {
+                'nav__container-link-active':
+                  location.pathname === '/accessories',
+              })}
+              to="/accessories"
+              onClick={handleLinkClick}
+            >
               {t('accessories')}
             </Link>
           </div>
@@ -54,8 +86,13 @@ export const Header: React.FC = () => {
           <div className="nav__icons">
             <LanguagesSelector />
             <Link
-              className="nav__icons__container nav__icons__container-like"
-              to="favourites"
+              className={cn('nav__icons__container', {
+                'nav__icons__container-like': true,
+                'nav__icons__container-active':
+                  location.pathname === '/favourites',
+              })}
+              to="/favourites"
+              onClick={handleLinkClick}
             >
               {favourites.length > 0 && (
                 <div className="adding">
@@ -68,8 +105,12 @@ export const Header: React.FC = () => {
             </Link>
 
             <Link
-              className="nav__icons__container nav__icons__container-cart"
-              to="cart"
+              className={cn('nav__icons__container', {
+                'nav__icons__container-cart': true,
+                'nav__icons__container-active': location.pathname === '/cart',
+              })}
+              to="/cart"
+              onClick={handleLinkClick}
             >
               {cartProducts.length > 0 && (
                 <div className="adding">

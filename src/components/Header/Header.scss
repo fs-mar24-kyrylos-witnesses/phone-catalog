@@ -119,6 +119,10 @@
           height: 100%;
         }
 
+        &-active {
+          background-color: red;
+        }
+
         &::after {
           content: '';
           position: absolute;
@@ -170,6 +174,10 @@
         border-top: 1px solid $grayElements;
 
         transition: color 0.3s;
+
+        &-active {
+          background-color: red;
+        }
 
         &::after {
           content: '';
@@ -284,7 +292,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-padding-block: 1px;
+  padding-block: 1px;
   font-size: 11px;
   color: $white;
   font-family: 'Mont-SemiBold', sans-serif;
