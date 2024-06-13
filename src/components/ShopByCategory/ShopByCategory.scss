@@ -21,6 +21,7 @@
 
   &-content {
     @include grid-align;
+    @include content-padding-inline;
     gap: 32px;
 
     @include on-tablet {

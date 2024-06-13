@@ -2,6 +2,7 @@
 .grid__home-page {
   margin-top: 56px;
   @include grid-align;
+  @include content-padding-inline;
 }
 
 .main-title {
