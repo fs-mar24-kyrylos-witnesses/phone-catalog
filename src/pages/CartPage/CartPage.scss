@@ -41,6 +41,7 @@
   }
 
   &-map {
+    cursor: pointer;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -181,5 +182,9 @@ h1{
 }
 
 .emptyCart{
-  width: 50%;
+  width: 30%;
+}
+
+.title-map-img {
+  display: block;
 }

@@ -3,7 +3,7 @@ import './CartPage.scss';
 import { useProductStore, useStore } from '../../store/productStore';
 // import { Link } from 'react-router-dom';
 import arrowLeft from '../../assets/icons/arrow-left.svg';
-import emptyCart from '../../../public/img/cart-is-empty.png';
+import emptyCart from '/img/cart-is-empty.png';
 import { CartItem } from '../../components/CartItem';
 import { Product } from '../../types/Product';
 import { useTranslation } from 'react-i18next';
