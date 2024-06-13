@@ -89,13 +89,30 @@
       line-height: 30.8px;
     }
 
-    &-buttons{
+    &-buttons {
       display: flex;
       flex-direction: row;
-      column-gap: 14px;
+      // column-gap: 14px;
       justify-content: space-between;
       align-items: center;
-      min-width: 110px;
+      // min-width: 100px;
+
+      &-count {
+        width: 14px;
+        height: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+
+        &-text {
+          line-height: 21px;
+          color: rgba(0, 0, 0, 1);
+          font-family: 'Mont-Regular', sans-serif;
+          font-size: 14px;
+        }
+      }
 
       &-box{
         box-sizing: border-box;

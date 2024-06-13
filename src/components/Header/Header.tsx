@@ -13,6 +13,7 @@ import like from '../../assets/icons/heart.svg';
 import cart from '../../assets/icons/cart-icon.svg';
 import menu from '../../assets/icons/menu.svg';
 import close from '../../assets/icons/close.svg';
+import { ThemeSwitch } from '../ThemeSwitch';
 
 export const Header: React.FC = () => {
   const { favourites, cartProducts, getLength } = useStore();
@@ -84,6 +85,7 @@ export const Header: React.FC = () => {
           </div>
 
           <div className="nav__icons">
+            <ThemeSwitch />
             <LanguagesSelector />
             <Link
               className={cn('nav__icons__container', {

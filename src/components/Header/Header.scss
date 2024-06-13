@@ -14,7 +14,7 @@
   flex-direction: row;
   justify-content: space-between;
 
-  background-color: $white;
+  background-color: var(--main-background);
   border-bottom: 1px solid $grayElements;
 
   @include on-desktop {
@@ -288,8 +288,8 @@
 .adding {
   box-sizing: border-box;
   position: absolute;
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   background-color: $red;
   border-radius: 50%;
   bottom: 50%;
@@ -302,6 +302,11 @@
   justify-content: center;
   padding-block: 1px;
   font-size: 11px;
+
+  padding-block: 1px;
+  font-size: 9px;
+
   color: $white;
   font-family: 'Mont-SemiBold', sans-serif;
 }
+
