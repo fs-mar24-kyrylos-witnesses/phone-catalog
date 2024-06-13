@@ -161,9 +161,9 @@
   }
 
   gap: 40px 16px;
-  margin: 24px 0px;
+  margin-top: 24px;
 
   @include on-tablet {
-    margin: 24px 0px 40px;
+    margin-top: 24px;
   }
 }

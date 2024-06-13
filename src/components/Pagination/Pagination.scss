@@ -16,6 +16,11 @@ flex-direction: column;
 width: 100%;
 height: 100%;
 grid-column: span 4;
+margin-top: 24px;
+
+@include on-tablet {
+  margin-top: 40px;
+}
 
 @include on-tablet {
   grid-column: span 12;
