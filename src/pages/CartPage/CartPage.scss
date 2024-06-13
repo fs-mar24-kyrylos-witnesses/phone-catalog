@@ -40,6 +40,7 @@
   }
 
   &-map {
+    cursor: pointer;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -57,7 +58,7 @@
   height: 100%;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: start;
   row-gap: 16px;
 
   @include on-tablet {
@@ -181,4 +182,8 @@ h1{
 
 .emptyCart{
   width: 30%;
+}
+
+.title-map-img {
+  display: block;
 }

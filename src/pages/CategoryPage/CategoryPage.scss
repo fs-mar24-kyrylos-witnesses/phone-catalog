@@ -108,7 +108,11 @@
     }
 
     &-homeIcon {
-      width: 16px;
+      display: block;
+    }
+
+    &-arrowRightIcon {
+      display: block;
     }
   }
 }
