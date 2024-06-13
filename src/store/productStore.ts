@@ -1,9 +1,7 @@
-import { create } from 'zustand';
+import { create, create as createZustand } from 'zustand';
 import { persist } from 'zustand/middleware';
-
 import { ProductInfo } from '../types/ProductInfo';
 import { Product } from '../types/Product';
-
 import { fetchProductByIdFromApi, fetchAllProductsFromApi } from '../api/api';
 import { Category } from '../types/Category';
 
@@ -15,31 +13,26 @@ type ProductStore = {
   isMenuOpen: boolean;
   toggleMenu: () => void;
 
-  setCatalogProducts: (products: Product[]) => void;
   fetchAllProducts: () => Promise<void>;
   fetchProductById: (
     id: string,
-    mode: Category,
+    category: Category,
   ) => Promise<ProductInfo | undefined>;
 };
 
 type Store = {
   favourites: string[];
   cartProducts: string[];
-
   products: Product[];
   addTo: (slug: string, type: 'fav' | 'cart') => void;
   removeFrom: (slug: string, type: 'fav' | 'cart') => void;
   getLength: (type: 'fav' | 'cart') => number;
 };
-
-export const useProductStore = create<ProductStore>(set => ({
+export const useProductStore = createZustand<ProductStore>(set => ({
   catalogProducts: [],
-  selectedProduct: null,
   loading: false,
   error: '',
   isMenuOpen: false,
-
   fetchAllProducts: async () => {
     set({ loading: true });
     try {
@@ -52,10 +45,10 @@ export const useProductStore = create<ProductStore>(set => ({
     }
   },
 
-  fetchProductById: async (id: string, mode: Category) => {
+  fetchProductById: async (id: string, category: Category) => {
     set({ loading: true });
     try {
-      const product = await fetchProductByIdFromApi(id, mode);
+      const product = await fetchProductByIdFromApi(id, category);
       return product; // Return the product info
     } catch (error) {
       set({ error: 'Error fetching product info' });
@@ -77,12 +70,9 @@ export const useStore = create<Store>()(
     (set, get) => ({
       favourites: [],
       cartProducts: [],
-
       favsProducts: [],
       bagProducts: [],
-
       products: [],
-
       addTo: (slug: string, type: 'fav' | 'cart') => {
         set(state => {
           if (type === 'fav') {
@@ -92,7 +82,6 @@ export const useStore = create<Store>()(
           }
         });
       },
-
       removeFrom: (slug: string, type: 'fav' | 'cart') => {
         set(state => {
           if (type === 'fav') {
@@ -106,7 +95,6 @@ export const useStore = create<Store>()(
           }
         });
       },
-
       getLength: (type: 'fav' | 'cart') => {
         const state = get();
         return type === 'fav'

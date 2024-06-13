@@ -1,3 +1,5 @@
+import { Color } from './Color';
+
 export type Product = {
   id: number;
   category: string;
@@ -7,7 +9,7 @@ export type Product = {
   price: number;
   screen: string;
   capacity: string;
-  color: string;
+  color: Color;
   ram: string;
   year: number;
   image: string;
