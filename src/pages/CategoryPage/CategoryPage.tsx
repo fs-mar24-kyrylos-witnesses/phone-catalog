@@ -93,7 +93,7 @@ export const CategoryPage: React.FC<Props> = ({ category }) => {
             />
             <Link to={`/${category.path}`}>
               <span className="category_header-map-categoryName">
-                {category.name === 'Mobile phones'
+                {category.name === 'Phones'
                   ? t('mobilePhones')
                   : category.name === 'Tablets'
                     ? t('tablets')
