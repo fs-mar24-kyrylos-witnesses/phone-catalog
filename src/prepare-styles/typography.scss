@@ -7,7 +7,7 @@
   font-family: 'Mont-Bold', sans-serif;
   font-weight: 800;
   font-size: 32px;
-  color: $grayPrimary;
+  color: var(--gray-primary);
   letter-spacing: -0.01em;
   line-height: 41px;
 
@@ -22,7 +22,7 @@
   font-family: 'Mont-Bold', sans-serif;
   font-weight: 800;
   font-size: 22px;
-  color: $grayPrimary;
+  color: var(--gray-primary);
   letter-spacing: -0.01em;
   line-height: 30.8px;
 
@@ -37,7 +37,7 @@
   font-family: 'Mont-Bold', sans-serif;
   font-weight: 800;
   font-size: 32px;
-  color: $grayPrimary;
+  color: var(--gray-primary);
   letter-spacing: -0.01em;
   line-height: 41px;
 
@@ -52,7 +52,7 @@
   font-family: 'Mont-Bold', sans-serif;
   font-weight: 800;
   font-size: 22px;
-  color: $grayPrimary;
+  color: var(--gray-primary);
   line-height: 31px;
 
   @include on-tablet {
@@ -66,7 +66,7 @@
   font-family: 'Mont-SemiBold', sans-serif;
   font-weight: 600;
   font-size: 20px;
-  color: $grayPrimary;
+  color: var(--gray-primary);
   line-height: 26px;
 
   @include on-tablet {
@@ -80,7 +80,7 @@
   font-family: 'Mont-SemiBold', sans-serif;
   font-weight: 600;
   font-size: 16px;
-  color: $grayPrimary;
+  color: var(--gray-primary);
   line-height: 20px;
 
   @include on-tablet {
@@ -94,7 +94,7 @@
   font-family: 'Mont-Bold', sans-serif;
   font-weight: 800;
   font-size: 12px;
-  color: $grayPrimary;
+  color: var(--gray-primary);
   letter-spacing: 0.04em;
   line-height: 11px;
 
