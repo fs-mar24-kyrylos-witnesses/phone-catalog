@@ -25,12 +25,12 @@ export const CategoryPage: React.FC<Props> = ({ category }) => {
   const actualProducts = catalogProducts.filter(
     item => item.category === category.path,
   );
+
   const filteredProducts = filter(actualProducts, searchParams);
+  const total = filteredProducts.length;
 
   const page = searchParams.get('page') || '1';
-  const perPage = searchParams.get('perPage') || filteredProducts.length;
-
-  const total = filteredProducts.length;
+  const perPage = searchParams.get('perPage') || total.toString();
 
   const pagesCount = Math.ceil(total / +perPage!);
   const pages = getNumbers(1, pagesCount);
@@ -153,7 +153,7 @@ export const CategoryPage: React.FC<Props> = ({ category }) => {
                 name="perPage"
                 className="category_header-sort-select"
                 onChange={handlePerPage}
-                value={searchParams.get('perPage') || filteredProducts.length}
+                value={searchParams.get('perPage') || total.toString()}
               >
                 <option
                   className="category_header-sort-option"
@@ -184,13 +184,15 @@ export const CategoryPage: React.FC<Props> = ({ category }) => {
             <Card key={item.itemId} product={item} category={category.path} />
           ))}
         </div>
-        <Pagination
-          pages={pages}
-          page={page!}
-          handlePageChange={handlePageChange}
-          handlePrevPage={handlePrevPage}
-          handleNextPage={handleNextPage}
-        />
+        {perPage !== total.toString() && (
+          <Pagination
+            pages={pages}
+            page={page!}
+            handlePageChange={handlePageChange}
+            handlePrevPage={handlePrevPage}
+            handleNextPage={handleNextPage}
+          />
+        )}
       </div>
     </>
   );
