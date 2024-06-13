@@ -1,4 +1,4 @@
-import { create, create as createZustand } from 'zustand';
+import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 import { ProductInfo } from '../types/ProductInfo';
@@ -33,7 +33,7 @@ type Store = {
   getLength: (type: 'fav' | 'cart') => number;
 };
 
-export const useProductStore = createZustand<ProductStore>(set => ({
+export const useProductStore = create<ProductStore>(set => ({
   catalogProducts: [],
   selectedProduct: null,
   loading: false,

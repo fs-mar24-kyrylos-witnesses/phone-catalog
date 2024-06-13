@@ -1,7 +1,11 @@
 @import '../../prepare-styles/mixins.scss';
+
 .grid__home-page {
   margin-top: 56px;
   @include grid-align;
+  @include content-padding-inline;
+
+  background-color: var(--gray-background);
 }
 
 .main-title {

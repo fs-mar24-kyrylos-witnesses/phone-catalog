@@ -24,6 +24,8 @@
     height: 320px;
     width: 100%;
     max-width: 1040px;
+    box-sizing: border-box;
+    border: 1px solid var(--icon-color);
 
     @include on-tablet {
       height: 350px;
@@ -34,11 +36,11 @@
     }
 
     &-phones {
-      background-color: $phone-banner-background;
+      background-color: var(--phone-banner-background);
     }
 
     &-tablets {
-      background-color: $tablet-banner-background;
+      background-color: var(--tablet-banner-background);
     }
   }
 
@@ -58,13 +60,13 @@
   &__button-prev {
     height: 189px;
     box-sizing: border-box;
-    border: 1px solid $grayIconsPlaceholders;
+    border: 1px solid var(--icon-color);
     outline: none;
     min-width: 32px;
 
     display: none;
 
-    background-color: $white;
+    background-color: var(--main-background);
     background-size: 16px 16px;
     background-repeat: no-repeat;
     background-position: center;
@@ -81,19 +83,18 @@
     }
 
     &:hover {
-      border: 1px solid $grayPrimary;
+      border: 1px solid var(--gray-primary);
     }
 
     &:active {
-      background-color: darken($white, 2%);
+      background-color: var(--main-background);
+      filter: brightness(98%);
     }
   }
 
   &__button-next {
     background-image: url('../../assets/icons/arrow-right.svg');
     margin-left: 19px;
-
-    fill: red;
 
     @include on-desktop {
       margin-left: 16px;
@@ -111,10 +112,10 @@
 }
 
 .swiper-pagination {
-  background-color: $white;
+  background-color: var(--main-background);
 
   &-bullet {
-    background-color: $grayPrimary;
+    background-color: var(--gray-primary);
     width: 14px;
     height: 4px;
     border-radius: 0;
