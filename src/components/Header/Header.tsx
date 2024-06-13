@@ -129,7 +129,7 @@ export const Header: React.FC = () => {
         </nav>
 
         <div className="header__menu" onClick={toggleMenu}>
-          <a className="header__menu-link" href="">
+          <a className="header__menu-link">
             {isMenuOpen ? (
               <img className="header__menu-icon" src={close} alt="Close" />
             ) : (
