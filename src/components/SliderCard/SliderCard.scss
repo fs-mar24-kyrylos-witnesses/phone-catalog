@@ -12,7 +12,8 @@
   max-height: 439px;
   padding: 32px;
 
-  border: 1px solid $grayElements;
+  border: 1px solid var(--card-border);
+  background-color: var(--card-background);
 
   @include on-tablet {
     max-height: 512px;
@@ -53,10 +54,14 @@
   &-title {
     font-family: 'Mont-Regular', sans-serif;
     font-size: 14px;
-    color: $grayPrimary;
+    color: var(--text-primary);
     line-height: 21px;
     padding-top: 16px;
-    min-height: 79px;
+    min-height: 60px;
+
+    @include on-desktop {
+      min-height: 58px;
+    }
   }
 
   &-info {
@@ -76,14 +81,14 @@
         font-family: 'Mont-Bold', sans-serif;
         font-weight: 800;
         font-size: 22px;
-        color: $grayPrimary;
+        color: var(--text-primary);
         line-height: 30.8px;
       }
 
       &-fullPrice {
         font-family: 'Mont-SemiBold', sans-serif;
         font-size: 22px;
-        color: $graySecondary;
+        color: var(--text-secondary);
         line-height: 28.12px;
         text-decoration: line-through;
 
@@ -91,7 +96,7 @@
           font-family: 'Mont-Bold', sans-serif;
           font-weight: 800;
           font-size: 22px;
-          color: $grayPrimary;
+          color: var(--text-primary);
           line-height: 30.8px;
         }
       }
@@ -101,7 +106,7 @@
   &-divider-line {
     width: 100%;
     height: 1px;
-    background-color: $grayElements;
+    background-color: var(--elements);
   }
 
   &-about {
@@ -119,14 +124,14 @@
       &-title {
         font-family: 'Mont-Bold', sans-serif;
         font-size: 12px;
-        color: $graySecondary;
+        color: var(--text-secondary);
         line-height: 15.34px;
       }
 
       &-value {
         font-family: 'Mont-Bold', sans-serif;
         font-size: 12px;
-        color: $grayPrimary;
+        color: var(--text-primary);
         line-height: 15.34px;
         text-transform: uppercase;
       }
