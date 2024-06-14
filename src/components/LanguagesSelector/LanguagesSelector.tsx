@@ -1,6 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { Dropdown } from '../DropDown/Dropdown';
 
+import './LanguagesSelector.scss';
+
 const languages = [
   { code: 'en', value: 'EN', lang: 'English' },
   { code: 'ua', value: 'UA', lang: 'Ukrainian' },
