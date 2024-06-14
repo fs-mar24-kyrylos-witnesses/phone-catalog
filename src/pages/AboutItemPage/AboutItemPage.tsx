@@ -7,19 +7,22 @@ import { useEffect, useState } from 'react';
 import { Slider } from '../../components/Slider';
 
 import { useProductStore } from '../../store/productStore';
-import { Category } from '../../types/Category';
 
+import { getProductSpecs } from '../../helper/getProductSpecs';
+
+// ICONS
 import home from '../../assets/icons/home.svg';
 import arrowRight from '../../assets/icons/arrow-right.svg';
 import arrowLeft from '../../assets/icons/arrow-left.svg';
 import heart from '../../assets/icons/heart.svg';
 import heartFilled from '../../assets/icons/heart-filled.svg';
 
-import { getProductSpecs } from '../../helper/getProductSpecs';
+// TYPES
 import { Spec } from '../../types/Spec';
-import { ProductInfo } from '../../types/ProductInfo';
-import { useStore } from '../../store/productStore';
 import { Product } from '../../types/Product';
+import { Category } from '../../types/Category';
+import { useStore } from '../../store/productStore';
+import { ProductInfo } from '../../types/ProductInfo';
 
 type Props = {
   categoryArea: Category;

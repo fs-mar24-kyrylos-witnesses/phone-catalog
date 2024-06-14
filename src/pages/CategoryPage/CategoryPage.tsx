@@ -92,9 +92,9 @@ export const CategoryPage: React.FC<Props> = ({ category }) => {
               alt="arrow"
             />
             <Link to={`/${category.path}`}>
-              <span className="category_header-map-categoryName">
+              <span className="category_header-map-categoryName small-text">
                 {category.name === 'Phones'
-                  ? t('mobilePhones')
+                  ? t('phones')
                   : category.name === 'Tablets'
                     ? t('tablets')
                     : category.name === 'Accessories'
