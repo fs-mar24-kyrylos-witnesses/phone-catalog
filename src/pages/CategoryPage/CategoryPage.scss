@@ -34,7 +34,7 @@
   font-family: 'Mont-Bold', sans-serif;
   font-weight: 800;
   font-size: 32px;
-  color: $grayPrimary;
+  color: var(--text-primary);
   letter-spacing: -0.01em;
   line-height: 41px;
 
@@ -57,7 +57,7 @@
     width: 100%;
 
     &-title {
-      color: $graySecondary;
+      color: var(--text-secondary);
       font-family: 'Mont-SemiBold', sans-serif;
       font-size: 12px;
       line-height: 15.34px;
@@ -73,7 +73,7 @@
   }
 
   &-itemsCount {
-    color: $graySecondary;
+    color: var(--text-secondary);
     font-family: 'Mont-Regular', sans-serif;
     font-size: 14px;
     line-height: 21px;
@@ -116,18 +116,23 @@
 }
 
 .category_header-sort-select {
-  border: 1px solid $grayIconsPlaceholders;
+  border: 1px solid var(--category-dropdown-border);
   width: 100%;
   padding: 10px 12px;
   font-size: 14px;
   line-height: 21px;
   font-family: 'Mont-SemiBold', sans-serif;
-  color: $grayPrimary;
+  color: var(--text-primary);
   cursor: pointer;
+  outline: none;
+  background-color: var(--category-dropdown-background);
 
-  &:focus,
+  &:focus {
+    border-color: var(--category-focus-dropdown-border);
+  }
+
   &:hover {
-    border-color: $grayPrimary;
+    border-color: var(--category-hover-dropdown-border);
   }
 }
 
@@ -135,9 +140,8 @@
   font-size: 14px;
   line-height: 21px;
   font-family: 'Mont-SemiBold', sans-serif;
-  color: $grayPrimary;
+  color: var(--text-primary);
   cursor: pointer;
-  color: $grayPrimary;
 }
 
 .category_product-container {

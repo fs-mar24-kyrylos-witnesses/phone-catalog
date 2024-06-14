@@ -15,9 +15,9 @@
   gap: 8px;
 
   &__text {
-    color: $graySecondary;
+    color: var(--breadcrumbs-text);
 
-    @include hover(color, $grayPrimary);
+    @include hover(color, var(--breadcrumbs-hover));
 
     font-weight: 600;
   }
@@ -59,9 +59,9 @@
   }
 
   &__text {
-    color: $graySecondary;
+    color: var(--about-page-back-button-text);
 
-    @include hover(color, $grayPrimary);
+    @include hover(color, var(--about-page-hover-back-button-text));
   }
 }
 
@@ -108,15 +108,16 @@
 
     object-fit: contain;
 
-    border: 1px solid $grayElements;
+    border: 1px solid var(--elements);
 
     cursor: pointer;
 
-    @include hover(border, 1px solid $grayIconsPlaceholders);
+    @include hover(border, 1px solid var(--icons));
 
     &--selected {
-      border: 1px solid $grayPrimary;
-      @include hover(border, 1px solid $grayPrimary);
+      border: 1px solid var(--about-page-selected-image-border);
+
+      @include hover(border, 1px solid var(--about-page-selected-image-border));
     }
   }
 }
@@ -126,7 +127,7 @@
   aspect-ratio: 1 / 1;
   margin-bottom: 16px;
   box-sizing: border-box;
-  
+
   position: relative;
   padding: 10px; // Add padding here
 
@@ -148,11 +149,11 @@
 .selected-image {
   position: absolute;
 
-  // this is needed to simulate padding for element with absolute positioning 
+  // this is needed to simulate padding for element with absolute positioning
   top: 10px;
   left: 10px;
   right: 10px;
-  bottom: 10px; 
+  bottom: 10px;
 
   background-size: contain;
   background-repeat: no-repeat;
@@ -167,14 +168,13 @@
   }
 }
 
-
 .separator {
   width: 100%;
   height: 1px;
 
   margin-top: 24px;
 
-  background-color: $grayElements;
+  background-color: var(--elements);
 }
 
 .product-properties {
@@ -201,11 +201,11 @@
   }
 
   &__title-available {
-    color: $graySecondary;
+    color: var(--text-secondary);
   }
 
   &__title-id {
-    color: $grayIconsPlaceholders;
+    color: var(--icons);
   }
 
   &__selection {
@@ -223,7 +223,7 @@
   grid-column: 1 / -1;
 
   &__title-available {
-    color: $graySecondary;
+    color: var(--text-secondary);
   }
 
   &__selection {
@@ -252,7 +252,7 @@
   &__price-discount {
     margin-left: 8px;
 
-    color: $graySecondary;
+    color: var(--text-secondary);
 
     font-family: 'Mont-SemiBold', sans-serif;
     font-size: 22px;
@@ -277,17 +277,21 @@
     border-radius: 0;
     border: none;
 
-    color: $white;
-    background-color: $grayPrimary;
+    color: var(--white);
+    background-color: var(--card-add-button-background);
 
     cursor: pointer;
 
-    @include hover(box-shadow, 0px 3px 13px 0px $hover-shadow);
+    @include hover(box-shadow, 0px 3px 13px 0px var(--card-add-button-shadow));
+
+    @include hover(background-color, var(--card-hover-add-button-background));
 
     &--selected {
-      color: $green;
-      background-color: $white;
-      border: 1px solid $grayIconsPlaceholders;
+      color: var(--card-selected-button-text);
+      background-color: var(--card-selected-button-background);
+      border: 1px solid var(--card-selected-button-border);
+
+      @include hover(background-color, var(--card-selected-button-background));
     }
   }
 
@@ -304,13 +308,14 @@
     justify-content: center;
 
     border-radius: 0;
-    background-color: $white;
+    background-color: var(--card-fav-button-background);
 
-    border: 1px solid $grayIconsPlaceholders;
+    border: 1px solid var(--card-fav-button-border);
 
     cursor: pointer;
 
-    @include hover(border, 1px solid $grayPrimary);
+    @include hover(border, 1px solid var(--card-hover-fav-button-border));
+    @include hover(background-color, var(--card-hover-fav-button-background));
   }
 
   &__favorite-image {
@@ -336,11 +341,12 @@
   }
 
   &__spec-name {
-    color: $graySecondary;
+    color: var(--text-secondary);
   }
 
   &__spec-value {
     text-align: right;
+    color: var(--text-primary);
   }
 }
 
@@ -365,7 +371,7 @@
   }
 
   &__section-text {
-    color: $graySecondary;
+    color: var(--text-secondary);
     margin-top: 16px;
   }
 }
@@ -398,12 +404,12 @@
   }
 
   &__spec-name {
-    color: $graySecondary;
+    color: var(--text-secondary);
   }
 
   &__spec-value {
     text-align: left;
-    color: $grayPrimary;
+    color: var(--text-primary);
   }
 }
 
@@ -421,20 +427,21 @@
   padding-inline: 8px;
 
   border-radius: 0;
-  border: 1px solid $grayIconsPlaceholders;
+  border: 1px solid var(--icons);
 
-  background-color: $white;
+  background-color: var(--main-background);
+  color: var(--text-primary);
 
   transition: border 0.3s;
 
   cursor: pointer;
 
-  @include hover(border, 1px solid $grayPrimary);
+  @include hover(border, 1px solid var(--primary));
 
   &--selected {
-    color: $white;
-    background-color: $grayPrimary;
-    border: 1px solid $grayPrimary;
+    color: var(--main-background);
+    background-color: var(--about-page-selected-capacity-background);
+    border: 1px solid var(--about-page-selected-capacity-border);
   }
 }
 /*#endregion */
@@ -455,17 +462,17 @@
   justify-content: center;
   align-items: center;
 
-  background-color: $white;
+  background-color: var(--main-background);
 
   border-radius: 50%;
-  border: 1px solid $grayElements;
+  border: 1px solid var(--elements);
 
   cursor: pointer;
 
-  @include hover(border, 1px solid $grayIconsPlaceholders);
+  @include hover(border, 1px solid var(--about-page-hover-circle-border));
 
   &--selected {
-    border: 1px solid $grayPrimary;
+    border: 1px solid var(--about-page-selected-circle-border);
   }
 }
 

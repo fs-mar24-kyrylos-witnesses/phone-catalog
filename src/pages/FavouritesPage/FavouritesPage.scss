@@ -38,7 +38,7 @@
   width: 100%;
 
   &-itemsCount {
-    color: $graySecondary;
+    color: var(--text-secondary);
     font-family: 'Mont-Regular', sans-serif;
     font-size: 14px;
     line-height: 21px;
@@ -62,13 +62,13 @@
     }
 
     &-categoryName {
-      color: $graySecondary;
+      color: var(--breadcrumbs-text);
       font-family: 'Mont-SemiBold', sans-serif;
       font-size: 12px;
       line-height: 15.34px;
 
       &:hover {
-        color: $grayPrimary;
+        color: var(--breadcrumbs-hover);
       }
     }
 
@@ -87,7 +87,7 @@
   grid-template-columns: repeat(auto-fill, 1fr);
   justify-items: stretch;
   align-items: stretch;
-  gap: 40px 16px; 
+  gap: 40px 16px;
 
   @include on-tablet {
     grid-template-columns: repeat(2, 1fr);
@@ -100,4 +100,4 @@
   @include on-desktop {
     grid-template-columns: repeat(4, 1fr);
   }
-} 
+}
