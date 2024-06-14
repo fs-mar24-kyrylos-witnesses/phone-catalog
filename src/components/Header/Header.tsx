@@ -36,9 +36,55 @@ export const Header: React.FC = () => {
           <img src={logo} alt="NiceGadgetsLogo" className="header__logo" />
         </Link>
 
+        <nav className="nav">
+          <div className="nav__container">
+            <Link
+              className={cn('nav__container-link', {
+                'nav__container-link-active': location.pathname === '/',
+              })}
+              to="/"
+              onClick={handleLinkClick}
+            >
+              {t('home')}
+            </Link>
+
+            <Link
+              className={cn('nav__container-link', {
+                'nav__container-link-active': location.pathname === '/phones',
+              })}
+              to="/phones"
+              onClick={handleLinkClick}
+            >
+              {t('phones')}
+            </Link>
+
+            <Link
+              className={cn('nav__container-link', {
+                'nav__container-link-active': location.pathname === '/tablets',
+              })}
+              to="/tablets"
+              onClick={handleLinkClick}
+            >
+              {t('tablets')}
+            </Link>
+
+            <Link
+              className={cn('nav__container-link', {
+                'nav__container-link-active':
+                  location.pathname === '/accessories',
+              })}
+              to="/accessories"
+              onClick={handleLinkClick}
+            >
+              {t('accessories')}
+            </Link>
+          </div>
+        </nav>
+
         <nav
           className={cn('nav', {
-            'nav--open': isMenuOpen,
+            'nav-mobile': true,
+            'nav-mobile--open': isMenuOpen,
           })}
         >
           <div className="nav__container">
@@ -84,51 +130,107 @@ export const Header: React.FC = () => {
             </Link>
           </div>
 
-          <div className="nav__icons">
-            <ThemeSwitch />
-            <LanguagesSelector />
-            <Link
-              className={cn('nav__icons__container', {
-                'nav__icons__container-like': true,
-                'nav__icons__container-active':
-                  location.pathname === '/favourites',
-              })}
-              to="/favourites"
-              onClick={handleLinkClick}
-            >
-              {favourites.length > 0 && (
-                <div className="adding">
-                  <span className="length">
-                    {favourites.length > 0 && getLength('fav')}
-                  </span>
-                </div>
-              )}
-              <img className="nav__icons__icon-like" src={like} alt="Like" />
-            </Link>
+          <div className="nav__icons nav__icons-mobile">
+            <div className="nav__icons__special__container">
+              <div className="spec__icons__container spec__icons__container-theme">
+                <ThemeSwitch />
+              </div>
+              <div className="spec__icons__container  spec__icons__container-lang">
+                <LanguagesSelector />
+              </div>
+            </div>
 
-            <Link
-              className={cn('nav__icons__container', {
-                'nav__icons__container-cart': true,
-                'nav__icons__container-active': location.pathname === '/cart',
-              })}
-              to="/cart"
-              onClick={handleLinkClick}
-            >
-              {cartProducts.length > 0 && (
-                <div className="adding">
-                  <span className="length">
-                    {cartProducts.length > 0 && getLength('cart')}
-                  </span>
-                </div>
-              )}
-              <img
-                className="nav__icons__icon-cart"
-                src={cart}
-                alt="Shopping Cart"
-              />
-            </Link>
+            <div className="nav__icons__special__container">
+              <Link
+                className={cn('nav__icons__container', {
+                  'nav__icons__container-like': true,
+                  'nav__icons__container-active':
+                    location.pathname === '/favourites',
+                })}
+                to="/favourites"
+                onClick={handleLinkClick}
+              >
+                {favourites.length > 0 && (
+                  <div className="adding">
+                    <span className="length">
+                      {favourites.length > 0 && getLength('fav')}
+                    </span>
+                  </div>
+                )}
+                <img className="nav__icons__icon-like" src={like} alt="Like" />
+              </Link>
+
+              <Link
+                className={cn('nav__icons__container', {
+                  'nav__icons__container-cart': true,
+                  'nav__icons__container-active': location.pathname === '/cart',
+                })}
+                to="/cart"
+                onClick={handleLinkClick}
+              >
+                {cartProducts.length > 0 && (
+                  <div className="adding">
+                    <span className="length">
+                      {cartProducts.length > 0 && getLength('cart')}
+                    </span>
+                  </div>
+                )}
+                <img
+                  className="nav__icons__icon-cart"
+                  src={cart}
+                  alt="Shopping Cart"
+                />
+              </Link>
+            </div>
           </div>
         </nav>
+
+        <div className="nav__icons">
+          <ThemeSwitch />
+
+          <LanguagesSelector />
+
+          <Link
+            className={cn('nav__icons__container', {
+              'nav__icons__container-like': true,
+              'nav__icons__container-active':
+                location.pathname === '/favourites',
+            })}
+            to="/favourites"
+            onClick={handleLinkClick}
+          >
+            {favourites.length > 0 && (
+              <div className="adding">
+                <span className="length">
+                  {favourites.length > 0 && getLength('fav')}
+                </span>
+              </div>
+            )}
+            <img className="nav__icons__icon-like" src={like} alt="Like" />
+          </Link>
+
+          <Link
+            className={cn('nav__icons__container', {
+              'nav__icons__container-cart': true,
+              'nav__icons__container-active': location.pathname === '/cart',
+            })}
+            to="/cart"
+            onClick={handleLinkClick}
+          >
+            {cartProducts.length > 0 && (
+              <div className="adding">
+                <span className="length">
+                  {cartProducts.length > 0 && getLength('cart')}
+                </span>
+              </div>
+            )}
+            <img
+              className="nav__icons__icon-cart"
+              src={cart}
+              alt="Shopping Cart"
+            />
+          </Link>
+        </div>
 
         <div className="header__menu" onClick={toggleMenu}>
           <a className="header__menu-link">

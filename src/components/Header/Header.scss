@@ -65,16 +65,27 @@
       gap: 64px;
     }
 
-    &--open {
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      top: 48px;
-      left: 0;
-      width: 100%;
-      background-color: $white;
-      border-bottom: 1px solid $grayElements;
-      z-index: 1000;
+    &-mobile {
+      height: calc(100vh - 74px);
+      @include on-tablet {
+        display: none;
+      }
+
+      &--open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 49px;
+        left: 0;
+        width: 100%;
+        background-color: $white;
+        border-bottom: 1px solid $grayElements;
+        z-index: 1000;
+
+        @include on-tablet {
+          display: none;
+        }
+      }
     }
 
     &__container {
@@ -112,7 +123,7 @@
         line-height: 30px;
         text-transform: uppercase;
 
-        transition: color 0.3s;
+        transition: color 0.2s;
 
         @include on-tablet {
           line-height: 11px;
@@ -128,7 +139,7 @@
           height: 3px;
           background-color: $grayPrimary;
           transform: scaleX(0);
-          transition: transform 0.3s;
+          transition: transform 0.2s;
           transform-origin: bottom right;
         }
 
@@ -142,6 +153,11 @@
         }
 
         &-active {
+          position: relative;
+          text-decoration: none;
+          color: inherit;
+          transition: color 0.2s;
+
           &::after {
             content: '';
             position: absolute;
@@ -150,22 +166,35 @@
             right: 0;
             height: 3px;
             background-color: $grayPrimary;
+            transform: scaleX(1);
           }
         }
       }
     }
 
     &__icons {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      width: 100%;
+      display: none;
 
       @include on-tablet {
         display: flex;
         flex-direction: row;
         justify-content: center;
         width: auto;
+        height: 48px;
+      }
+
+      @include on-desktop {
+        height: 64px;
+      }
+
+      &-mobile {
+        display: flex;
+        flex-direction: column;
+      }
+
+      &__special__container {
+        display: flex;
+        justify-content: space-between;
       }
 
       &__container {
@@ -182,10 +211,6 @@
         border-top: 1px solid $grayElements;
 
         transition: color 0.3s;
-
-        &-active {
-          background-color: red;
-        }
 
         &::after {
           content: '';
@@ -216,6 +241,21 @@
         @include on-desktop {
           width: 64px;
           height: 64px;
+        }
+
+        &-active {
+          position: relative;
+
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: 0px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background-color: $grayPrimary;
+            transform: scaleX(1);
+          }
         }
 
         &-like {
@@ -310,3 +350,8 @@
   font-family: 'Mont-SemiBold', sans-serif;
 }
 
+.spec__icons__container {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+}
