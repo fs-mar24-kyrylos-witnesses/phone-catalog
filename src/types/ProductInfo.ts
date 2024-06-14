@@ -1,3 +1,5 @@
+import { Color } from './Color';
+
 export type ProductInfo = {
   id: string;
   category: string;
@@ -7,8 +9,8 @@ export type ProductInfo = {
   capacity: string;
   priceRegular: number;
   priceDiscount: number;
-  colorsAvailable: string[];
-  color: string;
+  colorsAvailable: Color[];
+  color: Color;
   images: string[];
   description: {
     title: string;

@@ -20,6 +20,10 @@ import heartFilled from '../../assets/icons/heart-filled.svg';
 // TYPES
 import { Spec } from '../../types/Spec';
 import { Product } from '../../types/Product';
+
+import { getColorHex } from '../../helper/getColorHex';
+import { Color } from '@react-three/fiber';
+import { getNewColorSlug, getNewRamSlug } from '../../helper/getNewSlug';
 import { Category } from '../../types/Category';
 import { useStore } from '../../store/productStore';
 import { ProductInfo } from '../../types/ProductInfo';
@@ -48,7 +52,7 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
   const [productSpecs, setProductSpecs] = useState<Spec[]>([]);
   const [productImages, setProductImages] = useState<string[]>([]);
   const [selectedImage, setSelectedImage] = useState<string>('');
-  const [selectedColor, setSelectedColor] = useState<string | undefined>();
+  const [selectedColor, setSelectedColor] = useState<Color | undefined>();
   const [selectedCapacity, setSelectedCapacity] = useState<
     string | undefined
   >();
@@ -170,18 +174,18 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
               </div>
               <div className="colors__selection">
                 {selectedProduct?.colorsAvailable.map(color => (
-                  <button
+                  <Link
                     key={color}
+                    to={`../${getNewColorSlug(selectedProduct, color)}`}
                     className={cn('circle-button', {
                       'circle-button--selected': color === selectedColor,
                     })}
-                    onClick={() => setSelectedColor(color)}
                   >
                     <div
                       className="circle-button__color"
-                      style={{ backgroundColor: color }}
+                      style={{ backgroundColor: getColorHex(color) }}
                     ></div>
-                  </button>
+                  </Link>
                 ))}
               </div>
 
@@ -194,16 +198,20 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
               </p>
               <div className="capacity__selection">
                 {selectedProduct?.capacityAvailable.map(capacity => (
-                  <button
-                    className={cn('capacity-button', 'body-text', {
-                      'capacity-button--selected':
-                        capacity === selectedCapacity,
-                    })}
+                  <Link
                     key={capacity}
-                    onClick={() => setSelectedCapacity(capacity)}
+                    to={`../${getNewRamSlug(selectedProduct, capacity)}`}
                   >
-                    {normalizeCapacity(capacity)}
-                  </button>
+                    <button
+                      className={cn('capacity-button', 'body-text', {
+                        'capacity-button--selected':
+                          capacity === selectedCapacity,
+                      })}
+                      onClick={() => setSelectedCapacity(capacity)}
+                    >
+                      {normalizeCapacity(capacity)}
+                    </button>
+                  </Link>
                 ))}
               </div>
 
