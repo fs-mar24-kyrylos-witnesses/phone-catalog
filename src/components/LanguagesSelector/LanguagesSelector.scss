@@ -1,0 +1,11 @@
+@import '../../prepare-styles/mixins.scss';
+
+.languages-selector {
+  @include on-tablet {
+    padding-top: 12px;
+  }
+
+  @include on-desktop {
+    padding-top: 20px;
+  }
+}

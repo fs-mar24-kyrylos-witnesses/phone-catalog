@@ -25,7 +25,7 @@
     width: 100%;
     max-width: 1040px;
     box-sizing: border-box;
-    border: 1px solid var(--icon-color);
+    border: 1px solid var(--banner-image-border);
 
     @include on-tablet {
       height: 350px;
@@ -36,11 +36,11 @@
     }
 
     &-phones {
-      background-color: var(--phone-banner-background);
+      background-color: var(--banner-phones-background);
     }
 
     &-tablets {
-      background-color: var(--tablet-banner-background);
+      background-color: var(--banner-tablets-background);
     }
   }
 
@@ -60,18 +60,20 @@
   &__button-prev {
     height: 189px;
     box-sizing: border-box;
-    border: 1px solid var(--icon-color);
+    border: 1px solid var(--swiper-button-border);
     outline: none;
     min-width: 32px;
 
     display: none;
 
-    background-color: var(--main-background);
+    background-color: var(--swiper-button-background);
     background-size: 16px 16px;
     background-repeat: no-repeat;
     background-position: center;
 
-    transition: border $effect-duration ease;
+    transition:
+      background-color $effect-duration ease,
+      border $effect-duration ease;
 
     @include on-tablet {
       display: block;
@@ -83,12 +85,12 @@
     }
 
     &:hover {
-      border: 1px solid var(--gray-primary);
+      border: 1px solid var(--swiper-hover-button-border);
+      background-color: var(--swiper-hover-button-background);
     }
 
     &:active {
       background-color: var(--main-background);
-      filter: brightness(98%);
     }
   }
 
@@ -115,7 +117,7 @@
   background-color: var(--main-background);
 
   &-bullet {
-    background-color: var(--gray-primary);
+    background-color: var(--banner-bullet);
     width: 14px;
     height: 4px;
     border-radius: 0;

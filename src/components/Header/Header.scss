@@ -1,19 +1,15 @@
 @import '../../prepare-styles/mixins.scss';
 @import '../../prepare-styles/colors.scss';
 @import '../../prepare-styles/usable-fonts.scss';
-
 .header {
   position: sticky;
   top: 0;
   height: 48px;
   padding-left: 16px;
-
   z-index: 999;
-
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
   background-color: var(--main-background);
   border-bottom: 1px solid $grayElements;
 
@@ -44,7 +40,6 @@
       width: 80px;
     }
   }
-
   .nav {
     display: none;
     justify-content: space-between;
@@ -55,7 +50,6 @@
     @include on-tablet {
       display: flex;
       align-items: center;
-
       padding: 0;
       height: 100%;
       gap: 32px;
@@ -65,16 +59,28 @@
       gap: 64px;
     }
 
-    &--open {
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      top: 48px;
-      left: 0;
-      width: 100%;
-      background-color: $white;
-      border-bottom: 1px solid $grayElements;
-      z-index: 1000;
+    &-mobile {
+      height: calc(100vh - 74px);
+
+      @include on-tablet {
+        display: none;
+      }
+
+      &--open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 49px;
+        left: 0;
+        width: 100%;
+        background-color: $white;
+        border-bottom: 1px solid $grayElements;
+        z-index: 1000;
+
+        @include on-tablet {
+          display: none;
+        }
+      }
     }
 
     &__container {
@@ -98,21 +104,17 @@
       &-link {
         position: relative;
         height: 100%;
-
         display: flex;
         align-items: center;
-
         text-decoration: none;
         color: $graySecondary;
         letter-spacing: 0.04em;
-
         font-family: 'Mont-Bold', sans-serif;
         font-weight: 800;
         font-size: 12px;
         line-height: 30px;
         text-transform: uppercase;
-
-        transition: color 0.3s;
+        transition: color 0.2s;
 
         @include on-tablet {
           line-height: 11px;
@@ -128,44 +130,73 @@
           height: 3px;
           background-color: $grayPrimary;
           transform: scaleX(0);
-          transition: transform 0.3s;
-          transform-origin: bottom right;
+          transition: transform 0.2s;
+          transform-origin: bottom left;
         }
 
-        &:hover {
-          color: $grayPrimary;
+        @include on-desktop {
+          &:hover {
+            color: $grayPrimary;
+            &::after {
+              transform: scaleX(1);
+              transform-origin: bottom left;
+            }
+          }
+        }
+
+        &-active {
+          position: relative;
+          text-decoration: none;
+          color: inherit;
+          transition: color 0.2s;
 
           &::after {
+            content: '';
+            position: absolute;
+            bottom: 0px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background-color: $grayPrimary;
             transform: scaleX(1);
-            transform-origin: bottom left;
           }
         }
       }
     }
 
     &__icons {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      width: 100%;
+      display: none;
 
       @include on-tablet {
         display: flex;
         flex-direction: row;
         justify-content: center;
         width: auto;
+        height: 48px;
+      }
+
+      @include on-desktop {
+        height: 64px;
+      }
+
+      &-mobile {
+        display: flex;
+        flex-direction: column;
+      }
+
+      &__special__container {
+        display: flex;
+        justify-content: space-between;
       }
 
       &__container {
         position: relative;
         width: 50%;
         height: 48px;
-
         display: block;
         flex-direction: row;
         justify-content: center;
         align-items: center;
-
         border-left: 1px solid $grayElements;
         border-top: 1px solid $grayElements;
 
@@ -184,12 +215,13 @@
           transform-origin: bottom right;
         }
 
-        &:hover {
-          color: $grayPrimary;
-
-          &::after {
-            transform: scaleX(1);
-            transform-origin: bottom left;
+        @include on-desktop {
+          &:hover {
+            color: $grayPrimary;
+            &::after {
+              transform: scaleX(1);
+              transform-origin: bottom left;
+            }
           }
         }
 
@@ -200,6 +232,21 @@
         @include on-desktop {
           width: 64px;
           height: 64px;
+        }
+
+        &-active {
+          position: relative;
+
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: 0px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background-color: $grayPrimary;
+            transform: scaleX(1);
+          }
         }
 
         &-like {
@@ -225,18 +272,15 @@
 
           @include on-tablet {
             display: block;
-
             width: 16px;
             height: auto;
           }
         }
-
         &-cart {
           display: block;
 
           @include on-tablet {
             display: block;
-
             width: 16px;
             height: auto;
           }
@@ -248,11 +292,9 @@
   &__menu {
     width: 48px;
     height: 48px;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     border-left: 1px solid $grayElements;
 
     @include on-tablet {
@@ -268,7 +310,6 @@
 .header__icons__container {
   position: relative;
 }
-
 .adding {
   box-sizing: border-box;
   position: absolute;
@@ -279,15 +320,20 @@
   bottom: 50%;
   left: 50%;
 }
-
 .length {
   display: flex;
   align-items: center;
   justify-content: center;
-
+  padding-block: 1px;
+  font-size: 11px;
   padding-block: 1px;
   font-size: 9px;
-
   color: $white;
   font-family: 'Mont-SemiBold', sans-serif;
+}
+
+.spec__icons__container {
+  display: flex;
+  justify-content: center;
+  width: 50%;
 }

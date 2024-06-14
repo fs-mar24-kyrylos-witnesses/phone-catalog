@@ -2,13 +2,8 @@
 @import '../../prepare-styles/typography.scss';
 @import '../../prepare-styles/mixins.scss';
 
-.container {
+.about-item-page {
   @include content-padding-inline;
-}
-
-.breadcrumbs-container {
-  display: flex;
-  align-items: center;
 }
 
 .breadcrumbs {

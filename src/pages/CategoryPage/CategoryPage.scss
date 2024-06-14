@@ -86,11 +86,12 @@
   }
 
   &-map {
+    height: 16px;
+
     display: flex;
-    width: fit-content;
-    flex-direction: row;
-    column-gap: 8px;
-    margin-bottom: 24px;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 8px;
 
     @include on-tablet {
       margin-bottom: 40px;
@@ -98,13 +99,10 @@
 
     &-categoryName {
       color: $graySecondary;
-      font-family: 'Mont-SemiBold', sans-serif;
-      font-size: 12px;
-      line-height: 15.34px;
 
-      &:hover {
-        color: $grayPrimary;
-      }
+      @include hover(color, $grayPrimary);
+
+      font-weight: 600;
     }
 
     &-homeIcon {
@@ -161,9 +159,9 @@
   }
 
   gap: 40px 16px;
-  margin: 24px 0px;
+  margin-top: 24px;
 
   @include on-tablet {
-    margin: 24px 0px 40px;
+    margin-top: 24px;
   }
 }
