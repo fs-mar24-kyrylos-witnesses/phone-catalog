@@ -1,21 +1,17 @@
 @import '../../prepare-styles/mixins.scss';
 @import '../../prepare-styles/colors.scss';
 @import '../../prepare-styles/usable-fonts.scss';
-
 .header {
   position: sticky;
   top: 0;
   height: 48px;
   padding-left: 16px;
-
   z-index: 999;
-
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
   background-color: var(--main-background);
-  border-bottom: 1px solid var(--header-border);
+  border-bottom: 1px solid $grayElements;
 
   @include on-desktop {
     height: 64px;
@@ -44,7 +40,6 @@
       width: 80px;
     }
   }
-
   .nav {
     display: none;
     justify-content: space-between;
@@ -55,7 +50,6 @@
     @include on-tablet {
       display: flex;
       align-items: center;
-
       padding: 0;
       height: 100%;
       gap: 32px;
@@ -65,9 +59,9 @@
       gap: 64px;
     }
 
-
     &-mobile {
       height: calc(100vh - 74px);
+
       @include on-tablet {
         display: none;
       }
@@ -79,15 +73,15 @@
         top: 49px;
         left: 0;
         width: 100%;
-        background-color: var(--main-background);
-        border-bottom: 1px solid var(--header-border);
+        background-color: $white;
+        border-bottom: 1px solid $grayElements;
         z-index: 1000;
 
         @include on-tablet {
           display: none;
         }
       }
-
+    }
 
     &__container {
       display: flex;
@@ -110,20 +104,16 @@
       &-link {
         position: relative;
         height: 100%;
-
         display: flex;
         align-items: center;
-
         text-decoration: none;
-        color: var(--text-secondary);
+        color: $graySecondary;
         letter-spacing: 0.04em;
-
         font-family: 'Mont-Bold', sans-serif;
         font-weight: 800;
         font-size: 12px;
         line-height: 30px;
         text-transform: uppercase;
-
         transition: color 0.2s;
 
         @include on-tablet {
@@ -138,18 +128,19 @@
           left: 0;
           right: 0;
           height: 3px;
-          background-color: var(--header-primary);
+          background-color: $grayPrimary;
           transform: scaleX(0);
           transition: transform 0.2s;
-          transform-origin: bottom right;
+          transform-origin: bottom left;
         }
 
-        &:hover {
-          color: var(--text-primary);
-
-          &::after {
-            transform: scaleX(1);
-            transform-origin: bottom left;
+        @include on-desktop {
+          &:hover {
+            color: $grayPrimary;
+            &::after {
+              transform: scaleX(1);
+              transform-origin: bottom left;
+            }
           }
         }
 
@@ -202,16 +193,13 @@
         position: relative;
         width: 50%;
         height: 48px;
-
         display: block;
         flex-direction: row;
         justify-content: center;
         align-items: center;
+        border-left: 1px solid $grayElements;
+        border-top: 1px solid $grayElements;
 
-        border-left: 1px solid var(--header-border);
-        border-top: 1px solid var(--header-border);
-
-        //You don't have color in container
         transition: color 0.3s;
 
         &::after {
@@ -221,19 +209,19 @@
           left: 0;
           right: 0;
           height: 3px;
-          background-color: var(--header-primary);
+          background-color: $grayPrimary;
           transform: scaleX(0);
           transition: transform 0.15s;
           transform-origin: bottom right;
         }
 
-        &:hover {
-          //this don't change anything
-          color: $grayPrimary;
-
-          &::after {
-            transform: scaleX(1);
-            transform-origin: bottom left;
+        @include on-desktop {
+          &:hover {
+            color: $grayPrimary;
+            &::after {
+              transform: scaleX(1);
+              transform-origin: bottom left;
+            }
           }
         }
 
@@ -284,18 +272,15 @@
 
           @include on-tablet {
             display: block;
-
             width: 16px;
             height: auto;
           }
         }
-
         &-cart {
           display: block;
 
           @include on-tablet {
             display: block;
-
             width: 16px;
             height: auto;
           }
@@ -307,12 +292,10 @@
   &__menu {
     width: 48px;
     height: 48px;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
-    border-left: 1px solid var(--header-border);
+    border-left: 1px solid $grayElements;
 
     @include on-tablet {
       display: none;
@@ -327,29 +310,25 @@
 .header__icons__container {
   position: relative;
 }
-
 .adding {
   box-sizing: border-box;
   position: absolute;
   width: 14px;
   height: 14px;
-  background-color: var(--red);
+  background-color: $red;
   border-radius: 50%;
   bottom: 50%;
   left: 50%;
 }
-
 .length {
   display: flex;
   align-items: center;
   justify-content: center;
   padding-block: 1px;
   font-size: 11px;
-
   padding-block: 1px;
   font-size: 9px;
-
-  color: var(--white);
+  color: $white;
   font-family: 'Mont-SemiBold', sans-serif;
 }
 
