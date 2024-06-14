@@ -90,7 +90,7 @@ export const SliderCard: React.FC<Props> = ({
         {favourites.includes(product.itemId) ? (
           <div
             onClick={() => removeFrom(product.itemId, 'fav')}
-            className="card_container-handle-favs"
+            className="card_container-handle-favs cart-filled"
           >
             <img
               className="card_container-handle-favs-addToFavs"
