@@ -65,7 +65,6 @@
       gap: 64px;
     }
 
-
     &-mobile {
       height: calc(100vh - 74px);
       @include on-tablet {
@@ -88,166 +87,47 @@
         }
       }
 
-
-    &__container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 16px;
-
-      @include on-tablet {
-        display: flex;
-        flex-direction: row;
-        height: 100%;
-        gap: 32px;
-      }
-
-      @include on-desktop {
-        gap: 64px;
-      }
-
-      &-link {
-        position: relative;
-        height: 100%;
-
-        display: flex;
-        align-items: center;
-
-        text-decoration: none;
-        color: var(--text-secondary);
-        letter-spacing: 0.04em;
-
-        font-family: 'Mont-Bold', sans-serif;
-        font-weight: 800;
-        font-size: 12px;
-        line-height: 30px;
-        text-transform: uppercase;
-
-        transition: color 0.2s;
-
-        @include on-tablet {
-          line-height: 11px;
-          height: 100%;
-        }
-
-        &::after {
-          content: '';
-          position: absolute;
-          bottom: 0px;
-          left: 0;
-          right: 0;
-          height: 3px;
-          background-color: var(--header-primary);
-          transform: scaleX(0);
-          transition: transform 0.2s;
-          transform-origin: bottom right;
-        }
-
-        &:hover {
-          color: var(--text-primary);
-
-          &::after {
-            transform: scaleX(1);
-            transform-origin: bottom left;
-          }
-        }
-
-        &-active {
-          position: relative;
-          text-decoration: none;
-          color: inherit;
-          transition: color 0.2s;
-
-          &::after {
-            content: '';
-            position: absolute;
-            bottom: 0px;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background-color: $grayPrimary;
-            transform: scaleX(1);
-          }
-        }
-      }
-    }
-
-    &__icons {
-      display: none;
-
-      @include on-tablet {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        width: auto;
-        height: 48px;
-      }
-
-      @include on-desktop {
-        height: 64px;
-      }
-
-      &-mobile {
-        display: flex;
-        flex-direction: column;
-      }
-
-      &__special__container {
-        display: flex;
-        justify-content: space-between;
-      }
-
       &__container {
-        position: relative;
-        width: 50%;
-        height: 48px;
-
-        display: block;
-        flex-direction: row;
-        justify-content: center;
+        display: flex;
         align-items: center;
-
-        border-left: 1px solid var(--header-border);
-        border-top: 1px solid var(--header-border);
-
-        //You don't have color in container
-        transition: color 0.3s;
-
-        &::after {
-          content: '';
-          position: absolute;
-          bottom: 0px;
-          left: 0;
-          right: 0;
-          height: 3px;
-          background-color: var(--header-primary);
-          transform: scaleX(0);
-          transition: transform 0.15s;
-          transform-origin: bottom right;
-        }
-
-        &:hover {
-          //this don't change anything
-          color: $grayPrimary;
-
-          &::after {
-            transform: scaleX(1);
-            transform-origin: bottom left;
-          }
-        }
+        justify-content: center;
+        flex-direction: column;
+        gap: 16px;
 
         @include on-tablet {
-          width: 48px;
+          display: flex;
+          flex-direction: row;
+          height: 100%;
+          gap: 32px;
         }
 
         @include on-desktop {
-          width: 64px;
-          height: 64px;
+          gap: 64px;
         }
 
-        &-active {
+        &-link {
           position: relative;
+          height: 100%;
+
+          display: flex;
+          align-items: center;
+
+          text-decoration: none;
+          color: var(--text-secondary);
+          letter-spacing: 0.04em;
+
+          font-family: 'Mont-Bold', sans-serif;
+          font-weight: 800;
+          font-size: 12px;
+          line-height: 30px;
+          text-transform: uppercase;
+
+          transition: color 0.2s;
+
+          @include on-tablet {
+            line-height: 11px;
+            height: 100%;
+          }
 
           &::after {
             content: '';
@@ -256,105 +136,224 @@
             left: 0;
             right: 0;
             height: 3px;
-            background-color: $grayPrimary;
-            transform: scaleX(1);
+            background-color: var(--header-primary);
+            transform: scaleX(0);
+            transition: transform 0.2s;
+            transform-origin: bottom right;
           }
-        }
 
-        &-like {
-          display: flex;
+          &:hover {
+            color: var(--text-primary);
 
-          @include on-tablet {
-            display: flex;
+            &::after {
+              transform: scaleX(1);
+              transform-origin: bottom left;
+            }
           }
-        }
 
-        &-cart {
-          display: flex;
+          &-active {
+            position: relative;
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
 
-          @include on-tablet {
-            display: flex;
+            &::after {
+              content: '';
+              position: absolute;
+              bottom: 0px;
+              left: 0;
+              right: 0;
+              height: 3px;
+              background-color: $grayPrimary;
+              transform: scaleX(1);
+            }
           }
         }
       }
 
-      &__icon {
-        &-like {
+      &__icons {
+        display: none;
+
+        @include on-tablet {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          width: auto;
+          height: 48px;
+        }
+
+        @include on-desktop {
+          height: 64px;
+        }
+
+        &-mobile {
+          display: flex;
+          flex-direction: column;
+        }
+
+        &__special__container {
+          display: flex;
+          justify-content: space-between;
+        }
+
+        &__container {
+          position: relative;
+          width: 50%;
+          height: 48px;
+
           display: block;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+
+          border-left: 1px solid var(--header-border);
+          border-top: 1px solid var(--header-border);
+
+          //You don't have color in container
+          transition: color 0.3s;
+
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: 0px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background-color: var(--header-primary);
+            transform: scaleX(0);
+            transition: transform 0.15s;
+            transform-origin: bottom right;
+          }
+
+          &:hover {
+            //this don't change anything
+            color: $grayPrimary;
+
+            &::after {
+              transform: scaleX(1);
+              transform-origin: bottom left;
+            }
+          }
 
           @include on-tablet {
-            display: block;
+            width: 48px;
+          }
 
-            width: 16px;
-            height: auto;
+          @include on-desktop {
+            width: 64px;
+            height: 64px;
+          }
+
+          &-active {
+            position: relative;
+
+            &::after {
+              content: '';
+              position: absolute;
+              bottom: 0px;
+              left: 0;
+              right: 0;
+              height: 3px;
+              background-color: $grayPrimary;
+              transform: scaleX(1);
+            }
+          }
+
+          &-like {
+            display: flex;
+
+            @include on-tablet {
+              display: flex;
+            }
+          }
+
+          &-cart {
+            display: flex;
+
+            @include on-tablet {
+              display: flex;
+            }
           }
         }
 
-        &-cart {
-          display: block;
-
-          @include on-tablet {
+        &__icon {
+          &-like {
             display: block;
 
-            width: 16px;
-            height: auto;
+            @include on-tablet {
+              display: block;
+
+              width: 16px;
+              height: auto;
+            }
+          }
+
+          &-cart {
+            display: block;
+
+            @include on-tablet {
+              display: block;
+
+              width: 16px;
+              height: auto;
+            }
           }
         }
       }
     }
+
+    &__menu {
+      width: 48px;
+      height: 48px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      border-left: 1px solid var(--header-border);
+
+      @include on-tablet {
+        display: none;
+      }
+
+      &-link {
+        height: 16px;
+      }
+    }
   }
 
-  &__menu {
-    width: 48px;
-    height: 48px;
+  .header__icons__container {
+    position: relative;
+  }
 
+  .adding {
+    box-sizing: border-box;
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background-color: var(--red);
+    border-radius: 50%;
+    bottom: 50%;
+    left: 50%;
+  }
+
+  .length {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-block: 1px;
+    font-size: 11px;
+
+    padding-block: 1px;
+    font-size: 9px;
+
+    color: var(--white);
+    font-family: 'Mont-SemiBold', sans-serif;
+  }
+
+  .spec__icons__container {
     display: flex;
     justify-content: center;
-    align-items: center;
-
-    border-left: 1px solid var(--header-border);
-
-    @include on-tablet {
-      display: none;
-    }
-
-    &-link {
-      height: 16px;
-    }
+    width: 50%;
   }
-}
-
-.header__icons__container {
-  position: relative;
-}
-
-.adding {
-  box-sizing: border-box;
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  background-color: var(--red);
-  border-radius: 50%;
-  bottom: 50%;
-  left: 50%;
-}
-
-.length {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-block: 1px;
-  font-size: 11px;
-
-  padding-block: 1px;
-  font-size: 9px;
-
-  color: var(--white);
-  font-family: 'Mont-SemiBold', sans-serif;
-}
-
-.spec__icons__container {
-  display: flex;
-  justify-content: center;
-  width: 50%;
 }
