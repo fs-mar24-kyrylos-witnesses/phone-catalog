@@ -1,17 +1,19 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
+import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 import { useThemeStore } from '../../store/themeStore';
 
 const SwitchContainer = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
   cursor: pointer;
   font-size: 24px;
   transition: color 0.3s;
-  margin-right: 10px;
+  padding-inline: 5px;
 
   .icon {
+    font-size: 18px;
     transition: transform 0.3s;
   }
 
