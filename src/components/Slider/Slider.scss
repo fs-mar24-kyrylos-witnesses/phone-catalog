@@ -16,7 +16,7 @@
 .slider {
   margin-left: 16px;
 
-  overflow-x: auto;
+  overflow-x: hidden;
 
   @include on-tablet {
     margin-left: 24px;
