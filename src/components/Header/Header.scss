@@ -212,7 +212,7 @@
           background-color: var(--text-primary);
           transform: scaleX(0);
           transition: transform 0.15s;
-          transform-origin: bottom right;
+          transform-origin: bottom left;
         }
 
         @include on-desktop {
