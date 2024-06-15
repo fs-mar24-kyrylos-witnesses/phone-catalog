@@ -6,19 +6,19 @@
   position: relative;
   background: transparent;
   font-family: 'Mont-SemiBold', sans-serif;
-  
-
 
   &__button {
     align-items: center;
+
+    // i don't see what this is for
     border: 1px solid $grayElements;
+
     cursor: pointer;
     display: flex;
     font: inherit;
     justify-content: space-between;
     padding: 19px 12px;
     width: 100%;
-
   }
 
   &__title {
@@ -26,11 +26,9 @@
     font-size: 14px;
     font-weight: 600;
     line-height: 21px;
-    color: $grayPrimary;
+    color: var(--text-primary);
     white-space: nowrap;
     overflow: hidden;
-  
-
   }
 
   &__icon {
@@ -41,7 +39,11 @@
   }
 
   &__list-wrapper {
+    // can't find what this is for
     background-color: $white;
+
+    border: 1px solid var(--language-dropdown-border);
+
     box-shadow: 0 2px 15px 0 #0000001a;
     left: 0;
     position: absolute;
@@ -57,7 +59,7 @@
     list-style-type: none;
     padding: 0;
     margin: 0;
-    background: $white;
+    background: var(--main-background);
   }
 
   &__item {
@@ -66,11 +68,11 @@
     font-size: 14px;
     font-weight: 600;
     line-height: 21px;
-    color: $graySecondary;
+    color: var(--text-secondary);
     cursor: pointer;
 
-    @include hover(background-color, $grayElements);
-    @include hover(color, $grayPrimary);
+    @include hover(background-color, var(--language-hover-dropdown-background));
+    @include hover(color, var(--text-primary));
   }
 
   &__icon.open {
@@ -98,4 +100,3 @@
     text-transform: uppercase;
   }
 }
-
