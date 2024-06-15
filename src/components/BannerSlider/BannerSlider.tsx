@@ -10,6 +10,7 @@ import 'swiper/css/pagination';
 import './BannerSlider.scss';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { Arrow } from '../../UI/Icons/arrow/arrow';
 
 SwiperCore.use([Navigation, Pagination]);
 
@@ -34,7 +35,9 @@ export const BannerSlider = () => {
 
   return (
     <div className="carousel">
-      <button onClick={goPrev} className="carousel__button-prev"></button>
+      <button onClick={goPrev} className="carousel__button-prev">
+        <Arrow direction="left" />
+      </button>
 
       <Swiper
         onSwiper={swiperInstance => {
@@ -63,7 +66,9 @@ export const BannerSlider = () => {
         })}
       </Swiper>
 
-      <button onClick={goNext} className="carousel__button-next"></button>
+      <button onClick={goNext} className="carousel__button-next">
+        <Arrow direction="right" />
+      </button>
     </div>
   );
 };

@@ -7,7 +7,8 @@ import './Slider.scss';
 import '../../prepare-styles/variables.scss';
 import { Product } from '../../types/Product';
 
-import { SliderCard } from '../SliderCard';
+import { Arrow } from '../../UI/Icons/arrow/arrow';
+import { Card } from '../Card/Card';
 
 type SliderProps = {
   titleName: string;
@@ -16,15 +17,11 @@ type SliderProps = {
 };
 
 const breakpoints = {
-  desktop: 1000,
+  desktop: 1200,
   tablet: 640,
 };
 
-export const Slider: React.FC<SliderProps> = ({
-  products,
-  titleName,
-  discount,
-}) => {
+export const Slider: React.FC<SliderProps> = ({ products, titleName }) => {
   const swiperRef = useRef<SwiperClass | null>(null);
   const [slidesPerView, setSlidesPerView] = useState(2);
 
@@ -78,9 +75,13 @@ export const Slider: React.FC<SliderProps> = ({
       <div className="slider__wrapper">
         <h2 className="section-title">{titleName}</h2>
         <div className="slider__button--wrapper">
-          <button onClick={goPrev} className="slider__button-prev"></button>
+          <button onClick={goPrev} className="slider__button-prev">
+            <Arrow direction="left" />
+          </button>
 
-          <button onClick={goNext} className="slider__button-next"></button>
+          <button onClick={goNext} className="slider__button-next">
+            <Arrow direction="right" />
+          </button>
         </div>
       </div>
 
@@ -98,11 +99,7 @@ export const Slider: React.FC<SliderProps> = ({
           return (
             <SwiperSlide key={product.id}>
               <div className="slider-card--container">
-                <SliderCard
-                  product={product}
-                  category={product.category}
-                  discount={discount}
-                />
+                <Card product={product} category={product.category} />
               </div>
             </SwiperSlide>
           );

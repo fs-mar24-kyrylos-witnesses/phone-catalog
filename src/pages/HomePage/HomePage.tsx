@@ -44,7 +44,6 @@ export const HomePage = () => {
     <>
       <div className="grid__home-page">
         <h1 className="main-title">{t('welcomeToNiceGadgetsStore')}</h1>
-
         <BannerSlider />
       </div>
       <div className="container__home-page">

@@ -1,11 +1,11 @@
 import React from 'react';
 import './SliderCard.scss';
 import { Product } from '../../types/Product';
-import heart from '../../assets/icons/heart.svg';
 import { Link } from 'react-router-dom';
 import filledHeart from '../../assets/icons/heart-filled.svg';
 import { useStore } from '../../store/productStore';
 import { useTranslation } from 'react-i18next';
+import { Icon } from '../../UI/Icons/Icon';
 
 type Props = {
   product: Product;
@@ -103,11 +103,9 @@ export const SliderCard: React.FC<Props> = ({
             onClick={() => addTo(product.itemId, 'fav')}
             className="card_container-handle-favs"
           >
-            <img
-              className="card_container-handle-favs-addToFavs"
-              src={heart}
-              alt="Add to fav"
-            />
+            <div className="card_container-handle-favs-addToFavs">
+              <Icon name="heart" />
+            </div>
           </div>
         )}
       </div>

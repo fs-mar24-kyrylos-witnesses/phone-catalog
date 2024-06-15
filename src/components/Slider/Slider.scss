@@ -16,7 +16,7 @@
 .slider {
   margin-left: 16px;
 
-  overflow-x: auto;
+  overflow-x: hidden;
 
   @include on-tablet {
     margin-left: 24px;
@@ -57,10 +57,6 @@
     border: 1px solid var(--swiper-button-border);
 
     background-color: var(--swiper-button-background);
-    background-repeat: no-repeat;
-    background-size: 16px 16px;
-    background-position: center;
-
     transition:
       background-color $effect-duration ease,
       border $effect-duration ease;
@@ -73,14 +69,6 @@
     &:active {
       background-color: var(--main-background);
     }
-  }
-
-  &__button-next {
-    background-image: url('../../assets/icons/arrow-right.svg');
-  }
-
-  &__button-prev {
-    background-image: url('../../assets/icons/arrow-left.svg');
   }
 }
 

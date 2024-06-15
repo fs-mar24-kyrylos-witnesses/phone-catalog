@@ -12,16 +12,16 @@ const SwitchContainer = styled.div`
   transition: color 0.3s;
   padding-inline: 5px;
 
-  .icon {
+  .theme-icon {
     font-size: 18px;
     transition: transform 0.3s;
   }
 
-  .icon.sun {
+  .theme-icon.sun {
     color: #ffa500; /* Sun color */
   }
 
-  .icon.moon {
+  .theme-icon.moon {
     color: var(--white); /* Moon color */
   }
 `;
@@ -32,9 +32,9 @@ export const ThemeSwitch = () => {
   return (
     <SwitchContainer onClick={toggleTheme}>
       {theme === 'light' ? (
-        <FontAwesomeIcon icon={faSun} className="icon sun" />
+        <FontAwesomeIcon icon={faSun} className="theme-icon sun" />
       ) : (
-        <FontAwesomeIcon icon={faMoon} className="icon moon" />
+        <FontAwesomeIcon icon={faMoon} className="theme-icon moon" />
       )}
     </SwitchContainer>
   );
