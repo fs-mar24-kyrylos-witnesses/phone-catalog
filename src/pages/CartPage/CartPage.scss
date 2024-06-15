@@ -177,15 +177,23 @@ h1 {
   padding-top: 1.984px;
 }
 
-.emptyCartContain {
-  box-sizing: border-box;
-  padding: 20px;
+.empty-cart {
+  height: calc(100vh - $footer-height - $header-height - 20px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
 
-.emptyCart {
-  width: 50%;
+  &__image {
+    height: 300px;
+  }
+
+  &__message {
+    margin-top: 48px;
+  }
+
+  &__description {
+    margin-top: 20px;
+    color: var(--about-page-back-button-text);
+  }
 }
