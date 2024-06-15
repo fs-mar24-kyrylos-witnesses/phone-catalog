@@ -55,7 +55,7 @@
       }
 
       &-phones {
-        background-image: url(../../img/category-phones.png);
+        background-image: url(img/category-phones.png);
         background-color: var(--phone-category-background);
         background-position: 10px 20px;
 
@@ -76,7 +76,7 @@
       }
 
       &-tablets {
-        background-image: url(../../img/category-tablets.png);
+        background-image: url(img/category-tablets.png);
         background-color: var(--tablet-category-background);
         background-position: 20px 40px;
         background-size: 120% 120%;
@@ -97,7 +97,7 @@
       }
 
       &-accessories {
-        background-image: url(../../img/category-accessories.png);
+        background-image: url(img/category-accessories.png);
         background-color: var(--accessory-category-background);
         background-position: 30px 60px;
         transition: background-position $effect-duration ease;

@@ -14,9 +14,9 @@ import { Link } from 'react-router-dom';
 SwiperCore.use([Navigation, Pagination]);
 
 const images = [
-  '../img/banner-kyrylo.png',
-  '../img/banner-phones.png',
-  '../img/banner-tablets.png',
+  'img/banner-kyrylo.png',
+  'img/banner-phones.png',
+  'img/banner-tablets.png',
 ];
 
 export const BannerSlider = () => {
