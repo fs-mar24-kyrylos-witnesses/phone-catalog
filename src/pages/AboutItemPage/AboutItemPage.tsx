@@ -56,6 +56,7 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
     string | undefined
   >();
   const [recommendedProducts, setRecommendedProducts] = useState<Product[]>([]);
+  const [productWasNotFound, setProductWasNotFound] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -76,6 +77,8 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
             .sort(() => Math.random() - 0.5) // shuffling the array to take random 12 products
             .slice(0, 12),
         );
+      } else {
+        setProductWasNotFound(true);
       }
     });
   }, [
@@ -108,7 +111,7 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
 
   return (
     <div className="container">
-      {selectedProduct ? (
+      {!productWasNotFound ? (
         <div className="about-item-page">
           <div className="breadcrumbs">
             <Link to="/home">
@@ -337,7 +340,7 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
       ) : (
         <div className="no-item">
           <img
-            src="./public/img/page-not-found.png"
+            src="./img/page-not-found.png"
             alt="Item not found"
             className="no-item__image"
           />
