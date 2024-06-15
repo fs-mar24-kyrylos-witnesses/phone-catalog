@@ -71,8 +71,12 @@ export const CartPage: React.FC = () => {
           </div>
         </div>
       ) : (
-        <div className="emptyCartContain">
-          <img className="emptyCart" src={emptyCart} alt="empty cart" />
+        <div className="empty-cart">
+          <img src={emptyCart} alt="Empty cart" className="empty-cart__image" />
+          <h2 className="empty-cart__message h2">Your cart is empty...</h2>
+          <p className="empty-cart__description body-text">
+            Look around and add something!
+          </p>
         </div>
       )}
     </>

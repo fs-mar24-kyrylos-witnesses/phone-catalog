@@ -421,6 +421,27 @@
   margin-left: 0;
 }
 
+.no-item {
+  height: calc(100vh - $footer-height - $header-height - 20px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &__image {
+    height: 300px;
+  }
+
+  &__message {
+    margin-top: 48px;
+  }
+
+  &__description {
+    margin-top: 20px;
+    color: var(--about-page-back-button-text);
+  }
+}
+
 /*#region capacityButton*/
 .capacity-button {
   height: 32px;
