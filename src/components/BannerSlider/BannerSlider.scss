@@ -67,9 +67,6 @@
     display: none;
 
     background-color: var(--swiper-button-background);
-    background-size: 16px 16px;
-    background-repeat: no-repeat;
-    background-position: center;
 
     transition:
       background-color $effect-duration ease,
@@ -95,7 +92,6 @@
   }
 
   &__button-next {
-    background-image: url('../../assets/icons/arrow-right.svg');
     margin-left: 19px;
 
     @include on-desktop {
@@ -104,7 +100,6 @@
   }
 
   &__button-prev {
-    background-image: url('../../assets/icons/arrow-left.svg');
     margin-right: 19px;
 
     @include on-desktop {

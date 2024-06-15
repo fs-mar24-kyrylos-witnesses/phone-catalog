@@ -8,6 +8,7 @@ import '../../prepare-styles/variables.scss';
 import { Product } from '../../types/Product';
 
 import { SliderCard } from '../SliderCard';
+import { Arrow } from '../../UI/Icons/arrow/arrow';
 
 type SliderProps = {
   titleName: string;
@@ -78,9 +79,13 @@ export const Slider: React.FC<SliderProps> = ({
       <div className="slider__wrapper">
         <h2 className="section-title">{titleName}</h2>
         <div className="slider__button--wrapper">
-          <button onClick={goPrev} className="slider__button-prev"></button>
+          <button onClick={goPrev} className="slider__button-prev">
+            <Arrow direction="left" />
+          </button>
 
-          <button onClick={goNext} className="slider__button-next"></button>
+          <button onClick={goNext} className="slider__button-next">
+            <Arrow direction="right" />
+          </button>
         </div>
       </div>
 
