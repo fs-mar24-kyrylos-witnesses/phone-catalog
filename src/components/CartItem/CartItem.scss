@@ -14,7 +14,7 @@
   column-gap: 16px;
   row-gap: 16px;
   padding: 16px;
-  border: 1px solid $grayElements;
+  border: 1px solid var(--elements);
   height: 160px;
 
   @include on-tablet {
@@ -34,12 +34,12 @@
     column-gap: 24px;
     // padding-block: 7px;
 
-    &-title{
+    &-title {
       font-family: 'Mont-Regular', sans-serif;
-      font-size:14px;
-      color: $grayPrimary;
+      font-size: 14px;
+      color: var(--text-primary);
       line-height: 21px;
-      justify-self:right;
+      justify-self: right;
       width: fit-content;
 
       @include on-tablet {
@@ -50,18 +50,17 @@
         width: 336px;
       }
     }
-  
+
     &-img {
       height: 66px;
     }
 
-    &-close{
+    &-close {
       cursor: pointer;
     }
-
   }
 
-  &-handle{
+  &-handle {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -77,14 +76,13 @@
     }
 
     @include on-desktop {
-      
     }
-  
-    &-price{
+
+    &-price {
       font-family: 'Mont-Bold', sans-serif;
       font-weight: 800;
       font-size: 22px;
-      color: $grayPrimary;
+      color: var(--text-primary);
       letter-spacing: -0.01em;
       line-height: 30.8px;
     }
@@ -108,23 +106,25 @@
 
         &-text {
           line-height: 21px;
-          color: rgba(0, 0, 0, 1);
+          color: var(--text-primary);
           font-family: 'Mont-Regular', sans-serif;
           font-size: 14px;
         }
       }
 
-      &-box{
+      &-box {
         box-sizing: border-box;
         display: flex;
         justify-content: center;
         align-items: center;
-        border: 1px solid $grayIconsPlaceholders;
+        border: 1px solid var(--swiper-button-border);
         min-height: 32px;
         min-width: 32px;
         cursor: pointer;
+        background-color: var(--swiper-button-background);
 
-        @include hover(border-color, $grayPrimary);
+        @include hover(border-color, var(--swiper-hover-button-border));
+        @include hover(background-color, var(--swiper-hover-button-background));
       }
     }
   }
