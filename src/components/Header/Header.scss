@@ -180,8 +180,11 @@
       }
 
       &-mobile {
+        padding-top: 16px;
         display: flex;
+        height: 60vh;
         flex-direction: column;
+        justify-content: space-between;
       }
 
       &__special__container {
@@ -217,8 +220,6 @@
 
         @include on-desktop {
           &:hover {
-            // i can't find what this changes
-            color: $grayPrimary;
             &::after {
               transform: scaleX(1);
               transform-origin: bottom left;
@@ -246,7 +247,7 @@
             right: 0;
             height: 3px;
 
-            // i can't find what this changes
+            // change underline on icons
             background-color: $grayPrimary;
             transform: scaleX(1);
           }
@@ -339,4 +340,10 @@
   display: flex;
   justify-content: center;
   width: 50%;
+  border-top: 1px solid var(--header-border);
+  border-bottom: 1px solid var(--header-border);
+  border-left: 1px solid var(--header-border);
+  &-theme {
+    padding-left: 10px;
+  }
 }
