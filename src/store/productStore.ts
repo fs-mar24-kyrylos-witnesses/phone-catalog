@@ -29,6 +29,7 @@ type Store = {
   addTo: (slug: string, type: 'fav' | 'cart') => void;
   removeFrom: (slug: string, type: 'fav' | 'cart') => void;
   getLength: (type: 'fav' | 'cart') => number;
+  emptyCart: () => void;
 };
 export const useProductStore = createZustand<ProductStore>(set => ({
   catalogProducts: [],
@@ -82,6 +83,7 @@ export const useStore = create<Store>()(
     (set, get) => ({
       favourites: [],
       cartProducts: [],
+
       favsProducts: [],
       bagProducts: [],
       products: [],
@@ -107,6 +109,11 @@ export const useStore = create<Store>()(
           }
         });
       },
+
+      emptyCart: () => {
+        set({ cartProducts: [] });
+      },
+
       getLength: (type: 'fav' | 'cart') => {
         const state = get();
         return type === 'fav'
