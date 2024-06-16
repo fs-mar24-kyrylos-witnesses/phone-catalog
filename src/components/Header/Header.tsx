@@ -33,7 +33,9 @@ export const Header: React.FC = () => {
     <header className="header">
       <div className="header__container">
         <Link to="/" onClick={handleLinkClick}>
-          <Icon name={`logo`} />
+          <div className="header__logo">
+            <Icon name={`logo`} />
+          </div>
         </Link>
 
         <nav className="nav">
