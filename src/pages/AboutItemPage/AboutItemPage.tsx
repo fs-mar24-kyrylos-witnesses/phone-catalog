@@ -10,13 +10,11 @@ import { Slider } from '../../components/Slider';
 
 import { useStore, useProductStore } from '../../store/productStore';
 import { getProductSpecs } from '../../helper/getProductSpecs';
+import { useTranslation } from 'react-i18next';
 
 // ICONS
-import home from '../../assets/icons/home.svg';
-import arrowRight from '../../assets/icons/arrow-right.svg';
-import arrowLeft from '../../assets/icons/arrow-left.svg';
-import heart from '../../assets/icons/heart.svg';
-import heartFilled from '../../assets/icons/heart-filled.svg';
+import { Icon } from '../../UI/Icons/Icon';
+import { Arrow } from '../../UI/Icons/arrow/arrow';
 
 // TYPES
 import { Spec } from '../../types/Spec';
@@ -60,6 +58,8 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
     string | undefined
   >();
   const [recommendedProducts, setRecommendedProducts] = useState<Product[]>([]);
+  const [productWasNotFound, setProductWasNotFound] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     getDelay();
@@ -84,6 +84,8 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
             .sort(() => Math.random() - 0.5) // shuffling the array to take random 12 products
             .slice(0, 12),
         );
+      } else {
+        setProductWasNotFound(true);
       }
     });
   }, [
@@ -116,19 +118,19 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
 
   return (
     <div className="container">
-      {selectedProduct ? (
+      {!productWasNotFound ? (
         <div className="about-item-page">
           <div className="breadcrumbs">
             <Link to="/home">
-              <img className="breadcrumbs__home" src={home} alt="Home" />
+              <Icon name="home"></Icon>
             </Link>
-            <img className="breadcrumbs__arrow" src={arrowRight} alt="arrow" />
+            <Arrow direction="right"></Arrow>
             <Link to={`/${categoryArea}`}>
               <span className="breadcrumbs__text breadcrumbs__text--category small-text">
                 {normalizedCategory}
               </span>
             </Link>
-            <img className="breadcrumbs__arrow" src={arrowRight} alt="arrow" />
+            <Arrow direction="right"></Arrow>
             <Link to={``}>
               <span className="breadcrumbs__text breadcrumbs__text--model small-text">
                 {selectedProduct?.name}
@@ -137,8 +139,8 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
           </div>
 
           <Link className="back-button__container" to={`/${categoryArea}`}>
-            <img className="back-button__icon" src={arrowLeft} alt="arrow" />
-            <span className="back-button__text small-text">Back</span>
+            <Arrow direction="left"></Arrow>
+            <span className="back-button__text small-text">{t('goBack')}</span>
           </Link>
 
           <h2 className="product-name h2">{selectedProduct?.name}</h2>
@@ -175,7 +177,7 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
               <section className="colors">
                 <div className="colors__title">
                   <p className="colors__title-available small-text">
-                    Available colors
+                    {t('availableColors')}
                   </p>
                   <span className="colors__title-id small-text">
                     ID: 000000
@@ -203,7 +205,7 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
 
               <section className="capacity">
                 <p className="capacity__title-available small-text">
-                  Select capacity
+                  {t('selectCapacity')}
                 </p>
                 <div className="capacity__selection">
                   {selectedProduct?.capacityAvailable.map(capacity => (
@@ -257,7 +259,7 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
                     })}
                     onClick={() => toggleCart(selectedProduct?.id || '')}
                   >
-                    Add to cart
+                    {t('addToCart')}
                   </button>
 
                   <button
@@ -269,14 +271,11 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
                     })}
                     onClick={() => toggleFavorite(selectedProduct?.id || '')}
                   >
-                    <img
-                      src={
-                        favourites.includes(selectedProduct?.id || '')
-                          ? heartFilled
-                          : heart
-                      }
-                      alt="Add to favorite"
-                    />
+                    {favourites.includes(selectedProduct?.id || '') ? (
+                      <Icon name="heartFilled"></Icon>
+                    ) : (
+                      <Icon name="heart"></Icon>
+                    )}
                   </button>
                 </div>
               </section>
@@ -310,7 +309,7 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
 
           <div className="info-section">
             <section className="about">
-              <h3 className="about__title h3">About</h3>
+              <h3 className="about__title h3">{t('about')}</h3>
 
               <div className="separator"></div>
 
@@ -342,7 +341,7 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
             </section>
 
             <section className="specs">
-              <h3 className="specs__title h3">Tech specs</h3>
+              <h3 className="specs__title h3">{t('techSpecs')}</h3>
 
               <div className="separator"></div>
 
@@ -373,9 +372,9 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
             </section>
           </div>
 
-          <section className="slider-section slider--no-margin">
+          <section className="slider-section">
             <Slider
-              titleName="You may also like"
+              titleName={t('youMayAlsoLike')}
               products={recommendedProducts}
             ></Slider>
           </section>
@@ -383,16 +382,12 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
       ) : (
         <div className="no-item">
           <img
-            src="./public/img/page-not-found.png"
+            src="./img/product-not-found.png"
             alt="Item not found"
             className="no-item__image"
           />
-          <h2 className="no-item__message h2">
-            Whoops! We couldn&#39;t find this item...
-          </h2>
-          <p className="no-item__description body-text">
-            Are you sure it is somewhere here?
-          </p>
+          <h2 className="no-item__message h2">{t('Whoops')}</h2>
+          <p className="no-item__description body-text">{t('AreYouSure')}</p>
         </div>
       )}
     </div>

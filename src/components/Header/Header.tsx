@@ -8,12 +8,12 @@ import { useStore, useProductStore } from '../../store/productStore';
 import { LanguagesSelector } from '../LanguagesSelector/LanguagesSelector';
 import { useTranslation } from 'react-i18next';
 
-import logo from '../../assets/icons/logo.svg';
 import like from '../../assets/icons/heart.svg';
 import cart from '../../assets/icons/cart-icon.svg';
 import menu from '../../assets/icons/menu.svg';
 import close from '../../assets/icons/close.svg';
 import { ThemeSwitch } from '../ThemeSwitch';
+import { Icon } from '../../UI/Icons/Icon';
 
 export const Header: React.FC = () => {
   const { favourites, cartProducts, getLength } = useStore();
@@ -33,7 +33,7 @@ export const Header: React.FC = () => {
     <header className="header">
       <div className="header__container">
         <Link to="/" onClick={handleLinkClick}>
-          <img src={logo} alt="NiceGadgetsLogo" className="header__logo" />
+          <Icon name={`logo`} />
         </Link>
 
         <nav className="nav">
