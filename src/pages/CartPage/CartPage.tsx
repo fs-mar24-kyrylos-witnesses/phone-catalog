@@ -9,6 +9,7 @@ import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { SkeletonDarkTheme } from '../../components/Skeleton/SkeletonDarkTheme';
 import { Arrow } from '../../UI/Icons/arrow/arrow';
+import Modall from '../../components/Modal/Modal';
 
 export const CartPage: React.FC = () => {
   const { catalogProducts } = useProductStore();
@@ -93,7 +94,7 @@ export const CartPage: React.FC = () => {
               )}
             </p>
             <div className="checkout-button">
-              <p className="checkout-button-text">{t('checkout')}</p>
+              <Modall />
             </div>
           </div>
         </div>
