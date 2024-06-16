@@ -248,7 +248,8 @@
             height: 3px;
 
             // change underline on icons
-            background-color: $grayPrimary;
+            // background-color: $grayPrimary;
+            background-color: var(--text-primary);
             transform: scaleX(1);
           }
         }
