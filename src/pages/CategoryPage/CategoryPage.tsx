@@ -2,8 +2,6 @@ import './CategoryPage.scss';
 import { Link, useSearchParams } from 'react-router-dom';
 import '../../prepare-styles/colors.scss';
 import { CategoryArray } from '../../types/CategoryArray';
-import home from '../../assets/icons/home.svg';
-import arrowRight from '../../assets/icons/arrow-right.svg';
 import { SortBy } from '../../types/SortBy';
 import { PerPage } from '../../types/PerPage';
 import { useProductStore } from '../../store/productStore';
@@ -13,14 +11,24 @@ import { Pagination } from '../../components/Pagination/Pagination';
 import { getNumbers } from '../../helper/getNumbers/getNumbers';
 import { SearchLink } from '../../helper/SearchLink/SearchLink';
 import { useTranslation } from 'react-i18next';
+import { useEffect } from 'react';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
+import { SkeletonDarkTheme } from '../../components/Skeleton/SkeletonDarkTheme';
+import { Icon } from '../../UI/Icons/Icon';
+import { Arrow } from '../../UI/Icons/arrow/arrow';
 
 type Props = {
   category: CategoryArray;
 };
 
 export const CategoryPage: React.FC<Props> = ({ category }) => {
-  const { catalogProducts } = useProductStore();
   const [searchParams, setSearchParams] = useSearchParams();
+  const { catalogProducts, getDelay, delay } = useProductStore();
+
+  useEffect(() => {
+    getDelay();
+  }, [getDelay]);
 
   const actualProducts = catalogProducts.filter(
     item => item.category === category.path,
@@ -80,17 +88,9 @@ export const CategoryPage: React.FC<Props> = ({ category }) => {
         <div className="category_header">
           <div className="category_header-map">
             <Link to={`/home`}>
-              <img
-                className="category_header-map-homeIcon"
-                src={home}
-                alt="Home"
-              />
+              <Icon name="home" />
             </Link>
-            <img
-              className="category_header-map-arrowRightIcon"
-              src={arrowRight}
-              alt="arrow"
-            />
+            <Arrow direction="right" />
             <Link to={`/${category.path}`}>
               <span className="category_header-map-categoryName small-text">
                 {category.name === 'Phones'
@@ -112,7 +112,15 @@ export const CategoryPage: React.FC<Props> = ({ category }) => {
                   ? t('accessories')
                   : category.titleName}
           </h1>
-          <p className="category_header-itemsCount">{`${actualProducts.length} ${t('models')}`}</p>
+          <p className="category_header-itemsCount">
+            {delay ? (
+              <SkeletonDarkTheme>
+                <Skeleton width={80} />
+              </SkeletonDarkTheme>
+            ) : (
+              `${actualProducts.length} ${t('models')}`
+            )}
+          </p>
           <div className="category_header-sortAndPerpage">
             <div className="category_header-select">
               <span className="category_header-select-title">

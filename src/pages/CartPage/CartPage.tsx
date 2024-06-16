@@ -1,16 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import './CartPage.scss';
 import { useProductStore, useStore } from '../../store/productStore';
-// import { Link } from 'react-router-dom';
-import arrowLeft from '../../assets/icons/arrow-left.svg';
 import emptyCart from '/img/cart-is-empty.png';
 import { CartItem } from '../../components/CartItem';
 import { Product } from '../../types/Product';
 import { useTranslation } from 'react-i18next';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
+import { SkeletonDarkTheme } from '../../components/Skeleton/SkeletonDarkTheme';
+import { Arrow } from '../../UI/Icons/arrow/arrow';
 
 export const CartPage: React.FC = () => {
   const { catalogProducts } = useProductStore();
   const { cartProducts, getLength } = useStore();
+  const { getDelay, delay } = useProductStore();
+
+  useEffect(() => {
+    getDelay();
+  }, [getDelay]);
 
   const cart: Product[] = cartProducts
     .map(prod => catalogProducts.find(item => prod === item.itemId))
@@ -44,8 +51,12 @@ export const CartPage: React.FC = () => {
       {cartProducts.length > 0 ? (
         <div className="container-cart">
           <div className="title">
-            <div onClick={() => history.go(-1)} className="title-map">
-              <img className="title-map-img" src={arrowLeft} alt="arrLeft" />
+            <div
+              style={{ cursor: 'pointer' }}
+              onClick={() => history.go(-1)}
+              className="title-map"
+            >
+              <Arrow direction="left" />
               <span className="title-map-back">{t('goBack')}</span>
             </div>
             <h1>{t('cart')}</h1>
@@ -63,8 +74,24 @@ export const CartPage: React.FC = () => {
             ))}
           </div>
           <div className="checkout">
-            <p className="checkout-price">{`$${getTotalPrice()}`}</p>
-            <p className="checkout-total">{`${t('totalFor')} ${getLength('cart')} ${t('items')}`}</p>
+            <p className="checkout-price">
+              {delay ? (
+                <SkeletonDarkTheme>
+                  <Skeleton width={100} height={35} />
+                </SkeletonDarkTheme>
+              ) : (
+                `$${getTotalPrice()}`
+              )}
+            </p>
+            <p className="checkout-total">
+              {delay ? (
+                <SkeletonDarkTheme>
+                  <Skeleton width={110} height={17} />
+                </SkeletonDarkTheme>
+              ) : (
+                `${t('totalFor')} ${getLength('cart')} ${t('items')}`
+              )}
+            </p>
             <div className="checkout-button">
               <p className="checkout-button-text">{t('checkout')}</p>
             </div>

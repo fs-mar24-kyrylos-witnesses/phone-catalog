@@ -9,6 +9,7 @@ type ProductStore = {
   catalogProducts: Product[];
   error: string;
   loading: boolean;
+  delay: boolean;
 
   isMenuOpen: boolean;
   toggleMenu: () => void;
@@ -18,6 +19,7 @@ type ProductStore = {
     id: string,
     category: Category,
   ) => Promise<ProductInfo | undefined>;
+  getDelay: () => void;
 };
 
 type Store = {
@@ -33,6 +35,8 @@ export const useProductStore = createZustand<ProductStore>(set => ({
   loading: false,
   error: '',
   isMenuOpen: false,
+  delay: false,
+
   fetchAllProducts: async () => {
     set({ loading: true });
     try {
@@ -63,6 +67,14 @@ export const useProductStore = createZustand<ProductStore>(set => ({
   },
 
   toggleMenu: () => set(state => ({ isMenuOpen: !state.isMenuOpen })),
+
+  getDelay: () => {
+    set({ delay: true });
+
+    return setTimeout(() => {
+      set({ delay: false });
+    }, 1000);
+  },
 }));
 
 export const useStore = create<Store>()(

@@ -1,4 +1,6 @@
 import './AboutItemPage.scss';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 import cn from 'classnames';
 import { Link, useParams } from 'react-router-dom';
@@ -26,6 +28,7 @@ import { getColorHex } from '../../helper/getColorHex';
 import { getNewColorSlug, getNewRamSlug } from '../../helper/getNewSlug';
 import { Category } from '../../types/Category';
 import { ProductInfo } from '../../types/ProductInfo';
+import { SkeletonDarkTheme } from '../../components/Skeleton/SkeletonDarkTheme';
 
 type Props = {
   categoryArea: Category;
@@ -42,7 +45,8 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
     categoryArea[0].toUpperCase() + categoryArea.slice(1);
 
   const { itemId } = useParams(); // our product id
-  const { catalogProducts, fetchProductById } = useProductStore(); // func that gives product depending on the id and category
+  const { catalogProducts, fetchProductById, getDelay, delay } =
+    useProductStore(); // func that gives product depending on the id and category
   const { favourites, cartProducts, addTo, removeFrom } = useStore();
 
   const [selectedProduct, setSelectedProduct] = useState<
@@ -56,6 +60,10 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
     string | undefined
   >();
   const [recommendedProducts, setRecommendedProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    getDelay();
+  }, [getDelay]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -276,12 +284,24 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
               <ul className="short-specs">
                 {shortProductSpecs.map(spec => (
                   <li className="short-specs__spec" key={spec.title}>
-                    <span className="short-specs__spec-name small-text">
-                      {spec.title}
-                    </span>
-                    <span className="short-specs__spec-value small-text">
-                      {spec.value}
-                    </span>
+                    {delay ? (
+                      <SkeletonDarkTheme>
+                        <Skeleton width={80} height={10} />
+                      </SkeletonDarkTheme>
+                    ) : (
+                      <span className="short-specs__spec-name small-text">
+                        {spec.title}
+                      </span>
+                    )}
+                    {delay ? (
+                      <SkeletonDarkTheme>
+                        <Skeleton width={80} height={15} />
+                      </SkeletonDarkTheme>
+                    ) : (
+                      <span className="short-specs__spec-value small-text">
+                        {spec.value}
+                      </span>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -296,11 +316,25 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
 
               {selectedProduct?.description.map(section => (
                 <div className="about__section" key={section.title}>
-                  <h4 className="about__section-title h4">{section.title}</h4>
+                  <h4 className="about__section-title h4">
+                    {delay ? (
+                      <SkeletonDarkTheme>
+                        <Skeleton className="about__section-title h4" />
+                      </SkeletonDarkTheme>
+                    ) : (
+                      section.title
+                    )}
+                  </h4>
 
                   {section.text.map(text => (
                     <p className="about__section-text body-text" key={text}>
-                      {text}
+                      {delay ? (
+                        <SkeletonDarkTheme>
+                          <Skeleton count={3} height={15} />
+                        </SkeletonDarkTheme>
+                      ) : (
+                        text
+                      )}
                     </p>
                   ))}
                 </div>
@@ -315,12 +349,24 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
               <ul className="specs__container">
                 {productSpecs.map(spec => (
                   <li className="specs__spec-section" key={spec.title}>
-                    <span className="specs__spec-name body-text">
-                      {spec.title}
-                    </span>
-                    <span className="specs__spec-value body-text">
-                      {spec.value}
-                    </span>
+                    {delay ? (
+                      <SkeletonDarkTheme>
+                        <Skeleton width={100} height={20} />
+                      </SkeletonDarkTheme>
+                    ) : (
+                      <span className="specs__spec-name body-text">
+                        {spec.title}
+                      </span>
+                    )}
+                    {delay ? (
+                      <SkeletonDarkTheme>
+                        <Skeleton width={100} height={20} />
+                      </SkeletonDarkTheme>
+                    ) : (
+                      <span className="specs__spec-value body-text">
+                        {spec.value}
+                      </span>
+                    )}
                   </li>
                 ))}
               </ul>

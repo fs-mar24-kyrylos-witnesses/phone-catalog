@@ -154,7 +154,7 @@
 
       &:hover {
         box-shadow: 0px 3px 9px 0px var(--card-add-button-shadow);
-        background-color: var(--card-hover-add-button-background);
+        // background-color: var(--card-hover-add-button-background);
       }
 
       &-addToBag {
@@ -196,6 +196,7 @@
 .cart-bag {
   background-color: var(--card-selected-button-background);
   border: 1px solid var(--card-selected-button-border);
+  box-sizing: border-box;
 
   &:hover {
     background-color: var(--card-selected-button-background);
