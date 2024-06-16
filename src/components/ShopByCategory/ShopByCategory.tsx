@@ -2,10 +2,20 @@ import { Link } from 'react-router-dom';
 import { useProductStore } from '../../store/productStore';
 import './ShopByCategory.scss';
 import { useTranslation } from 'react-i18next';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
+import { useEffect } from 'react';
+import { SkeletonDarkTheme } from '../Skeleton/SkeletonDarkTheme';
 
 export const ShopByCategory = () => {
   const { t } = useTranslation();
   const CatalogProduct = useProductStore(state => state.catalogProducts);
+  const { delay, getDelay } = useProductStore();
+
+  useEffect(() => {
+    getDelay();
+  }, [getDelay]);
+
   const allCategories = ['phones', 'tablets', 'accessories'];
   const allCategoriesTitle = [
     t('mobilePhones'),
@@ -44,7 +54,15 @@ export const ShopByCategory = () => {
               </Link>
 
               <p className="shopBy-category-count">
-                {categoryCounts[index]} {t('models')}
+                {delay ? (
+                  <SkeletonDarkTheme>
+                    <Skeleton width={100} />
+                  </SkeletonDarkTheme>
+                ) : (
+                  <>
+                    {categoryCounts[index]} {t('models')}
+                  </>
+                )}
               </p>
             </div>
           );

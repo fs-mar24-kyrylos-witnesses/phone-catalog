@@ -1,13 +1,15 @@
-import Minus from '../../assets/icons/minus.svg';
-import Plus from '../../assets/icons/plus.svg';
-import Union from '../../assets/icons/close.svg';
+import '../Skeleton/Skeleton.scss';
 
 import './CartItem.scss';
 import { Product } from '../../types/Product';
-import { useStore } from '../../store/productStore';
-import React from 'react';
+import { useProductStore, useStore } from '../../store/productStore';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
+import { SkeletonDarkTheme } from '../Skeleton/SkeletonDarkTheme';
+import { Icon } from '../../UI/Icons/Icon';
 
 type Props = {
   product: Product;
@@ -17,6 +19,11 @@ type Props = {
 
 export const CartItem: React.FC<Props> = ({ product, count, setCount }) => {
   const { removeFrom } = useStore();
+  const { getDelay, delay } = useProductStore();
+
+  useEffect(() => {
+    getDelay();
+  }, [getDelay]);
 
   const handleIncrease = () => setCount(count + 1);
   const handleDecrease = () => setCount(count > 1 ? count - 1 : 1);
@@ -24,16 +31,34 @@ export const CartItem: React.FC<Props> = ({ product, count, setCount }) => {
   return (
     <div className="product">
       <div className="product-info">
-        <img
-          className="product-info-close"
+        <div
+          style={{ cursor: 'pointer' }}
           onClick={() => removeFrom(product.itemId, 'cart')}
-          src={Union}
-          alt="close"
-        />
+        >
+          <Icon name="close" />
+        </div>
         <Link to={`/${product.category}/${product.itemId}`}>
-          <img className="product-info-img" src={product.image} alt="product" />
+          {delay ? (
+            <SkeletonDarkTheme>
+              <Skeleton width={66} height={69} />
+            </SkeletonDarkTheme>
+          ) : (
+            <img
+              className="product-info-img"
+              src={product.image}
+              alt="product"
+            />
+          )}
         </Link>
-        <p className="product-info-title">{product.name}</p>
+        <p className="product-info-title">
+          {delay ? (
+            <SkeletonDarkTheme>
+              <Skeleton className="skeleton-title" />
+            </SkeletonDarkTheme>
+          ) : (
+            product.name
+          )}
+        </p>
       </div>
       <div className="product-handle">
         <div className="product-handle-buttons">
@@ -44,7 +69,7 @@ export const CartItem: React.FC<Props> = ({ product, count, setCount }) => {
             aria-disabled={count === 1}
             onClick={() => handleDecrease()}
           >
-            <img src={Minus} alt="minus" />
+            <Icon name="minus" />
           </div>
           <div className="product-handle-buttons-count">
             <p className="product-handle-buttons-count-text">{count}</p>
@@ -53,10 +78,18 @@ export const CartItem: React.FC<Props> = ({ product, count, setCount }) => {
             className="product-handle-buttons-box"
             onClick={() => handleIncrease()}
           >
-            <img src={Plus} alt="plus" />
+            <Icon name="plus" />
           </div>
         </div>
-        <p className="product-handle-price">{`$${product.price * count}`}</p>
+        <p className="product-handle-price">
+          {delay ? (
+            <SkeletonDarkTheme>
+              <Skeleton width={60} height={30} />
+            </SkeletonDarkTheme>
+          ) : (
+            `$${product.price * count}`
+          )}
+        </p>
       </div>
     </div>
   );
