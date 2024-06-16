@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
 import './Footer.scss';
-import logo from '../../assets/icons/logo.svg';
-import arrowUp from '../../assets/icons/arrow-up.svg';
+
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+
+import { Icon } from '../../UI/Icons/Icon';
+import { Arrow } from '../../UI/Icons/arrow/arrow';
 
 export const Footer: React.FC = () => {
   const { t } = useTranslation();
@@ -20,7 +22,9 @@ export const Footer: React.FC = () => {
         <div className="footer__content">
           <div className="footer__logo-wrapper">
             <Link to="/" className="footer__logo">
-              <img className="footer__img" alt="logo" src={logo} />
+              <div className="header__logo">
+                <Icon name={`logo`} />
+              </div>
             </Link>
           </div>
 
@@ -50,7 +54,7 @@ export const Footer: React.FC = () => {
               onClick={() => window.scrollTo(0, 0)}
               className="footer__link footer__link--top"
             >
-              <img src={arrowUp} alt="Arrow Up" className="footer__arrow" />
+              <Arrow direction="up" />
             </Link>
           </div>
         </div>

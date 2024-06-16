@@ -36,15 +36,13 @@ function normalizeCapacity(capacity: string) {
   return capacity.slice(0, capacity.length - 2) + ' ' + capacity.slice(-2);
 }
 
-// todo -- ADD PAGE CHANGE ON CAPACITY OR COLOR SWITCH
-
 export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
   const normalizedCategory =
     categoryArea[0].toUpperCase() + categoryArea.slice(1);
 
-  const { itemId } = useParams(); // our product id
+  const { itemId } = useParams<{ itemId: string }>();
   const { catalogProducts, fetchProductById, getDelay, delay } =
-    useProductStore(); // func that gives product depending on the id and category
+    useProductStore();
   const { favourites, cartProducts, addTo, removeFrom } = useStore();
 
   const [selectedProduct, setSelectedProduct] = useState<
@@ -67,11 +65,12 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    setSelectedProduct(undefined);
+    setProductWasNotFound(false);
 
     fetchProductById(itemId || '', categoryArea).then(response => {
-      setSelectedProduct(response);
-
       if (response) {
+        setSelectedProduct(response);
         setProductSpecs(getProductSpecs(response));
         setProductImages(response.images);
         setSelectedImage(response.images[0]);
@@ -81,25 +80,18 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
         setRecommendedProducts(
           catalogProducts
             .filter(item => item.category === categoryArea)
-            .sort(() => Math.random() - 0.5) // shuffling the array to take random 12 products
+            .sort(() => Math.random() - 0.5)
             .slice(0, 12),
         );
       } else {
         setProductWasNotFound(true);
       }
     });
-  }, [
-    catalogProducts,
-    categoryArea,
-    fetchProductById,
-    itemId,
-    setRecommendedProducts,
-  ]);
+  }, [catalogProducts, categoryArea, fetchProductById, itemId]);
 
   const shortProductSpecs = productSpecs.slice(0, 4);
 
   const toggleFavorite = (productId: string) => {
-    console.log('TOGGLING FAVORITE ', productId);
     if (favourites.includes(productId)) {
       removeFrom(productId, 'fav');
     } else {
@@ -108,7 +100,6 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
   };
 
   const toggleCart = (productId: string) => {
-    console.log('TOGGLING CART ', productId);
     if (cartProducts.includes(productId)) {
       removeFrom(productId, 'cart');
     } else {
@@ -254,7 +245,6 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
                     className={cn('buy__add-to-cart', 'button-text', {
                       'buy__add-to-cart--selected': cartProducts.includes(
                         selectedProduct?.id || '',
-                        // todo -- delete this bullshit
                       ),
                     })}
                     onClick={() => toggleCart(selectedProduct?.id || '')}
@@ -264,9 +254,8 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
 
                   <button
                     className={cn('buy__favorite', 'button-text', {
-                      'buy__favorite--selected': cartProducts.includes(
+                      'buy__favorite--selected': favourites.includes(
                         selectedProduct?.id || '',
-                        // todo -- delete this bullshit
                       ),
                     })}
                     onClick={() => toggleFavorite(selectedProduct?.id || '')}
