@@ -33,7 +33,7 @@
     }
   }
 
-  &__logo {
+  &__logo .icon-wrapper-logo {
     width: 64px;
     height: auto;
 
@@ -41,6 +41,7 @@
       width: 80px;
     }
   }
+
   .nav {
     display: none;
     justify-content: space-between;
