@@ -68,6 +68,9 @@ i18n
           yourOrderHasBeenPlacedSuccessfuly:
             'Your order has been placed successfully!',
           rightsText: `All rights belong to the Kyryloʼs witnesses team and are protected. Our code is our tool for innovation and building the future. Every line of code is a step forward in our mission to make technology accessible and useful for everyone.`,
+          notFound: 'Whoops! Looks like the page is lost...',
+          notFoundDesc:
+            'It might have wandered off to another section. Try returning to the homepage.',
         },
       },
       ua: {
@@ -123,11 +126,14 @@ i18n
           YourCart: 'Ваш кошик порожній...',
           LookAround: 'Подивіться навколо і додайте щось!',
           Whoops: 'Ой! Не вдалося знайти цей предмет...',
-          AreYouSure: 'Ви впевнені, що це десь тут?',
+          AreYouSure: 'Ви впевнені, що він десь тут?',
           youMayAlsoLike: 'Вам також може сподобатися',
           yourOrderHasBeenPlacedSuccessfuly:
             'Ваше замовлення успішно оформлено!',
           rightsText: `Усі права належить команді "Cвідки Кирила". Наш код - це наш інструмент для інновацій та будівництва майбутнього. Кожен рядок коду - це крок вперед у нашій місії зробити технології доступними і корисними для всіх.`,
+          notFound: 'Ой! Здається, сторінку не знайдено...',
+          notFoundDesc:
+            'Можливо, вона втекла в інший розділ. Спробуйте повернутися на головну сторінку.',
         },
       },
       vn: {
@@ -190,6 +196,9 @@ i18n
             'Đơn hàng của bạn đã được đặt thành công.',
           rightsText:
             'Mọi quyền thuộc về đội ngũ Kyrylos witnesses và được bảo vệ. Mã của chúng tôi là công cụ để đổi mới và xây dựng tương lai. Mỗi dòng mã là một bước nhỏ trong sứ mệnh của chúng tôi để làm cho công nghệ dễ tiếp cận và hữu ích cho mọi người.',
+          notFound: 'Ôi! Có vẻ như trang không tìm thấy...',
+          notFoundDesc:
+            'Có thể nó đã đi lạc vào phần khác. Hãy thử quay lại trang chủ.',
         },
       },
     },
