@@ -1,0 +1,30 @@
+.checkout-button {
+  width: 100%;
+  height: 48px;
+  background-color: var(--card-add-button-background);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+
+  &::before {
+    position: absolute;
+    content: '';
+    top: -16px;
+    left: 0;
+    right: 0;
+    background-color: var(--elements);
+    height: 1px;
+    width: 100%;
+  }
+
+  .checkout-button-text {
+    color: var(--white);
+    font-family: 'Mont-Regular', sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+    width: 100px;
+  }
+}
