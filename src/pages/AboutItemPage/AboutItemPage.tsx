@@ -8,6 +8,7 @@ import { Slider } from '../../components/Slider';
 
 import { useStore, useProductStore } from '../../store/productStore';
 import { getProductSpecs } from '../../helper/getProductSpecs';
+import { useTranslation } from 'react-i18next';
 
 // ICONS
 import home from '../../assets/icons/home.svg';
@@ -57,6 +58,7 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
   >();
   const [recommendedProducts, setRecommendedProducts] = useState<Product[]>([]);
   const [productWasNotFound, setProductWasNotFound] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -133,7 +135,7 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
 
           <Link className="back-button__container" to={`/${categoryArea}`}>
             <img className="back-button__icon" src={arrowLeft} alt="arrow" />
-            <span className="back-button__text small-text">Back</span>
+            <span className="back-button__text small-text">{t('goBack')}</span>
           </Link>
 
           <h2 className="product-name h2">{selectedProduct?.name}</h2>
@@ -170,7 +172,7 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
               <section className="colors">
                 <div className="colors__title">
                   <p className="colors__title-available small-text">
-                    Available colors
+                    {t('availableColors')}
                   </p>
                   <span className="colors__title-id small-text">
                     ID: 000000
@@ -198,7 +200,7 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
 
               <section className="capacity">
                 <p className="capacity__title-available small-text">
-                  Select capacity
+                  {t('selectCapacity')}
                 </p>
                 <div className="capacity__selection">
                   {selectedProduct?.capacityAvailable.map(capacity => (
@@ -252,7 +254,7 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
                     })}
                     onClick={() => toggleCart(selectedProduct?.id || '')}
                   >
-                    Add to cart
+                    {t('addToCart')}
                   </button>
 
                   <button
@@ -293,7 +295,7 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
 
           <div className="info-section">
             <section className="about">
-              <h3 className="about__title h3">About</h3>
+              <h3 className="about__title h3">{t('about')}</h3>
 
               <div className="separator"></div>
 
@@ -311,7 +313,7 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
             </section>
 
             <section className="specs">
-              <h3 className="specs__title h3">Tech specs</h3>
+              <h3 className="specs__title h3">{t('techSpecs')}</h3>
 
               <div className="separator"></div>
 
@@ -332,7 +334,7 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
 
           <section className="slider-section slider--no-margin">
             <Slider
-              titleName="You may also like"
+              titleName={t('youMayAlsoLike')}
               products={recommendedProducts}
             ></Slider>
           </section>
@@ -344,12 +346,8 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
             alt="Item not found"
             className="no-item__image"
           />
-          <h2 className="no-item__message h2">
-            Whoops! We couldn&#39;t find this item...
-          </h2>
-          <p className="no-item__description body-text">
-            Are you sure it is somewhere here?
-          </p>
+          <h2 className="no-item__message h2">{t('Whoops')}</h2>
+          <p className="no-item__description body-text">{t('AreYouSure')}</p>
         </div>
       )}
     </div>
