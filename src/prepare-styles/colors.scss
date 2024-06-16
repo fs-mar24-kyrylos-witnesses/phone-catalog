@@ -66,6 +66,8 @@ $red: rgba(235, 87, 87, 1);
   --card-add-button-shadow: rgba(23, 32, 49, 0.4);
   --card-fav-button-background: var(--white);
   --card-fav-button-border: var(--icons);
+  --card-main-box-shadow: #0000001a;
+
   //card hover colors
   --card-hover-add-button-background: var(--primary);
   --card-hover-fav-button-border: var(--primary);
@@ -166,6 +168,8 @@ $red: rgba(235, 87, 87, 1);
   --card-add-button-background: var(--accent);
   --card-fav-button-background: var(--surface-2);
   --card-fav-button-border: var(--surface-2);
+  --card-main-box-shadow: var(--accent);
+
   //card hover colors
   --card-hover-fav-button-border: var(--icons);
   --card-hover-fav-button-background: var(--icons);

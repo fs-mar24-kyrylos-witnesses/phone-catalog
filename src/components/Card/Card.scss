@@ -8,6 +8,7 @@
   border: 1px solid var(--card-border);
   background-color: var(--card-background);
   padding: 32px;
+  box-shadow: none;
 
   display: grid;
   grid-template-columns: repeat(1, 1fr);
@@ -16,6 +17,11 @@
   justify-content: center;
   align-items: center;
   row-gap: 8px;
+  transition: box-shadow $effect-duration ease;
+
+  &:hover {
+    box-shadow: inset 0px 2px 16px 0px var(--card-main-box-shadow);
+  }
 
   @include on-tablet {
     grid-template-columns: repeat(1, 1fr);
