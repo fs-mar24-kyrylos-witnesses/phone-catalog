@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import './CartPage.scss';
 import { useProductStore, useStore } from '../../store/productStore';
 import emptyCart from '/img/cart-is-empty.png';
@@ -9,12 +9,13 @@ import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { SkeletonDarkTheme } from '../../components/Skeleton/SkeletonDarkTheme';
 import { Arrow } from '../../UI/Icons/arrow/arrow';
-import Modall from '../../components/Modal/Modal';
+import Modal from '../../components/Modal/Modal';
 
 export const CartPage: React.FC = () => {
   const { catalogProducts } = useProductStore();
   const { cartProducts, getLength } = useStore();
   const { getDelay, delay } = useProductStore();
+  const previousCartLength = useRef(0);
 
   useEffect(() => {
     getDelay();
@@ -24,19 +25,21 @@ export const CartPage: React.FC = () => {
     .map(prod => catalogProducts.find(item => prod === item.itemId))
     .filter((item): item is Product => item !== undefined);
 
-  const [counts, setCounts] = useState(cart.map(() => 1));
+  const [counts, setCounts] = useState<number[]>([]);
 
   useEffect(() => {
-    const newCounts = cart.map(item => {
-      return counts[cart.indexOf(item)] || 1;
-    });
-    setCounts(newCounts);
-  }, [cart, cartProducts, counts]);
+    if (cart.length !== previousCartLength.current) {
+      setCounts(cart.map(() => 1));
+      previousCartLength.current = cart.length;
+    }
+  }, [cart]);
 
   const handleCountChange = (index: number, newCount: number) => {
-    const newCounts = [...counts];
-    newCounts[index] = newCount;
-    setCounts(newCounts);
+    setCounts(prevCounts => {
+      const newCounts = [...prevCounts];
+      newCounts[index] = newCount;
+      return newCounts;
+    });
   };
 
   const getTotalPrice = () => {
@@ -94,7 +97,7 @@ export const CartPage: React.FC = () => {
               )}
             </p>
             <div className="checkout-button">
-              <Modall />
+              <Modal />
             </div>
           </div>
         </div>

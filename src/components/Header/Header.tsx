@@ -8,10 +8,6 @@ import { useStore, useProductStore } from '../../store/productStore';
 import { LanguagesSelector } from '../LanguagesSelector/LanguagesSelector';
 import { useTranslation } from 'react-i18next';
 
-import like from '../../assets/icons/heart.svg';
-import cart from '../../assets/icons/cart-icon.svg';
-import menu from '../../assets/icons/menu.svg';
-import close from '../../assets/icons/close.svg';
 import { ThemeSwitch } from '../ThemeSwitch';
 import { Icon } from '../../UI/Icons/Icon';
 
@@ -159,7 +155,7 @@ export const Header: React.FC = () => {
                     </span>
                   </div>
                 )}
-                <img className="nav__icons__icon-like" src={like} alt="Like" />
+                <Icon name="heart"></Icon>
               </Link>
 
               <Link
@@ -177,11 +173,7 @@ export const Header: React.FC = () => {
                     </span>
                   </div>
                 )}
-                <img
-                  className="nav__icons__icon-cart"
-                  src={cart}
-                  alt="Shopping Cart"
-                />
+                <Icon name="cart"></Icon>
               </Link>
             </div>
           </div>
@@ -208,7 +200,7 @@ export const Header: React.FC = () => {
                 </span>
               </div>
             )}
-            <img className="nav__icons__icon-like" src={like} alt="Like" />
+            <Icon name="heart"></Icon>
           </Link>
 
           <Link
@@ -226,21 +218,13 @@ export const Header: React.FC = () => {
                 </span>
               </div>
             )}
-            <img
-              className="nav__icons__icon-cart"
-              src={cart}
-              alt="Shopping Cart"
-            />
+            <Icon name="cart"></Icon>
           </Link>
         </div>
 
         <div className="header__menu" onClick={toggleMenu}>
           <a className="header__menu-link">
-            {isMenuOpen ? (
-              <img className="header__menu-icon" src={close} alt="Close" />
-            ) : (
-              <img src={menu} alt="Menu" />
-            )}
+            {isMenuOpen ? <Icon name="close" /> : <Icon name="menu" />}
           </a>
         </div>
       </div>

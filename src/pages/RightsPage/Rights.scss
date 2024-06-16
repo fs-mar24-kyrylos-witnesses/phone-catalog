@@ -43,7 +43,7 @@
     font-size: 22px;
     font-weight: 600;
     line-height: 1.6;
-    color: $grayPrimary;
+    color: var(--text-primary);
     padding: 20px;
 
     @include on-desktop {
