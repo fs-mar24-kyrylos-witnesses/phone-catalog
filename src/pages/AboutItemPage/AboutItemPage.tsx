@@ -11,11 +11,8 @@ import { getProductSpecs } from '../../helper/getProductSpecs';
 import { useTranslation } from 'react-i18next';
 
 // ICONS
-import home from '../../assets/icons/home.svg';
-import arrowRight from '../../assets/icons/arrow-right.svg';
-import arrowLeft from '../../assets/icons/arrow-left.svg';
-import heart from '../../assets/icons/heart.svg';
-import heartFilled from '../../assets/icons/heart-filled.svg';
+import { Icon } from '../../UI/Icons/Icon';
+import { Arrow } from '../../UI/Icons/arrow/arrow';
 
 // TYPES
 import { Spec } from '../../types/Spec';
@@ -117,15 +114,15 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
         <div className="about-item-page">
           <div className="breadcrumbs">
             <Link to="/home">
-              <img className="breadcrumbs__home" src={home} alt="Home" />
+              <Icon name="home"></Icon>
             </Link>
-            <img className="breadcrumbs__arrow" src={arrowRight} alt="arrow" />
+            <Arrow direction="right"></Arrow>
             <Link to={`/${categoryArea}`}>
               <span className="breadcrumbs__text breadcrumbs__text--category small-text">
                 {normalizedCategory}
               </span>
             </Link>
-            <img className="breadcrumbs__arrow" src={arrowRight} alt="arrow" />
+            <Arrow direction="right"></Arrow>
             <Link to={``}>
               <span className="breadcrumbs__text breadcrumbs__text--model small-text">
                 {selectedProduct?.name}
@@ -134,7 +131,7 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
           </div>
 
           <Link className="back-button__container" to={`/${categoryArea}`}>
-            <img className="back-button__icon" src={arrowLeft} alt="arrow" />
+            <Arrow direction="left"></Arrow>
             <span className="back-button__text small-text">{t('goBack')}</span>
           </Link>
 
@@ -266,14 +263,11 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
                     })}
                     onClick={() => toggleFavorite(selectedProduct?.id || '')}
                   >
-                    <img
-                      src={
-                        favourites.includes(selectedProduct?.id || '')
-                          ? heartFilled
-                          : heart
-                      }
-                      alt="Add to favorite"
-                    />
+                    {favourites.includes(selectedProduct?.id || '') ? (
+                      <Icon name="heartFilled"></Icon>
+                    ) : (
+                      <Icon name="heart"></Icon>
+                    )}
                   </button>
                 </div>
               </section>
@@ -332,7 +326,7 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
             </section>
           </div>
 
-          <section className="slider-section slider--no-margin">
+          <section className="slider-section">
             <Slider
               titleName={t('youMayAlsoLike')}
               products={recommendedProducts}
