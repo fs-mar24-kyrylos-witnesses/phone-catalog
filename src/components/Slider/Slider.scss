@@ -53,6 +53,9 @@
     height: 32px;
     width: 32px;
     box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     outline: none;
     border: 1px solid var(--swiper-button-border);
 
