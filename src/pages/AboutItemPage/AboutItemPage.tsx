@@ -342,7 +342,7 @@ export const AboutItemPage: React.FC<Props> = ({ categoryArea }) => {
       ) : (
         <div className="no-item">
           <img
-            src="./img/page-not-found.png"
+            src="./img/product-not-found.png"
             alt="Item not found"
             className="no-item__image"
           />
