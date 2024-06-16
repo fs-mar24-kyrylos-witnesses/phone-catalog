@@ -8,12 +8,10 @@
 
 .rights {
   margin-top: 100px;
-  display: flex;
-  flex-direction: column;
   min-height: calc(100vh - $header-height - $footer-height);
-  justify-content: space-between;
 
   &__earth {
+    height: 420px;
     width: 100%;
     cursor: pointer;
 
@@ -25,20 +23,12 @@
   &__block {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
     justify-content: center;
-
-    @include on-tablet {
-      height: auto;
-    }
-
-    @include on-desktop {
-      flex-direction: row;
-      height: auto;
-    }
+    align-items: center;
   }
 
   &__text {
+    max-width: 500px;
     font-family: 'Mont-SemiBold', sans-serif;
     font-size: 22px;
     font-weight: 600;
