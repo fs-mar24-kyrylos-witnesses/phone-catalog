@@ -6,6 +6,8 @@ import Modal from '@mui/material/Modal';
 import { useTranslation } from 'react-i18next';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import { useStore } from '../../store/productStore';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 type ModalStyleProps = {
   position: 'absolute';
@@ -17,6 +19,7 @@ type ModalStyleProps = {
   border: string;
   boxShadow: number;
   p: number;
+  borderRadius: string;
 };
 
 const style1: ModalStyleProps = {
@@ -25,8 +28,9 @@ const style1: ModalStyleProps = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
+  bgcolor: 'var(--card-background)',
+  border: 'none',
+  borderRadius: '25px',
   boxShadow: 24,
   p: 4,
 };
@@ -65,13 +69,18 @@ export default function Modall() {
               onClick={handleClose}
               sx={{
                 backgroundColor: 'transparent',
-                color: '#777',
-                fontSize: 16,
+                color: 'var(--text-primary)',
+                minWidth: 0,
                 fontWeight: 600,
                 padding: 0,
+                width: '24px',
+                height: '24px',
+                '&:hover': {
+                  backgroundColor: 'transparent',
+                },
               }}
             >
-              X
+              <FontAwesomeIcon icon={faTimes} style={{ fontSize: '18px' }} />
             </Button>
           </Box>
           <Box sx={{ display: 'flex', justifyContent: 'center', mt: 3 }}>
@@ -81,13 +90,13 @@ export default function Modall() {
             id="modal-modal-title"
             variant="h5"
             component="h2"
-            sx={{ textAlign: 'center', mt: 4 }}
+            sx={{ textAlign: 'center', mt: 4, color: 'var(--text-primary)' }}
           >
             Great!
           </Typography>
           <Typography
             id="modal-modal-description"
-            sx={{ mt: 2, textAlign: 'center' }}
+            sx={{ mt: 2, textAlign: 'center', color: 'var(--text-primary)' }}
           >
             Your order has been created successfully
           </Typography>
@@ -95,9 +104,10 @@ export default function Modall() {
             <Button
               variant="contained"
               sx={{
-                backgroundColor: '#Fe500',
+                backgroundColor: 'var(--card-add-button-background)',
                 '&:hover': {
-                  backgroundColor: '#Fe500',
+                  backgroundColor: 'var(--card-hover-add-button-background)',
+                  boxShadow: '0px 2px 16px 0px var(--card-add-button-shadow)',
                 },
                 padding: '12px 30px',
                 borderRadius: 25,
