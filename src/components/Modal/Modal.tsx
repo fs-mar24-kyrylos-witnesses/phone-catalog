@@ -1,9 +1,8 @@
 import * as React from 'react';
+import { Icon } from '../../UI/Icons/Icon';
 import { useTranslation } from 'react-i18next';
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import { useStore } from '../../store/productStore';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import './Modal.scss'; // Make sure to import the CSS file
 
 export const Modall = () => {
@@ -24,7 +23,7 @@ export const Modall = () => {
           <div className="modal" onClick={e => e.stopPropagation()}>
             <div className="modal-close-button">
               <button onClick={handleClose} className="close-button">
-                <FontAwesomeIcon icon={faTimes} />
+                <Icon name="close"></Icon>
               </button>
             </div>
             <div className="modal-icon">
@@ -33,12 +32,12 @@ export const Modall = () => {
               />
             </div>
             <h2 className="modal-title h2 ">Great!</h2>
-            <p className="modal-description h3">
+            <p className="modal-description body-text">
               Your order has been created successfully
             </p>
             <div className="modal-action">
               <button
-                className="continue-button"
+                className="continue-button body-text"
                 onClick={() => {
                   handleClose();
                   emptyCart();
