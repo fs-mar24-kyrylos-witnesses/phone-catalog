@@ -14,4 +14,5 @@ npm i
 npm start
 ```
 
-![DEMO LINK](https://fs-mar24-kyrylos-witnesses.github.io/phone-catalog/)
+
+[DEMO LINK](https://fs-mar24-kyrylos-witnesses.github.io/phone-catalog/)
