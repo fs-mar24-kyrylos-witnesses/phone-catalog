@@ -3,10 +3,16 @@ import Artem from '../../assets/images/Artem.jpeg';
 import Yana from '../../assets/images/Yana.jpg';
 import Dmytro from '../../assets/images/Dmytro.jpg';
 import Illia from '../../assets/images/Illa.jpg';
+import React, { useEffect } from 'react';
 
 import './Contacts.scss';
 
 export const Contacts: React.FC = () => {
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+  }, []);
   const contacts = [
     {
       name: 'Perekhodko Maksym',

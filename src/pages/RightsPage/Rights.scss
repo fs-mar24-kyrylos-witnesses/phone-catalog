@@ -2,10 +2,6 @@
 @import '../../prepare-styles/mixins.scss';
 @import '../../prepare-styles/colors.scss';
 
-@import '../../prepare-styles/variables.scss';
-@import '../../prepare-styles/mixins.scss';
-@import '../../prepare-styles/colors.scss';
-
 .rights {
   margin-top: 100px;
   min-height: calc(100vh - $header-height - $footer-height);
@@ -35,6 +31,7 @@
     line-height: 1.6;
     color: var(--text-primary);
     padding: 20px;
+    text-align: center;
 
     @include on-desktop {
       padding: 5em;
@@ -47,3 +44,4 @@
     margin-top: 28px;
   }
 }
+
