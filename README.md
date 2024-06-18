@@ -43,7 +43,7 @@ To get started with the Phone Catalog, follow these steps:
 
 ## Usage
 
-The Phone Catalog application has both frontend and backend parts. The backend, built using Node.js, manages phone data, user authentication, and other functionalities.
+The Phone Catalog application has both frontend and backend parts. The backend, built using Node.js, manages phone data and other functionalities.
 
 ### Features
 
