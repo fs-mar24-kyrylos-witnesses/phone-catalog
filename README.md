@@ -60,6 +60,10 @@ The Phone Catalog application has both frontend and backend parts. The backend, 
 - **ESLint**: Pluggable linting utility for JavaScript and JSX
 - **Prettier**: Code formatter
 - **SCSS**: Syntactically Awesome Style Sheets
+- **Zustand**: State management library
+- **FontAwesome**: Icon library
+- **Bootstrap**: Front-end component library
+- **Swiper**: Modern touch slider
 
 ## Contributing
 
