@@ -1,6 +1,6 @@
 # Phone Catalog
 
-Welcome to the Phone Catalog project! This repository is dedicated to building a comprehensive and user-friendly catalog for mobile phones.
+Welcome to the Phone Catalog project! This repository is dedicated to building a comprehensive and user-friendly catalog for mobile phones and other gadgets.
 
 [DEMO LINK](https://fs-mar24-kyrylos-witnesses.github.io/phone-catalog/)
 
