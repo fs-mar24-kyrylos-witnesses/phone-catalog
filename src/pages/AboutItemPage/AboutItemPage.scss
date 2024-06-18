@@ -1,0 +1,504 @@
+@import '../../prepare-styles/colors.scss';
+@import '../../prepare-styles/typography.scss';
+@import '../../prepare-styles/mixins.scss';
+
+.about-item-page {
+  @include content-padding-inline;
+}
+
+.breadcrumbs {
+  height: 16px;
+
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 8px;
+
+  &__text {
+    color: var(--breadcrumbs-text);
+
+    @include hover(color, var(--breadcrumbs-hover));
+
+    font-weight: 600;
+  }
+}
+
+.breadcrumbs img {
+  display: block;
+  flex-shrink: 0; // to prevent the images from shrinking
+}
+
+.about-item-page {
+  // using padding here so breadcrumbs could be reused
+  padding-top: 24px;
+  padding-bottom: 64px;
+
+  @include on-tablet {
+    padding-bottom: 80px;
+  }
+}
+
+.back-button {
+  &__container {
+    margin-top: 24px;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    grid-column: 1 / -1;
+  }
+
+  &__icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__text {
+    color: var(--about-page-back-button-text);
+
+    @include hover(color, var(--about-page-hover-back-button-text));
+  }
+}
+
+.product-name {
+  margin-top: 16px;
+  margin-bottom: 32px;
+
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+.product-section {
+  @include grid-align;
+}
+
+.product-images {
+  display: flex;
+  gap: 8px;
+
+  order: 2;
+
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    order: 1;
+    flex-direction: column;
+    grid-column: span 1;
+  }
+
+  @include on-desktop {
+    gap: 16px;
+    grid-column: span 2;
+  }
+
+  &__image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+
+    box-sizing: border-box;
+    padding: 8px;
+
+    object-fit: contain;
+
+    border: 1px solid var(--elements);
+
+    cursor: pointer;
+
+    @include hover(border, 1px solid var(--icons));
+
+    &--selected {
+      border: 1px solid var(--about-page-selected-image-border);
+
+      @include hover(border, 1px solid var(--about-page-selected-image-border));
+    }
+  }
+}
+
+.selected-image-container {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+
+  position: relative;
+  padding: 10px; // Add padding here
+
+  order: 1;
+
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    order: 1;
+    margin-bottom: 0;
+    grid-column: span 6;
+  }
+
+  @include on-desktop {
+    grid-column: span 10;
+  }
+}
+
+.selected-image {
+  position: absolute;
+
+  // this is needed to simulate padding for element with absolute positioning
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  transition: opacity 0.3s ease-in-out;
+
+  opacity: 0;
+
+  &--active {
+    opacity: 1;
+  }
+}
+
+.separator {
+  width: 100%;
+  height: 1px;
+
+  margin-top: 24px;
+
+  background-color: var(--elements);
+}
+
+.product-properties {
+  margin-top: 40px;
+  grid-column: 1 / -1;
+
+  order: 3;
+
+  @include on-tablet {
+    margin-top: 0;
+    grid-column: span 5;
+  }
+
+  @include on-desktop {
+    margin-top: 0;
+    grid-column: 14 / 21;
+  }
+}
+
+.colors {
+  &__title {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__title-available {
+    color: var(--text-secondary);
+  }
+
+  &__title-id {
+    color: var(--icons);
+  }
+
+  &__selection {
+    margin-top: 8px;
+
+    display: flex;
+
+    gap: 8px;
+  }
+}
+
+.capacity {
+  margin-top: 24px;
+
+  grid-column: 1 / -1;
+
+  &__title-available {
+    color: var(--text-secondary);
+  }
+
+  &__selection {
+    margin-top: 8px;
+
+    display: flex;
+    gap: 8px;
+  }
+}
+
+.buy {
+  grid-column: 1 / -1;
+
+  margin-top: 32px;
+
+  &__price {
+    display: flex;
+
+    align-items: center;
+  }
+
+  &__price-main {
+    font-size: 32px;
+  }
+
+  &__price-discount {
+    margin-left: 8px;
+
+    color: var(--text-secondary);
+
+    font-family: 'Mont-SemiBold', sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 28.12px;
+    text-decoration: line-through;
+  }
+
+  &__buttons {
+    width: 100%;
+    margin-top: 16px;
+
+    display: flex;
+    justify-items: stretch;
+    gap: 8px;
+  }
+
+  &__add-to-cart {
+    width: 100%;
+    height: 48px;
+
+    border-radius: 0;
+    border: none;
+
+    color: var(--white);
+    background-color: var(--card-add-button-background);
+
+    cursor: pointer;
+
+    @include hover(box-shadow, 0px 3px 13px 0px var(--card-add-button-shadow));
+
+    @include hover(background-color, var(--card-hover-add-button-background));
+
+    &--selected {
+      color: var(--card-selected-button-text);
+      background-color: var(--card-selected-button-background);
+      border: 1px solid var(--card-selected-button-border);
+
+      @include hover(background-color, var(--card-selected-button-background));
+    }
+  }
+
+  &__favorite {
+    min-width: 48px;
+    max-width: 48px;
+
+    min-height: 48px;
+    max-height: 48px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 0;
+    background-color: var(--card-fav-button-background);
+
+    border: 1px solid var(--card-fav-button-border);
+
+    cursor: pointer;
+
+    @include hover(border, 1px solid var(--card-hover-fav-button-border));
+    @include hover(background-color, var(--card-hover-fav-button-background));
+  }
+
+  &__favorite-image {
+    width: 16px;
+    height: 16px;
+
+    background-image: url(../../assets/icons/heart.svg);
+
+    pointer-events: none;
+  }
+}
+
+.short-specs {
+  margin-top: 32px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__spec {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__spec-name {
+    color: var(--text-secondary);
+  }
+
+  &__spec-value {
+    text-align: right;
+    color: var(--text-primary);
+  }
+}
+
+.info-section {
+  margin-top: 56px;
+
+  @include grid-align;
+}
+
+.about {
+  grid-column: 1 / -1;
+
+  @include on-desktop {
+    grid-column: span 12;
+  }
+
+  display: flex;
+  flex-direction: column;
+
+  &__section {
+    margin-top: 32px;
+  }
+
+  &__section-text {
+    color: var(--text-secondary);
+    margin-top: 16px;
+  }
+}
+
+.specs {
+  margin-top: 56px;
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 0;
+    grid-column: 14 / -1;
+  }
+
+  &__container {
+    margin-top: 30px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__spec-section {
+    display: flex;
+
+    justify-content: space-between;
+  }
+
+  &__spec-name {
+    color: var(--text-secondary);
+  }
+
+  &__spec-value {
+    text-align: left;
+    color: var(--text-primary);
+  }
+}
+
+.slider-section {
+  margin-top: 56px;
+}
+
+
+.no-item {
+  height: calc(100vh - $footer-height - $header-height - 20px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &__image {
+    height: 300px;
+  }
+
+  &__message {
+    margin-top: 48px;
+  }
+
+  &__description {
+    margin-top: 20px;
+    color: var(--about-page-back-button-text);
+  }
+}
+
+/*#region capacityButton*/
+.capacity-button {
+  height: 32px;
+  padding-inline: 8px;
+
+  border-radius: 0;
+  border: 1px solid var(--icons);
+
+  background-color: var(--main-background);
+  color: var(--text-primary);
+
+  transition: border 0.3s;
+
+  cursor: pointer;
+
+  @include hover(border, 1px solid var(--primary));
+
+  &--selected {
+    color: var(--main-background);
+    background-color: var(--about-page-selected-capacity-background);
+    border: 1px solid var(--about-page-selected-capacity-border);
+  }
+}
+/*#endregion */
+
+/*#region circleColorButton*/
+.circle-button {
+  min-width: 32px;
+  max-width: 32px;
+
+  min-height: 32px;
+  max-height: 32px;
+
+  box-sizing: border-box;
+
+  padding: 2px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--main-background);
+
+  border-radius: 50%;
+  border: 1px solid var(--elements);
+
+  cursor: pointer;
+
+  @include hover(border, 1px solid var(--about-page-hover-circle-border));
+
+  &--selected {
+    border: 1px solid var(--about-page-selected-circle-border);
+  }
+}
+
+.circle-button__color {
+  width: 100%;
+  height: 100%;
+
+  border-radius: 50%;
+}
+
+/*#endregion */

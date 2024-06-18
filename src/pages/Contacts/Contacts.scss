@@ -1,0 +1,109 @@
+@import '../../prepare-styles/variables.scss';
+@import '../../prepare-styles/mixins.scss';
+@import '../../prepare-styles/usable-fonts.scss';
+@import '../../prepare-styles/colors.scss';
+
+.contacts {
+  font-family: 'Mont-SemiBold', sans-serif; 
+  min-height: calc(100vh - $header-height - $footer-height);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.contact__container {
+  width: 100%;
+  max-width: 300px;
+  height: 400px;
+  margin: 50px;
+  position: relative;
+  background: $contact-background;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform $effect-duration;
+
+  &:hover {
+    transform: translateY(-20px);
+  }
+}
+
+.contact__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.contact__img .img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.contact__name {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  white-space: nowrap;
+}
+
+.contact__text {
+  font-size: 14px;
+  font-weight: 600;
+  color: $graySecondary;
+  margin-bottom: 10px;
+  white-space: nowrap;
+}
+
+.contact__github {
+  position: absolute;
+  bottom: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transition: opacity 0.5s;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  width: 100%;
+  max-width: 200px;
+  background-color: $grayElements ; 
+  border: none;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.3s;
+  padding: 10px;
+  height: 40px;
+  color: $grayPrimary; 
+  border-radius: 5px;
+
+  @include on-desktop {
+    opacity: 0;
+  }
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+  }
+}
+
+.contact__container:hover .contact__github{
+  opacity: 1;
+}
+
+.contact__github a {
+  color: $white;
+}
+
+.contact__github a:hover {
+  color: $white;
+}

@@ -1,0 +1,235 @@
+@import '../../prepare-styles/colors.scss';
+@import '../../prepare-styles/reset.scss';
+@import '../../prepare-styles/typography.scss';
+@import '../../prepare-styles/mixins.scss';
+
+.card_container {
+  box-sizing: border-box;
+  border: 1px solid var(--card-border);
+  background-color: var(--card-background);
+  padding: 32px;
+  box-shadow: none;
+
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 8px;
+  transition: box-shadow $effect-duration ease;
+
+  &:hover {
+    box-shadow: inset 0px 2px 16px 0px var(--card-main-box-shadow);
+  }
+
+  @include on-tablet {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  &-position {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    overflow: hidden;
+
+    height: 20vh;
+    width: 100%;
+    object-fit: contain;
+  }
+
+  &-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    overflow: hidden;
+  }
+
+  &-title {
+    font-family: 'Mont-Regular', sans-serif;
+    font-size: 14px;
+    color: var(--text-primary);
+    line-height: 21px;
+    height: 42px;
+    margin-top: 16px;
+  }
+
+  &-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: start;
+    position: relative;
+
+    &-prices {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+      margin-top: 8px;
+
+      ::after {
+        position: absolute;
+        content: '';
+        display: block;
+        bottom: -5px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        background-color: var(--elements);
+        height: 1px;
+        width: 100%;
+      }
+
+      &-salePrice {
+        font-family: 'Mont-Bold', sans-serif;
+        font-weight: 800;
+        font-size: 22px;
+        color: var(--text-primary);
+        line-height: 30.8px;
+      }
+
+      &-fullPrice {
+        font-family: 'Mont-SemiBold', sans-serif;
+        font-size: 22px;
+        color: var(--text-secondary);
+        line-height: 28.12px;
+        text-decoration: line-through;
+      }
+    }
+  }
+
+  &-about {
+    width: 100%;
+    margin: 8px 0;
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    overflow: hidden;
+
+    &-characteristics {
+      display: flex;
+      row-gap: 8px;
+      flex-direction: row;
+      justify-content: space-between;
+
+      &-title {
+        font-family: 'Mont-Bold', sans-serif;
+        font-size: 12px;
+        color: var(--text-secondary);
+        line-height: 15.34px;
+      }
+
+      &-value {
+        font-family: 'Mont-Bold', sans-serif;
+        font-size: 12px;
+        color: var(--text-primary);
+        line-height: 15.34px;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  &-handle {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+    width: 100%;
+    justify-content: space-between;
+    gap: 8px;
+
+    &-bag {
+      cursor: pointer;
+      background-color: var(--card-add-button-background);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      flex: 1;
+
+      transition:
+        box-shadow $effect-duration ease,
+        background-color $effect-duration ease;
+
+      &:hover {
+        box-shadow: 0px 3px 9px 0px var(--card-add-button-shadow);
+        // background-color: var(--card-hover-add-button-background);
+      }
+
+      &-addToBag {
+        cursor: pointer;
+        font-family: 'Mont-SemiBold', sans-serif;
+        font-size: 14px;
+        color: var(--white);
+        line-height: 21px;
+      }
+    }
+
+    &-favs {
+      cursor: pointer;
+      box-sizing: border-box;
+      height: 40px;
+      width: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--card-fav-button-border);
+      background-color: var(--card-fav-button-background);
+
+      transition:
+        border-color 0.3s ease,
+        background-color 0.3s ease;
+
+      &:hover {
+        border-color: var(--card-hover-fav-button-border);
+        background-color: var(--card-hover-fav-button-background);
+      }
+
+      &-addToFavs {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.cart-bag {
+  background-color: var(--card-selected-button-background);
+  border: 1px solid var(--card-selected-button-border);
+  box-sizing: border-box;
+
+  &:hover {
+    background-color: var(--card-selected-button-background);
+    box-shadow: none;
+  }
+}
+
+.cart-addToBag {
+  color: var(--card-selected-button-text);
+}
+
+.cart-filled {
+  background-color: var(--main-background);
+  border: 1px solid var(--elements);
+}
+
+.card_container-position,
+.card_container-info,
+.card_container-about,
+.card_container-handle {
+  grid-column: 1/-1;
+
+  @include on-tablet {
+    grid-column: 1/-1;
+  }
+
+  @include on-desktop {
+    grid-column: 1/-1;
+  }
+}

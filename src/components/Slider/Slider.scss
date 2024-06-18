@@ -1,0 +1,84 @@
+@import '../../prepare-styles/colors.scss';
+@import '../../prepare-styles/mixins.scss';
+
+.slider-card--container {
+  max-width: 300px;
+
+  @include on-tablet {
+    max-width: 350px;
+  }
+
+  @include on-desktop {
+    max-width: 272px;
+  }
+}
+
+.slider {
+  margin-left: 16px;
+
+  overflow-x: hidden;
+
+  @include on-tablet {
+    margin-left: 24px;
+  }
+
+  @include on-desktop {
+    max-width: 1136px;
+    margin: 0 auto;
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &__button--wrapper {
+    display: flex;
+    width: 80px;
+    margin-right: 16px;
+    gap: 16px;
+
+    @include on-tablet {
+      margin-right: 24px;
+    }
+
+    @include on-desktop {
+      margin-right: 0;
+    }
+  }
+
+  &__button-next,
+  &__button-prev {
+    height: 32px;
+    width: 32px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    border: 1px solid var(--swiper-button-border);
+
+    background-color: var(--swiper-button-background);
+    transition:
+      background-color $effect-duration ease,
+      border $effect-duration ease;
+
+    &:hover {
+      border: 1px solid var(--swiper-hover-button-border);
+      background-color: var(--swiper-hover-button-background);
+    }
+
+    &:active {
+      background-color: var(--main-background);
+    }
+  }
+}
+
+.swiper-container {
+  min-width: 440px;
+
+  @include on-tablet {
+    min-width: 744px;
+  }
+}

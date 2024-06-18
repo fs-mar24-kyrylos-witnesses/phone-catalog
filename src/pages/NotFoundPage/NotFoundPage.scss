@@ -1,0 +1,24 @@
+@import '../../prepare-styles/variables.scss';
+
+.not-found {
+  height: calc(100vh - $footer-height - $header-height - 20px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &__image {
+    height: 300px;
+  }
+
+  &__message {
+    margin-top: 48px;
+  }
+
+  &__description {
+    margin-top: 20px;
+    width: 500px;
+    text-align: center;
+    color: var(--about-page-back-button-text);
+  }
+}

@@ -1,0 +1,41 @@
+@import '../../prepare-styles/mixins.scss';
+
+.grid__home-page {
+  margin-top: 56px;
+  @include grid-align;
+  @include content-padding-inline;
+
+  background-color: var(--gray-background);
+}
+
+.main-title {
+  grid-column: span 4;
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    margin-bottom: 32px;
+    grid-column: span 12;
+  }
+
+  @include on-desktop {
+    margin-bottom: 56px;
+    grid-column: span 17;
+  }
+}
+
+.container__home-page {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  margin-block: 56px;
+
+  @include on-tablet {
+    gap: 64px;
+    margin-block: 64px;
+  }
+
+  @include on-desktop {
+    gap: 80px;
+    margin-block: 80px;
+  }
+}

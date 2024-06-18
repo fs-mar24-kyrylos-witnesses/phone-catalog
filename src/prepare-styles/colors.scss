@@ -1,0 +1,231 @@
+$graySecondary: rgba(137, 147, 154, 1);
+$grayPrimary: rgba(49, 50, 55, 1);
+$grayIconsPlaceholders: rgba(180, 189, 195, 1);
+$grayElements: rgba(226, 230, 233, 1);
+$icon-color: rgba(180, 189, 195, 1);
+$button-color: rgba(49, 50, 55, 1);
+$card-add-color: rgba(241, 242, 249, 1);
+$hover-shadow: rgba(23, 32, 49, 0.4);
+$contact-background: rgba(255, 255, 255, 0.05);
+$phone-category-background: #e0c8b1;
+$tablet-category-background: rgba(141, 141, 146, 1);
+$accessory-category-background: rgba(151, 61, 95, 1);
+$phone-banner-background: #e8e4db;
+$tablet-banner-background: #c0c1c6;
+$accessory-banner-background: #e0c8b1;
+
+$white: rgba(255, 255, 255, 1);
+$green: rgba(39, 174, 96, 1);
+$red: rgba(235, 87, 87, 1);
+
+:root {
+  //light-theme all colors
+  --primary: rgba(49, 50, 55, 1);
+  --secondary: rgba(137, 147, 154, 1);
+  --icons: rgba(180, 189, 195, 1);
+  --elements: rgba(226, 230, 233, 1);
+  --hover-background: rgba(250, 251, 252, 1);
+  --white: rgba(255, 255, 255, 1);
+  --green: rgba(39, 174, 96, 1);
+  --red: rgba(235, 87, 87, 1);
+
+  //main-background
+  --main-background: var(--white);
+
+  //text colors
+  --text-primary: var(--primary);
+  --text-secondary: var(--secondary);
+
+  //headers color
+  --header-border: var(--elements);
+  --header-primary: var(--primary);
+
+  //banner-slider colors
+  --banner-image-border: var(--white);
+  --banner-bullet: var(--primary);
+  --banner-tablets-background: #c0c1c6;
+  --banner-phones-background: #e8e4db;
+
+  //swiper button colors
+  --swiper-button-border: var(--icons);
+  --swiper-button-background: var(--white);
+  //swiper hover-button colors
+  --swiper-hover-button-border: var(--primary);
+  --swiper-hover-button-background: var(--white);
+
+  //shop-by-category colors
+  --phone-category-background-text: #bca58f;
+  --phone-category-background: #e0c8b1;
+  --tablet-category-background: rgba(141, 141, 146, 1);
+  --accessory-category-background: rgba(151, 61, 95, 1);
+
+  //card colors
+  --card-border: var(--elements);
+  --card-background: var(--white);
+  --card-add-button-background: var(--primary);
+  --card-add-button-shadow: rgba(23, 32, 49, 0.4);
+  --card-fav-button-background: var(--white);
+  --card-fav-button-border: var(--icons);
+  --card-main-box-shadow: #0000001a;
+
+  //card hover colors
+  --card-hover-add-button-background: var(--primary);
+  --card-hover-fav-button-border: var(--primary);
+  --card-hover-fav-button-background: var(--white);
+  //card button selected colors
+  --card-selected-button-text: var(--green);
+  --card-selected-button-background: var(--white);
+  --card-selected-button-border: var(--elements);
+
+  //footer colors
+  --footer-border: var(--elements);
+  --footer-arrow-up-background: var(--white);
+  --footer-arrow-up-border: var(--icons);
+  //footer hover colors
+  --footer-hover-arrow-up-background: var(--white);
+  --footer-hover-arrow-up-border: var(--primary);
+
+  //phones tablets accessories colors
+  --category-dropdown-border: var(--icons);
+  --category-dropdown-background: var(--white);
+  //phones tablets accessories hover color
+  --category-hover-dropdown-border: var(--secondary);
+  //phones tablets accessories focus color
+  --category-focus-dropdown-border: var(--primary);
+
+  // breadcrumbs colors
+  --breadcrumbs-text: var(--secondary);
+  --breadcrumbs-hover: var(--primary);
+
+  //about page colors
+  --about-page-back-button-text: var(--secondary);
+  //about page selected colors
+  --about-page-selected-image-border: var(--primary);
+  --about-page-selected-capacity-border: var(--primary);
+  --about-page-selected-capacity-background: var(--primary);
+  --about-page-selected-circle-border: var(--primary);
+  //about page hover
+  --about-page-hover-back-button-text: var(--primary);
+  --about-page-hover-circle-border: var(--icons);
+
+  //cart colors
+  --cart-border: var(--elements);
+
+  //pagination colors
+  --pagination-border: var(--elements);
+  --pagination-active-background: var(--primary);
+  --pagination-active-border: var(--primary);
+  //pagination hover colors
+  --pagination-hover-border: var(--primary);
+
+  //language dropdown colors
+  --language-dropdown-border: var(--icons);
+  --language-dropdown-background: var(--white);
+  //language dropdown hover colors
+  --language-hover-dropdown-background: var(--elements);
+}
+
+[theme='dark'] {
+  //dark-theme all colors
+  --secondary: rgba(117, 118, 127, 1);
+  --icons: rgba(74, 77, 88, 1);
+  --elements: rgba(59, 62, 74, 1);
+  --surface-2: rgba(50, 53, 66, 1);
+  --surface-1: rgba(22, 24, 39, 1);
+  --black: rgba(15, 17, 33, 1);
+  --white: rgba(241, 242, 249, 1);
+  --accent: rgba(144, 91, 255, 1);
+  --green: rgba(39, 174, 96, 1);
+  --red: rgba(235, 87, 87, 1);
+
+  //main-background
+  --main-background: var(--black);
+
+  //text colors
+  --text-primary: var(--white);
+  --text-secondary: var(--secondary);
+
+  //headers color
+  --header-border: var(--surface-2);
+  --header-primary: var(--white);
+
+  //banner-slider colors
+  --banner-image-border: var(--surface-2);
+  --banner-bullet: var(--white);
+  --banner-tablets-background: var(--black);
+  --banner-phones-background: var(--black);
+
+  //swiper button colors
+  --swiper-button-border: var(--surface-2);
+  --swiper-button-background: var(--surface-2);
+  //swiper hover-button colors
+  --swiper-hover-button-border: var(--icons);
+  --swiper-hover-button-background: var(--icons);
+
+  //card colors
+  --card-border: var(--surface-1);
+  --card-background: var(--surface-1);
+  --card-add-button-background: var(--accent);
+  --card-fav-button-background: var(--surface-2);
+  --card-fav-button-border: var(--surface-2);
+  --card-main-box-shadow: var(--accent);
+
+  //card hover colors
+  --card-hover-fav-button-border: var(--icons);
+  --card-hover-fav-button-background: var(--icons);
+  --card-hover-add-button-background: rgba(163, 120, 255, 1);
+  //card button selected colors
+  --card-selected-button-background: var(--surface-2);
+  --card-selected-button-text: var(--white);
+  --card-selected-button-border: var(--surface-2);
+
+  //footer colors
+  --footer-border: var(--surface-2);
+  --footer-arrow-up-background: var(--surface-2);
+  --footer-arrow-up-border: var(--surface-2);
+  //footer hover colors
+  --footer-hover-arrow-up-background: var(--icons);
+  --footer-hover-arrow-up-border: var(--icons);
+
+  //phones tablets accessories colors
+  --category-dropdown-border: var(--surface-2);
+  --category-dropdown-background: var(--surface-2);
+  //phones tablets accessories hover color
+  --category-hover-dropdown-border: var(--icons);
+  //phones tablets accessories focus color
+  --category-focus-dropdown-border: var(--accent);
+
+  // breadcrumbs colors
+  --breadcrumbs-text: var(--white);
+  --breadcrumbs-hover: var(--accent);
+
+  //about page colors
+  --about-page-back-button-text: var(--white);
+  //about page selected colors
+  --about-page-selected-image-border: var(--white);
+  --about-page-selected-capacity-border: var(--white);
+  --about-page-selected-capacity-background: var(--white);
+  --about-page-selected-circle-border: var(--white);
+  //about page hover
+  --about-page-hover-back-button-text: var(--accent);
+  --about-page-hover-circle-border: var(--secondary);
+
+  //cart colors
+  --cart-border: var(--surface-2);
+  //pagination colors
+  --pagination-border: var(--surface-1);
+  --pagination-active-background: var(--accent);
+  --pagination-active-border: var(--accent);
+  //pagination hover colors
+  --pagination-hover-border: var(--elements);
+
+  //language dropdown colors
+  --language-dropdown-border: var(--surface-2);
+  --language-dropdown-background: var(--surface-2);
+  //language dropdown hover colors
+  --language-hover-dropdown-background: var(--surface-2);
+}
+
+body {
+  background-color: var(--main-background);
+}

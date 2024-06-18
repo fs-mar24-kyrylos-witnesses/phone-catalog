@@ -1,0 +1,101 @@
+@import '../../prepare-styles/mixins.scss';
+@import '../../prepare-styles/variables.scss';
+@import '../../prepare-styles/colors.scss';
+
+.custom-dropdown {
+  position: relative;
+  background: transparent;
+  font-family: 'Mont-SemiBold', sans-serif;
+
+  &__button {
+    align-items: center;
+
+    // i don't see what this is for
+    border: 1px solid $grayElements;
+
+    cursor: pointer;
+    display: flex;
+    font: inherit;
+    justify-content: space-between;
+    padding: 19px 12px;
+    width: 100%;
+  }
+
+  &__title {
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  &__icon {
+    height: 16px;
+    width: 16px;
+    transition: transform 0.3s ease;
+    margin-right: 30px;
+  }
+
+  &__list-wrapper {
+    // can't find what this is for
+    background-color: $white;
+
+    border: 1px solid var(--language-dropdown-border);
+
+    box-shadow: 0 2px 15px 0 #0000001a;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: calc(100% + 24px);
+    transform: translateY(-10%);
+    transform-origin: top center;
+    transition: transform 0.3s ease;
+    z-index: 1;
+  }
+
+  &__list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background: var(--main-background);
+  }
+
+  &__item {
+    padding: 10px 12px;
+    font-family: 'Mont-SemiBold', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: var(--text-secondary);
+    cursor: pointer;
+
+    @include hover(background-color, var(--language-hover-dropdown-background));
+    @include hover(color, var(--text-primary));
+  }
+
+  &__icon.open {
+    transform: rotate(180deg);
+  }
+
+  &__list-wrapper--open {
+    max-height: 200px;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+}
+
+.languages-selector {
+  border: 0;
+  text-transform: uppercase;
+
+  .custom-dropdown__title {
+    margin-top: 3px;
+    margin-right: -15px;  }
+
+  + div ul li {
+    text-transform: uppercase;
+  }
+}

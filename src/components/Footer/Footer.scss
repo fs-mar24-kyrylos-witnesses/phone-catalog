@@ -1,0 +1,144 @@
+@import '/src/prepare-styles/colors.scss';
+@import '/src/prepare-styles/mixins.scss';
+@import '/src/prepare-styles/usable-fonts.scss';
+@import '/src/prepare-styles/variables.scss';
+
+.footer {
+  font-family: 'Mont-Regular', sans-serif;
+  display: block;
+  text-align: left;
+  padding-inline: 16px;
+  border-top: 1px solid var(--footer-border);
+  padding-inline: 32px;
+  padding-block: 32px;
+  box-sizing: border-box;
+
+  @include on-tablet {
+    padding-inline: 32px;
+    padding-top: 0px;
+    height: $footer-height;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-block: 0px;
+  }
+
+  @include on-desktop {
+    padding-inline: 0px;
+    padding-top: 0px;
+    padding-block: 0px;
+  }
+
+  &--fixed {
+    margin-top: auto;
+  }
+
+  &__content {
+    width: 100%;
+    max-width: 1136px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    height: $footer-height;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    @include on-desktop {
+      margin: 0 auto;
+    }
+  }
+
+  &__logo-wrapper {
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &__logo {
+    display: block;
+    height: 32px;
+    position: relative;
+    background-color: var(--main-background);
+  }
+
+  &__links-block {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 14px;
+      margin-top: 0;
+      margin-inline: auto;
+    }
+
+    @include on-desktop {
+      gap: 106px;
+    }
+  }
+
+  &__link {
+    font-family: 'Mont-Bold', sans-serif;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 92%;
+    letter-spacing: 0.04em;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+
+    @include hover(color, var(--text-primary));
+
+    &.active {
+      background-color: transparent;
+     
+    }
+
+    &--top {
+      margin-bottom: 0px;
+      border: 1px solid var(--footer-arrow-up-border);
+      background-color: var(--footer-arrow-up-background);
+      padding: 8px;
+      transition: all $effect-duration;
+
+      &:hover {
+        background-color: var(--footer-hover-arrow-up-background);
+        border: 1px solid var(--footer-hover-arrow-up-border);
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__anchor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 16px;
+    padding-block: 32px;
+
+    @include on-tablet {
+      margin-top: 0;
+    }
+  }
+
+  &__label {
+    font-family: 'Mont-SemiBold';
+    font-weight: 700;
+    font-size: 12px;
+    color: var(--text-secondary);
+    padding-block: 8.5px;
+    margin-right: 16px;
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: 700;
+  }
+}
