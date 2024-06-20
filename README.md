@@ -18,6 +18,8 @@ The Phone Catalog is a web application designed to help users browse and shop fo
 
 ## Installation
 
+**Node version 20+ needed!**
+
 To get started with the Phone Catalog, follow these steps:
 
 1. Clone the repository:
