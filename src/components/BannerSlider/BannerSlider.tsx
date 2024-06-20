@@ -14,11 +14,7 @@ import { Arrow } from '../../UI/Icons/arrow/arrow';
 
 SwiperCore.use([Navigation, Pagination]);
 
-const images = [
-  'img/banner-kyrylo.png',
-  'img/banner-phones.png',
-  'img/banner-tablets.png',
-];
+const images = ['img/banner-1.png', 'img/banner-2.png', 'img/banner-3.png'];
 
 export const BannerSlider = () => {
   const swiperRef = useRef<SwiperClass | null>(null);
