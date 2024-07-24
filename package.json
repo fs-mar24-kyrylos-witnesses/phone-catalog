@@ -27,6 +27,7 @@
     "bootstrap": "^5.3.3",
     "classnames": "^2.5.1",
     "dotenv": "^16.4.5",
+    "express": "^4.19.2",
     "i18next": "^23.11.5",
     "i18next-browser-languagedetector": "^8.0.0",
     "pg": "^8.12.0",

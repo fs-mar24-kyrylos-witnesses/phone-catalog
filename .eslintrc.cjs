@@ -34,4 +34,5 @@ module.exports = {
       version: 'detect', // Automatically detect the react version
     },
   },
+  ignores: [".backend/*"],
 };

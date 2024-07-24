@@ -1,7 +1,7 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = new Sequelize(require('../config/config.json').development);
 
-const Product = sequelize.define('product', {
+const Product = sequelize.define('Product', {
   id: {
     type: DataTypes.STRING,
     primaryKey: true,
@@ -22,6 +22,31 @@ const Product = sequelize.define('product', {
   processor: DataTypes.STRING,
   ram: DataTypes.STRING,
   cell: DataTypes.ARRAY(DataTypes.STRING),
-});
+}, {
+    tablename: 'products',
+  }
+);
 
-module.exports = Product;
+// Fetch all products
+async function getProductCards() {
+  return Product.findAll();
+}
+
+// Fetch products by category
+async function getProductCardsByCategory(category) {
+  return Product.findAll({
+    where: { category },
+  });
+}
+
+// Fetch a specific product by ID
+async function getProduct(id) {
+  return Product.findByPk(id)
+}
+
+module.exports = {
+  Product,
+  getProductCards,
+  getProductCardsByCategory,
+  getProduct,
+};

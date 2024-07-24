@@ -1,4 +1,4 @@
-const Product = require('../models/Product.cjs');
+const { Product } = require('../models/Product.model');
 const { Sequelize } = require('sequelize');
 const sequelize = new Sequelize(require('../config/config.json').development);
 
@@ -7,8 +7,6 @@ const tablets = require('../../public/api/tablets.json')
 const accessories = require('../../public/api/accessories.json')
 
 const productsToAdd = [].concat(phones, tablets, accessories);
-
-console.log(productsToAdd);
 
 async function initializeDatabase() {
   try {
