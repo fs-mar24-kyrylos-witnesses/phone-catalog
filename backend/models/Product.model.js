@@ -27,19 +27,17 @@ const Product = sequelize.define('Product', {
   }
 );
 
-// Fetch all products
 async function getProductCards() {
   return Product.findAll();
 }
 
-// Fetch products by category
+// TODO -- add attributes
 async function getProductCardsByCategory(category) {
   return Product.findAll({
     where: { category },
   });
 }
 
-// Fetch a specific product by ID
 async function getProduct(id) {
   return Product.findByPk(id)
 }

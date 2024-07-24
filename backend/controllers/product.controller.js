@@ -1,8 +1,15 @@
 const Product = require('../models/Product.model.js');
 const { STATUS_CODES } = require('../constants/statusCodes.js');
+const { categories } = require('../constants/categories.js');
 
 const getProductCardsByCategory = async (req, res) => {
-  const category = req.params.category;
+  const pathSegments = req.path.split('/');
+  const category = pathSegments[pathSegments.length - 1]; // Get the last segment4
+
+  if (!categories.includes(category)) {
+    res.status(STATUS_CODES.BAD_REQUEST).send({ error: 'Category does not exist' });
+    return;
+  }
 
   try {
     const products = await Product.getProductCardsByCategory(category);
