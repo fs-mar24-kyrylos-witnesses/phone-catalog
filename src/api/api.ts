@@ -1,9 +1,11 @@
 import { Product } from '../types/Product';
 import { Category } from '../types/Category';
 import { ProductInfo } from '../types/ProductInfo';
+import axios from 'axios';
 
 const BASE_URL = 'api/';
-const CATALOG_URL = BASE_URL + 'products.json';
+// const CATALOG_URL = BASE_URL + 'products.json';
+const apiUrl = 'http://localhost:5700';
 
 const PRODUCT_URLS = {
   phones: BASE_URL + 'phones.json',
@@ -12,9 +14,9 @@ const PRODUCT_URLS = {
 };
 
 export const fetchAllProductsFromApi = async () => {
-  const response = await fetch(CATALOG_URL);
-  const products = (await response.json()) as Product[];
-  return products;
+  const response = await axios.get(`${apiUrl}/products`);
+  // const products = (await response.json()) as Product[];
+  return response.data as Product[];
 };
 
 export const fetchProductByIdFromApi = async (

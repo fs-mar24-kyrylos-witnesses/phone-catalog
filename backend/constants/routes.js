@@ -1,8 +1,9 @@
 const ROUTES = {
-  PRODUCTS_PHONES: '/products/phones',
-  PRODUCTS_TABLETS: '/products/tablets',
-  PRODUCTS_ACCESSORIES: '/products/accessories',
-  PRODUCTS_ID: '/products/:id',
+  // PRODUCTS_PHONES: '/phones',
+  // PRODUCTS_TABLETS: '/tablets',
+  // PRODUCTS_ACCESSORIES: '/accessories',
+  PRODUCTS_ALL: '/products',
+  PRODUCTS_ID: ':category/:id',
 };
 
 module.exports = ROUTES; 
